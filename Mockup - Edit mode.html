@@ -3,6 +3,10 @@
 	<meta charset="UTF-8">
 	<title>Edit Mode</title>
 	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 9pt;
+		}
 		#main {
 			border-collapse: collapse;
 		}
@@ -22,13 +26,29 @@
 			font-weight: normal;
 			font-style: italic;
 		}
+		#main td {
+			padding-right: 2em;
+		}
+		.add-note {
+			float: right;
+			font-size: 60%;
+			margin-right: -1.5em;
+		}
+		.note-trigger {
+			visibility: hidden;
+		}
+		.note-trigger.active {
+			visibility: visible;
+		}
 	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 </head>
 <body>
 	<table id="main">
 		<thead>
 			<tr>
-				<td></td>
+				<th></th>
 				<th>2011-09-03</th>
 				<th>2012-09-01</th>
 				<th>2013-08-24</th>
@@ -539,5 +559,18 @@
 			</tr>
 		</tbody>
 	</table>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script>
+		// $('td').prepend('<span class="fa fa-sticky-note-o add-note"></span>');
+		$('td').append('<p class="note-trigger" style="font-size: 75%; opacity: .8; margin: 0"><button>+ Add note</button></p>');
+		$('#main').on('click', 'td input', function(e) {
+			debugger;
+			$(e.target).closest('td').find('p.note-trigger').toggleClass('active', $(e.target).is(':checked'));
+		});
+// 		$('td').prepend('<span class="fa-stack add-note">'+
+//   '<i class="fa fa-fw fa-sticky-note-o fa-stack-2x"></i>'+
+//   '<i class="fa fa-fw fa-plus-circle fa-stack-1x"></i>'+
+// '</span>');
+	</script>
 </body>
 </html>
