@@ -29,6 +29,9 @@
 		#main td {
 			padding-right: 2em;
 		}
+		#main td label {
+			font-weight: normal;
+		}
 		.add-note {
 			float: right;
 			font-size: 60%;
@@ -36,13 +39,15 @@
 		}
 		.note-trigger {
 			visibility: hidden;
+			font-size: 75%;
+			margin: 0; margin-top: 5px;
 		}
 		.note-trigger.active {
 			visibility: visible;
 		}
 	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 </head>
 <body>
 	<table id="main">
@@ -67,18 +72,18 @@
 			</tr>
 			<tr class="term-child">
 				<th>hyperplasia</th>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
 				<th>hypoplasia</th>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
@@ -159,18 +164,18 @@
 			</tr>
 			<tr class="term-child">
 				<th>hyperplasia</th>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
 				<th>hypoplasia</th>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
@@ -193,34 +198,34 @@
 			</tr>
 			<tr class="term-child">
 				<th>enlarged cerebral subarachnoid space</th>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
 				<th></th>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
 				<th>enlarged cerebellar subarachnoid space</th>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
 				<th></th>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
 				<td></td>
 			</tr>
 		</tbody>
@@ -235,18 +240,18 @@
 			</tr>
 			<tr class="term-child">
 				<th>ventriculomegaly</th>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
 				<th></th>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
-				<td><label><input type="radio"> Generalized</label><br><label><input type="radio"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Generalized</label><br><label><input type="checkbox" class="choose-one"> Localized</label></td>
 				<td></td>
 			</tr>
 		</tbody>
@@ -279,10 +284,10 @@
 			</tr>
 			<tr class="term-child">
 				<th>atrophy</th>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
-				<td><label><input type="radio"> Mild</label><br><label><input type="radio"> Moderate</label><br><label><input type="radio"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
+				<td><label><input type="checkbox" class="choose-one"> Mild</label><br><label><input type="checkbox" class="choose-one"> Moderate</label><br><label><input type="checkbox" class="choose-one"> Severe</label></td>
 				<td></td>
 			</tr>
 			<tr class="term-child">
@@ -560,17 +565,20 @@
 		</tbody>
 	</table>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 	<script>
-		// $('td').prepend('<span class="fa fa-sticky-note-o add-note"></span>');
-		$('td').append('<p class="note-trigger" style="font-size: 75%; opacity: .8; margin: 0"><button>+ Add note</button></p>');
-		$('#main').on('click', 'td input', function(e) {
-			debugger;
+		$('td').append('<p class="note-trigger"><button>+ Add note</button></p>');
+
+		// only one checkbox at a time
+		$('#main').on('click', 'td input[type=checkbox].choose-one', function(e) {
+			$(e.target).closest('td').find('input[type=checkbox]').filter(function() {
+				return this != e.target;
+			}).prop('checked', false);
+		});
+		// show note button only when selected
+		$('#main').on('click', 'td input[type=checkbox]', function(e) {
 			$(e.target).closest('td').find('p.note-trigger').toggleClass('active', $(e.target).is(':checked'));
 		});
-// 		$('td').prepend('<span class="fa-stack add-note">'+
-//   '<i class="fa fa-fw fa-sticky-note-o fa-stack-2x"></i>'+
-//   '<i class="fa fa-fw fa-plus-circle fa-stack-1x"></i>'+
-// '</span>');
 	</script>
 </body>
 </html>
