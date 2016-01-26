@@ -26,24 +26,40 @@
 			font-weight: normal;
 			font-style: italic;
 		}
-		#main td {
-			padding-right: 2em;
-		}
 		#main td label {
 			font-weight: normal;
 		}
 		.add-note {
-			float: right;
-			font-size: 60%;
-			margin-right: -1.5em;
-		}
-		.note-trigger {
-			visibility: hidden;
+			width: 200px;
 			font-size: 75%;
 			margin: 0; margin-top: 5px;
 		}
-		.note-trigger.active {
+		#main td .add-note, #main td .note {
+			visibility: hidden;
+		}
+		#main td.has-selected .add-note, #main td.has-selected .note {
 			visibility: visible;
+		}
+		#main td .note {
+			height: 1.2em;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			width: 200px;
+			margin: 0;
+			margin-top: 5px;
+			font-size: 80%;
+			position: relative;
+			padding-right: 26px;
+		}
+		#main td .note button {
+			position: absolute;
+			right: 0; top: 0;
+			font-size: 80%;
+		}
+		#main td .popover textarea {
+			height: 100px;
+			width: 200px;
 		}
 	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -566,19 +582,7 @@
 	</table>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
-	<script>
-		$('td').append('<p class="note-trigger"><button>+ Add note</button></p>');
-
-		// only one checkbox at a time
-		$('#main').on('click', 'td input[type=checkbox].choose-one', function(e) {
-			$(e.target).closest('td').find('input[type=checkbox]').filter(function() {
-				return this != e.target;
-			}).prop('checked', false);
-		});
-		// show note button only when selected
-		$('#main').on('click', 'td input[type=checkbox]', function(e) {
-			$(e.target).closest('td').find('p.note-trigger').toggleClass('active', $(e.target).is(':checked'));
-		});
-	</script>
+	<script src="state-machine.min.js"></script>
+	<script src="edit.js"></script>
 </body>
 </html>
