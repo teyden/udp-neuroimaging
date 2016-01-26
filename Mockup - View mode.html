@@ -3,13 +3,20 @@
 	<meta charset="UTF-8">
 	<title>View Mode</title>
 	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 9pt;
+		}
 		#main {
 			border-collapse: collapse;
 		}
 		#main td, #main th {
 			padding: 6px;
-			border: 1px solid #aaa;
+			border: 1px solid #aaa; border-right-width: 0;
 			vertical-align: top;
+		}
+		#main td:last-child, #main th:last-child {
+			border-right-width: 1px;
 		}
 		#main th {
 			text-align: right;
@@ -23,12 +30,19 @@
 			font-style: italic;
 		}
 		#main td.normal {
-			background-color: lightgreen;
+			border-left-color: green;
+			border-top-color: green;
 		}
 		#main td.abnormal {
-			background-color: pink;
+			border-left-color: red;
+			border-top-color: red;
+		}
+		#main td .note {
+			font-size: 80%; margin-top: 5px;
 		}
 	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 </head>
 <body>
 	<table id="main">
@@ -78,8 +92,18 @@
 			</tr>
 			<tr class="term-child">
 				<th>hemisphere atrophy</th>
-				<td>&#x2714;</td>
-				<td>&#x2714;</td>
+				<td>
+					&#x2714;
+					<p class="note">
+						Focused around the lower area
+					</p>
+				</td>
+				<td>
+					&#x2714;
+					<p class="note">
+						Moving into upper area
+					</p>
+				</td>
 				<td>&#x2714;</td>
 				<td>&#x2714;</td>
 				
