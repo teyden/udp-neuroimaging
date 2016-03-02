@@ -1,0 +1,58 @@
+{
+	"sections": [
+		{
+			"name": "corpus callosum",
+			"id": "hp:0001273",
+			"terms": [
+				{
+					"name": "hyperplasia",
+					"id": "hp:0007074",
+					"qualifiers": ["spatial_pattern"]
+				},
+				{
+					"name": "hypoplasia",
+					"id": "hp:0002079",
+					"qualifiers": ["spatial_pattern"]
+				},
+				{
+					"name": "partial agenesis",
+					"id": "hp:0001338",
+					"qualifiers": ["spatial_pattern"]
+				},
+				{
+					"name": "agenesis",
+					"id": "hp:0001274",
+					"qualifiers": ["spatial_pattern"]
+				},
+			]
+		},
+		{
+			"name": "cerebellum",
+			"id": "hp:0001317",
+			"terms": [
+				{
+					"name": "hemisphere atrophy",
+					"id": "hp:0008278",
+				},
+				{
+					"name": "vermis atrophy",
+					"id": "hp:0006855",
+				},
+			]
+		},
+		{
+			"name": "subarachnoid/csf space",
+			"id": "hp:0012703",
+			"terms": [
+				{
+					"name": "enlarged cerebral subarachnoid space",
+					"qualifiers": ["spatial_pattern", "severity"]
+				},
+				{
+					"name": "vermis atrophy",
+					"qualifiers": ["spatial_pattern", "severity"]
+				},
+			]
+		},
+	]
+}

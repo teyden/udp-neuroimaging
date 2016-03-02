@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Edit Mode</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 9pt;
+		}
+		#main {
+			border-collapse: collapse;
+		}
+		#main td, #main th {
+			padding: 6px;
+			border: 1px solid #aaa;
+			vertical-align: top;
+		}
+		#main th {
+			text-align: right;
+		}
+		#main tbody.group tr:first-child th,
+		#main tbody.group tr:first-child td {
+			border-top-width: 5px;
+		}
+		#main .term-child th {
+			font-weight: normal;
+			font-style: italic;
+		}
+		#main td label {
+			font-weight: normal;
+		}
+		.add-note {
+			width: 200px;
+			font-size: 75%;
+			margin: 0; margin-top: 5px;
+		}
+		#main td .add-note, #main td .note {
+			visibility: hidden;
+		}
+		#main td.has-selected .add-note, #main td.has-selected .note {
+			visibility: visible;
+		}
+		#main td .note {
+			height: 1.2em;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			width: 200px;
+			margin: 0;
+			margin-top: 5px;
+			font-size: 80%;
+			position: relative;
+			padding-right: 26px;
+		}
+		#main td .note button {
+			position: absolute;
+			right: 0; top: 0;
+			font-size: 80%;
+		}
+		#main td .popover textarea {
+			height: 100px;
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<script src="edit.js"></script>
+</body>
+</html>
