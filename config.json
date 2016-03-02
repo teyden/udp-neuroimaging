@@ -23,7 +23,7 @@
 					"name": "agenesis",
 					"id": "hp:0001274",
 					"qualifiers": ["spatial_pattern"]
-				},
+				}
 			]
 		},
 		{
@@ -32,12 +32,12 @@
 			"terms": [
 				{
 					"name": "hemisphere atrophy",
-					"id": "hp:0008278",
+					"id": "hp:0008278"
 				},
 				{
 					"name": "vermis atrophy",
-					"id": "hp:0006855",
-				},
+					"id": "hp:0006855"
+				}
 			]
 		},
 		{
@@ -51,8 +51,8 @@
 				{
 					"name": "vermis atrophy",
 					"qualifiers": ["spatial_pattern", "severity"]
-				},
+				}
 			]
-		},
+		}
 	]
 }
