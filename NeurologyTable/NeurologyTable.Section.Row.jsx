@@ -8,6 +8,7 @@ window.NeurologyTable.Section.Row = React.createClass({
 				config={_this.props.config} 
 				date={val}
 				conditions={_this.props.conditions} 
+				qualifiers={_this.props.qualifiers}
 				onConditionChange={_this.props.onConditionChange}
 			/>;
 		});

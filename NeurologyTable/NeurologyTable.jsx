@@ -23,6 +23,7 @@ window.NeurologyTable = React.createClass({
 			return <NeurologyTable.Section 
 				key={val.id} 
 				config={val} 
+				qualifiers={_this.props.config.qualifiers}
 				conditions={_this.state.conditions}
 				dates={_this.state.dates}
 				onConditionChange={_this.handleConditionChange}

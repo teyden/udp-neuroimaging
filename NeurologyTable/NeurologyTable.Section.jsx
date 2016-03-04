@@ -14,6 +14,7 @@ window.NeurologyTable.Section = React.createClass({
 					}} 
 					conditions={_this.props.conditions}
 					dates={_this.props.dates}
+					qualifiers={_this.props.qualifiers}
 					onConditionChange={_this.props.onConditionChange}
 					showRowHeader={idx == 0}
 				/>;
