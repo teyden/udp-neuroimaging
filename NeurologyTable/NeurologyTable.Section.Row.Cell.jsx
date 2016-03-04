@@ -1,6 +1,6 @@
 window.NeurologyTable.Section.Row.Cell = React.createClass({
-	handleCheckboxChange: function() {
-		this.props.onConditionChange("hello");
+	handleCheckboxChange: function(e) {
+		this.props.onConditionChange(this.props.config.id, this.props.date, e.target.value, e.target.checked);
 	},
 
 	render: function() {
@@ -17,7 +17,8 @@ window.NeurologyTable.Section.Row.Cell = React.createClass({
 						<input 
 							type="checkbox" 
 							onChange={_this.handleCheckboxChange}
-							checked={thisCondition}
+							checked={!!thisCondition}
+							value={qualVal.id}
 						/>
 						{qualVal.name}
 					</label>

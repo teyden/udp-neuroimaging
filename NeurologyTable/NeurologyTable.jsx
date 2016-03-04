@@ -9,8 +9,28 @@ window.NeurologyTable = React.createClass({
 		};
 	},
 
-	handleConditionChange: function(condition, newState) {
-		debugger;
+	handleConditionChange: function(conditionId, date, qualifier, isChecked) {
+		var newState = this.state;
+		var conditionForDate = _.find(newState.conditions, {id: conditionId, date: date});
+		
+		if (isChecked) {
+			if (conditionForDate) {
+				conditionForDate.qualifiers.push(qualifier);
+			} else {
+				newState.conditions.push({
+					id: conditionId,
+					date: date,
+					qualifiers: [qualifier],
+				});
+			}
+		} else {
+			_.pull(conditionForDate.qualifiers, [qualifier]);
+			if (!conditionForDate.qualifiers.length) {
+				_.pull(newState.conditions, conditionForDate);
+			}
+		}
+
+		this.setState(newState);
 	},
 
 	render: function() {
