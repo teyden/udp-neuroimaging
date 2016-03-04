@@ -1,7 +1,11 @@
 window.NeurologyTable.ColHeaderCell = React.createClass({
-	render: function() {
-		return (
-			<th>{this.props.date}</th>
+	displayName: "ColHeaderCell",
+
+	render: function render() {
+		return React.createElement(
+			"th",
+			null,
+			this.props.date
 		);
 	}
 });
