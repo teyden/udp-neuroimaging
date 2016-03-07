@@ -31,26 +31,8 @@ window.NeurologyTable = React.createClass({
 			this.handleCheckboxUnchecked(newState, existingRecord, qualifier);
 		}
 
-		// if (isChecked) {
-		// 	if (conditionForDate) {
-		// 		conditionForDate.qualifiers.push(qualifier);
-		// 	} else {
-		// 		newState.conditions.push({
-		// 			id: conditionId,
-		// 			date: date,
-		// 			qualifiers: {
-
-		// 			}
-		// 		});
-		// 	}
-		// } else {
-		// 	_.pull(conditionForDate.qualifiers, qualifier);
-		// 	if (!conditionForDate.qualifiers.length) {
-		// 		_.pull(newState.conditions, conditionForDate);
-		// 	}
-		// }
-
 		this.setState(newState);
+		console.log(newState);
 	},
 
 	handleCheckboxChecked: function(newState, existingRecord, toAdd) {

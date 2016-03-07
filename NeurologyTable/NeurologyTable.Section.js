@@ -4,9 +4,9 @@ window.NeurologyTable.Section = React.createClass({
 	render: function () {
 		var _this = this;
 
-		var conditions = _.map(this.props.section.terms, function (condition, condIdx, conditions) {
+		var conditionsRows = _.map(this.props.section.terms, function (condition, condIdx) {
 			var qualifiers = condition.qualifiers || [null];
-			var rows = _.map(qualifiers, function (qualifier, qualIdx, qualifiers) {
+			var rows = _.map(qualifiers, function (qualifier, qualIdx) {
 				return React.createElement(NeurologyTable.Section.Row, {
 					key: (condition.id || condition.name) + qualifier,
 					name: condition.name,
@@ -28,13 +28,12 @@ window.NeurologyTable.Section = React.createClass({
 			{ className: "group" },
 			React.createElement(NeurologyTable.Section.HeaderRow, {
 				key: this.props.id || this.props.name,
-				name: this.props.name,
-				id: this.props.id,
+				section: this.props.section,
 				conditions: this.props.conditions,
 				dates: this.props.dates,
 				onConditionChange: this.props.onConditionChange
 			}),
-			conditions
+			conditionsRows
 		);
 	}
 });
