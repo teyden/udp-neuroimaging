@@ -27,7 +27,7 @@ window.NeurologyTable.Section = React.createClass({
 			"tbody",
 			{ className: "group" },
 			React.createElement(NeurologyTable.Section.HeaderRow, {
-				key: this.props.id || this.props.name,
+				key: this.props.section.id || this.props.section.name,
 				section: this.props.section,
 				conditions: this.props.conditions,
 				dates: this.props.dates,

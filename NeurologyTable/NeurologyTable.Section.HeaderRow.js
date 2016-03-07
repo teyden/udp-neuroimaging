@@ -5,7 +5,7 @@ window.NeurologyTable.Section.HeaderRow = React.createClass({
 		var _this = this;
 		var cells = _.map(this.props.dates, function (val, idx, col) {
 			return React.createElement(NeurologyTable.Section.HeaderRow.Cell, {
-				key: _this.props.id + val,
+				key: _this.props.section.id + val,
 				section: _this.props.section,
 				date: val,
 				conditions: _this.props.conditions,
