@@ -46,10 +46,12 @@
 			"terms": [
 				{
 					"name": "enlarged cerebral subarachnoid space",
+					"id": "enlarged cerebral subarachnoid space",
 					"qualifiers": ["spatial_pattern", "severity"]
 				},
 				{
 					"name": "enlarged cerebellar subarachnoid space",
+					"id": "enlarged cerebellar subarachnoid space",
 					"qualifiers": ["spatial_pattern", "severity"]
 				}
 			]

@@ -1,13 +1,15 @@
 window.NeurologyTable.Section.HeaderRow = React.createClass({
 	displayName: "HeaderRow",
 
-	render: function render() {
-		var _this = this;var cells = _.map(this.props.dates, function (val, idx, col) {
+	render: function () {
+		var _this = this;
+		var cells = _.map(this.props.dates, function (val, idx, col) {
 			return React.createElement(NeurologyTable.Section.HeaderRow.Cell, {
-				key: _this.props.config.id + val,
-				config: _this.props.config,
+				key: _this.props.id + val,
+				name: _this.props.name,
+				id: _this.props.id,
 				date: val,
-				conditions: _this.props.conditions,
+				isNormal: _.filter(_this.props.conditions, { id: _this.props.id }).length < 1,
 				onConditionChange: _this.props.onConditionChange
 			});
 		});
@@ -18,7 +20,7 @@ window.NeurologyTable.Section.HeaderRow = React.createClass({
 			React.createElement(
 				"th",
 				null,
-				this.props.config.name
+				this.props.name
 			),
 			cells
 		);

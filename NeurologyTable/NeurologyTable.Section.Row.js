@@ -1,16 +1,18 @@
 window.NeurologyTable.Section.Row = React.createClass({
 	displayName: "Row",
 
-	render: function render() {
+	render: function () {
 
-		// var existingCondition = _.find(this.props.conditions, {id: this.props.config.id, date: })
-		var _this = this;var cells = _.map(this.props.dates, function (val, idx, col) {
+		var _this = this;
+		var cells = _.map(this.props.dates, function (val, idx, col) {
 			return React.createElement(NeurologyTable.Section.Row.Cell, {
-				key: _this.props.config.id + val,
-				config: _this.props.config,
+				key: _this.props.id + val,
 				date: val,
-				conditions: _this.props.conditions,
-				qualifiers: _this.props.qualifiers,
+				name: _this.props.name,
+				id: _this.props.id,
+				qualifier: _this.props.qualifier,
+				qualifierValues: _this.props.qualifierValues,
+				conditions: _.filter(_this.props.conditions, { id: _this.props.id }),
 				onConditionChange: _this.props.onConditionChange
 			});
 		});
@@ -21,7 +23,7 @@ window.NeurologyTable.Section.Row = React.createClass({
 			React.createElement(
 				"th",
 				null,
-				this.props.showRowHeader ? this.props.config.name : ''
+				this.props.showRowHeader ? this.props.name : ''
 			),
 			cells
 		);

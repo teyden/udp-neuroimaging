@@ -1,11 +1,11 @@
 window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
 	displayName: "Cell",
 
-	render: function render() {
+	render: function () {
 		return React.createElement(
 			"td",
 			null,
-			JSON.stringify(this.props.config)
+			JSON.stringify(this.props)
 		);
 	}
 });
