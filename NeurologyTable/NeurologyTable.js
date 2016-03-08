@@ -71,6 +71,16 @@ window.NeurologyTable = React.createClass({
 		}
 	},
 
+	handleNoteChange: function(conditionId, newNote, date) {
+		var newState = _.cloneDeep(this.state);
+		var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
+
+		existingRecord.note = newNote;
+
+		this.setState(newState);
+		console.log(newState);
+	},
+
 	render: function() {
 		var colHeaderCells = this.state.dates.map(function (date) {
 			return React.createElement(NeurologyTable.ColHeaderCell, { key: date, date: date });
@@ -83,7 +93,8 @@ window.NeurologyTable = React.createClass({
 				qualifiersToValues: _this.props.config.qualifiers,
 				conditions: _this.state.conditions,
 				dates: _this.state.dates,
-				onConditionChange: _this.handleConditionChange
+				onConditionChange: _this.handleConditionChange,
+				onNoteChange: _this.handleNoteChange
 			});
 		});
 

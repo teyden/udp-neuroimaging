@@ -10,10 +10,11 @@ window.NeurologyTable.Section.Row = React.createClass({
 				date: val,
 				name: _this.props.name,
 				id: _this.props.id,
-				qualifier: _this.props.qualifier,
-				qualifierValues: _this.props.qualifierValues,
+				qualifiers: _this.props.qualifiers,
+				qualifiersToValues: _this.props.qualifiersToValues,
 				conditions: _.filter(_this.props.conditions, { id: _this.props.id }),
-				onConditionChange: _this.props.onConditionChange
+				onConditionChange: _this.props.onConditionChange,
+				onNoteChange: _this.props.onNoteChange,
 			});
 		});
 
@@ -23,7 +24,7 @@ window.NeurologyTable.Section.Row = React.createClass({
 			React.createElement(
 				"th",
 				null,
-				this.props.showRowHeader ? this.props.name : ''
+				this.props.name
 			),
 			cells
 		);

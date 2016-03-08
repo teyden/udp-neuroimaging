@@ -5,19 +5,16 @@ window.NeurologyTable.Section = React.createClass({
 		var _this = this;
 
 		var conditionsRows = _.map(this.props.section.terms, function (condition, condIdx) {
-			var qualifiers = condition.qualifiers || [null];
-			var rows = _.map(qualifiers, function (qualifier, qualIdx) {
-				return React.createElement(NeurologyTable.Section.Row, {
-					key: (condition.id || condition.name) + qualifier,
-					name: condition.name,
-					id: condition.id,
-					qualifier: qualifier,
-					qualifierValues: _this.props.qualifiersToValues[qualifier],
-					conditions: _.filter(_this.props.conditions, { id: condition.id }),
-					dates: _this.props.dates,
-					onConditionChange: _this.props.onConditionChange,
-					showRowHeader: qualIdx == 0
-				});
+			return React.createElement(NeurologyTable.Section.Row, {
+				key: condition.id || condition.name,
+				name: condition.name,
+				id: condition.id,
+				qualifiers: condition.qualifiers,
+				qualifiersToValues: _this.props.qualifiersToValues,
+				conditions: _.filter(_this.props.conditions, { id: condition.id }),
+				dates: _this.props.dates,
+				onConditionChange: _this.props.onConditionChange,
+				onNoteChange: _this.props.onNoteChange
 			});
 
 			return rows;
@@ -31,7 +28,8 @@ window.NeurologyTable.Section = React.createClass({
 				section: this.props.section,
 				conditions: this.props.conditions,
 				dates: this.props.dates,
-				onConditionChange: this.props.onConditionChange
+				onConditionChange: _this.props.onConditionChange,
+				onNoteChange: _this.props.onNoteChange
 			}),
 			conditionsRows
 		);

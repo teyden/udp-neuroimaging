@@ -33,19 +33,24 @@
 		#main .term-header td.disabled {
 			color: #999;
 		}
+		#main td div.qualifier-group {
+			border-bottom: 1px dotted #aaa;
+			margin-bottom: 0.3em;
+			padding-bottom: 0.3em;
+		}
 		.add-note {
 			width: 200px;
 			font-size: 75%;
 			margin: 0; margin-top: 5px;
 		}
-		#main td .add-note, #main td .note {
+		#main td .note {
 			visibility: hidden;
 		}
-		#main td.has-selected .add-note, #main td.has-selected .note {
+		#main td.has-selected .note {
 			visibility: visible;
 		}
 		#main td .note {
-			height: 1.2em;
+			height: 1.5em;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
@@ -56,20 +61,23 @@
 			position: relative;
 			padding-right: 26px;
 		}
-		#main td .note button {
+		#main td .note button.edit {
 			position: absolute;
 			right: 0; top: 0;
 			font-size: 80%;
 		}
-		#main td .popover textarea {
+		.popover textarea {
 			height: 100px;
 			width: 200px;
+			font-size: 90%;
 		}
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.28.3/react-bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
 	<div id="table-container"></div>
@@ -80,6 +88,7 @@
 	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.HeaderRow.Cell.js"></script>
 	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.Row.js"></script>
 	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.Row.Cell.js"></script>
+	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.Row.Cell.Note.js"></script>
 	<script type="text/javascript" src="edit.js"></script>
 </body>
 </html>
