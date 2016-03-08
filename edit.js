@@ -30,12 +30,16 @@ window.samplePatientRecordNeuroState = [{
 	},
 }];
 
-fetch('config.json', {
-	method: 'get'
-}).then(function (response) {
-	return response.json();
-}).then(function (json) {
-	var rows = json;
+var xmlhttp = new XMLHttpRequest();
+var url = "config.json";
 
-	ReactDOM.render(React.createElement(NeurologyTable, { config: rows }), document.getElementById('table-container'));
-});
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var rows = JSON.parse(xmlhttp.responseText);
+
+        ReactDOM.render(React.createElement(NeurologyTable, { config: rows }), document.getElementById('table-container'));
+
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
