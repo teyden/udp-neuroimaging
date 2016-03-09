@@ -12,6 +12,22 @@ window.NeurologyTable.Section.Row.Cell.Note = React.createClass({
 		this.refs.noteField.focus();
 	},
 
+	// source: http://stackoverflow.com/questions/4715762/javascript-move-caret-to-last-character
+	moveCaretToEnd: function(el) {
+		if (typeof el.selectionStart == "number") {
+			el.selectionStart = el.selectionEnd = el.value.length;
+		} else if (typeof el.createTextRange != "undefined") {
+			el.focus();
+			var range = el.createTextRange();
+			range.collapse(false);
+			range.select();
+		}
+	},
+
+	onTextAreaFocus: function(e) {
+		this.moveCaretToEnd(e.target);
+	},
+
 	onPopoverHide: function() {
 		this.props.onNoteChange(this.refs.noteField.value);
 	},
@@ -46,6 +62,7 @@ window.NeurologyTable.Section.Row.Cell.Note = React.createClass({
 				{
 					defaultValue: this.props.note,
 					onKeyPress: this.onTextAreaKeypress,
+					onFocus: this.onTextAreaFocus,
 					ref: "noteField"
 				},
 				null
