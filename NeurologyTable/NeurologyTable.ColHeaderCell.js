@@ -8,6 +8,10 @@ window.NeurologyTable.ColHeaderCell = React.createClass({
 		this.props.onDateChange(this.props.date, newDateStr);
 	},
 
+	handleClickRemove: function() {
+		this.props.onRemove(this.props.date);
+	},
+
 	render: function () {
 		var dateInput = React.createElement(
 			"input",
@@ -19,10 +23,20 @@ window.NeurologyTable.ColHeaderCell = React.createClass({
 			null
 		);
 
+		var removeButton = React.createElement(
+			"button",
+			{
+				className: 'remove',
+				onClick: this.handleClickRemove
+			},
+			React.createElement("i", { "className": "fa fa-times" })
+		);
+
 		return React.createElement(
 			"th",
 			null,
-			dateInput
+			dateInput,
+			removeButton
 		);
 	},
 

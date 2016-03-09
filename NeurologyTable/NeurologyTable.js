@@ -130,6 +130,16 @@ window.NeurologyTable = React.createClass({
 		console.log(newState);
 	},
 
+	handleRemoveColClick: function(date) {
+		var newState = _.cloneDeep(this.state);
+
+		_.pull(newState.dates, date);
+		_.remove(newState.conditions, _.matchesProperty('date', date));
+
+		this.setState(newState);
+		console.log(newState);
+	},
+
 	render: function() {
 		var _this = this;
 		var colHeaderCells = this.state.dates.map(function (date) {
@@ -139,6 +149,7 @@ window.NeurologyTable = React.createClass({
 					key: date, 
 					date: date,
 					onDateChange: _this.handleColDateChange,
+					onRemove: _this.handleRemoveColClick
 				});
 		});
 		var sections = _.map(this.props.config.sections, function (val, idx, col) {
@@ -172,7 +183,7 @@ window.NeurologyTable = React.createClass({
 							{
 								onClick: this.handleAddColClick
 							},
-							"+ Add"
+							React.createElement("i", { "className": "fa fa-plus" })
 						)
 					)
 				)
