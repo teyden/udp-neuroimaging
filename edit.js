@@ -28,6 +28,10 @@ window.samplePatientRecordNeuroState = [{
 		spatial_pattern: "HP:0012837",
 		severity: "HP:0012828",
 	},
+}, {
+	id: "hp:0001273",
+	date: "2015-10-01",
+	isNormal: true
 }];
 
 var xmlhttp = new XMLHttpRequest();

@@ -13,7 +13,7 @@ window.NeurologyTable = React.createClass({
 		};
 	},
 
-	handleConditionChange: function(conditionId, date, qualifier, qualifierVal, isChecked) {
+	handleConditionChange: function(conditionId, date, qualifier, qualifierVal, isChecked, isNormal) {
 		var newState = _.cloneDeep(this.state);
 		var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
 		var toAdd = {
@@ -23,6 +23,9 @@ window.NeurologyTable = React.createClass({
 		if (qualifier) {
 			toAdd.qualifiers = {};
 			toAdd.qualifiers[qualifier] = qualifierVal;
+		}
+		if (isNormal) {
+			toAdd.isNormal = isChecked;
 		}
 
 		if (isChecked) {

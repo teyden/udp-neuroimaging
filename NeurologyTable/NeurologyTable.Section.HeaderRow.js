@@ -9,7 +9,8 @@ window.NeurologyTable.Section.HeaderRow = React.createClass({
 				section: _this.props.section,
 				date: val,
 				conditions: _this.props.conditions,
-				onConditionChange: _this.props.onConditionChange
+				onConditionChange: _this.props.onConditionChange,
+				onNoteChange: _this.props.onNoteChange
 			});
 		});
 
