@@ -3,7 +3,7 @@ window.NeurologyTable.ColHeaderCell = React.createClass({
 
 	handleChange: function() {
 		var newDate = this.datePicker.getDate();
-		var newDateStr = newDate.getFullYear() + '-' + (newDate.getMonth()+1) + '-' + newDate.getDate();
+		var newDateStr = NeurologyTable.dateToString(newDate);
 
 		this.props.onDateChange(this.props.date, newDateStr);
 	},
@@ -27,14 +27,12 @@ window.NeurologyTable.ColHeaderCell = React.createClass({
 	},
 
 	componentDidMount: function() {
-		var dateParts = this.props.date.split('-');
-
 		this.datePicker = new Pikaday({
 			field: ReactDOM.findDOMNode(this.refs.date),
 			format: 'YYYY-MM-DD',
 			yearRange: [1950, new Date().getFullYear()],
 			onSelect: this.handleChange,
-			defaultDate: new Date(dateParts[0], dateParts[1]-1, dateParts[2]),
+			defaultDate: NeurologyTable.stringToDate(this.props.date),
 			setDefaultDate: true,
 		});
 	},

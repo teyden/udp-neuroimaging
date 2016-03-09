@@ -22,7 +22,12 @@ window.NeurologyTable.Section.HeaderRow = React.createClass({
 				null,
 				this.props.section.name
 			),
-			cells
+			cells,
+			React.createElement(
+				"td",
+				{className: "empty"},
+				null
+			)
 		);
 	}
 });

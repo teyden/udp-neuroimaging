@@ -26,7 +26,12 @@ window.NeurologyTable.Section.Row = React.createClass({
 				null,
 				this.props.name
 			),
-			cells
+			cells,
+			React.createElement(
+				"td",
+				{className: "empty"},
+				null
+			)
 		);
 	}
 });

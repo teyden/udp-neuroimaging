@@ -1,6 +1,17 @@
 window.NeurologyTable = React.createClass({
 	displayName: "NeurologyTable",
 
+	statics: {
+		dateToString: function(date) {
+			return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+		},
+
+		stringToDate: function(str) {
+			var dateParts = str.split('-');
+			return new Date(dateParts[0], dateParts[1]-1, dateParts[2]);
+		},
+	},
+
 	getInitialState: function() {
 		var dates = _.uniq(_.map(window.samplePatientRecordNeuroState, 'date'));
 		dates = _.sortBy(dates, function (d) {
@@ -102,6 +113,23 @@ window.NeurologyTable = React.createClass({
 		console.log(newState);
 	},
 
+	handleAddColClick: function() {
+		var newState = _.cloneDeep(this.state);
+
+		var newDate = new Date();
+		newDate.setHours(0, 0, 0, 0);
+		var checkDupes = function(d) {
+			return (NeurologyTable.stringToDate(d).getTime() == newDate.getTime());
+		}
+		while (_.find(newState.dates, checkDupes)) {
+			newDate.setTime(newDate.getTime() + 86400000);
+		}
+		newState.dates.push(NeurologyTable.dateToString(newDate));
+
+		this.setState(newState);
+		console.log(newState);
+	},
+
 	render: function() {
 		var _this = this;
 		var colHeaderCells = this.state.dates.map(function (date) {
@@ -135,7 +163,18 @@ window.NeurologyTable = React.createClass({
 					"tr",
 					null,
 					React.createElement("th", null),
-					colHeaderCells
+					colHeaderCells,
+					React.createElement(
+						"th", 
+						null, 
+						React.createElement(
+							"button",
+							{
+								onClick: this.handleAddColClick
+							},
+							"+ Add"
+						)
+					)
 				)
 			),
 			sections
