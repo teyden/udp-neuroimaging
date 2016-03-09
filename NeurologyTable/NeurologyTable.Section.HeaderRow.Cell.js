@@ -54,9 +54,9 @@ window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
 						value: "isNormal"
 					}
 				),
-				"Normal",
-				notes
-			)
+				"Normal"
+			),
+			notes
 		);
 	}
 });
