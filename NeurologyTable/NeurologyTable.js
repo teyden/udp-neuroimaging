@@ -84,11 +84,35 @@ window.NeurologyTable = React.createClass({
 		console.log(newState);
 	},
 
-	render: function() {
-		var colHeaderCells = this.state.dates.map(function (date) {
-			return React.createElement(NeurologyTable.ColHeaderCell, { key: date, date: date });
+	handleColDateChange: function(oldDate, newDate) {
+		var newState = _.cloneDeep(this.state);
+
+		_.forEach(newState.conditions, function(v, k) {
+			if (v.date == oldDate) {
+				v.date = newDate;
+			}
 		});
+
+		var existingDateIdx = _.indexOf(newState.dates, oldDate);
+		if (existingDateIdx > -1) {
+			newState.dates[existingDateIdx] = newDate;
+		}
+
+		this.setState(newState);
+		console.log(newState);
+	},
+
+	render: function() {
 		var _this = this;
+		var colHeaderCells = this.state.dates.map(function (date) {
+			return React.createElement(
+				NeurologyTable.ColHeaderCell, 
+				{ 
+					key: date, 
+					date: date,
+					onDateChange: _this.handleColDateChange,
+				});
+		});
 		var sections = _.map(this.props.config.sections, function (val, idx, col) {
 			return React.createElement(NeurologyTable.Section, {
 				key: val.id,
