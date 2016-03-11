@@ -16,13 +16,11 @@
 				},
 				{
 					"name": "partial agenesis",
-					"id": "hp:0001338",
-					"qualifiers": ["spatial_pattern"]
+					"id": "hp:0001338"
 				},
 				{
 					"name": "agenesis",
-					"id": "hp:0001274",
-					"qualifiers": ["spatial_pattern"]
+					"id": "hp:0001274"
 				}
 			]
 		},
@@ -37,6 +35,38 @@
 				{
 					"name": "vermis atrophy",
 					"id": "hp:0006855"
+				},
+				{
+					"name": "hemisphere hypoplasia",
+					"id": "hp:0100307"
+				},
+				{
+					"name": "vermis hypolasia",
+					"id": "hp:0001320"
+				},
+				{
+					"name": "cerebellar gliosis",
+					"id": "hp:0012698"
+				}
+			]
+		},
+		{
+			"name": "brainstem",
+			"id": "hp:0002363",
+			"terms": [
+				{
+					"name": "hypoplasia",
+					"id": "hp:0002365",
+					"qualifiers": ["spatial_pattern"]
+				},
+				{
+					"name": "hyperplasia",
+					"id": "hp:0012755",
+					"qualifiers": ["spatial_pattern"]
+				},
+				{
+					"name": "abnormal MRI signal",
+					"id": "hp:0012747"
 				}
 			]
 		},
@@ -53,6 +83,178 @@
 					"name": "enlarged cerebellar subarachnoid space",
 					"id": "enlarged cerebellar subarachnoid space",
 					"qualifiers": ["spatial_pattern", "severity"]
+				}
+			]
+		},
+		{
+			"name": "ventricles",
+			"id": "hp:0002118",
+			"terms": [
+				{
+					"name": "ventriculomegaly",
+					"id": "hp:0002119",
+					"qualifiers": ["spatial_pattern", "severity"]
+				}
+			]
+		},
+		{
+			"name": "cisterns",
+			"id": "Abnormality of the cisterns",
+			"terms": [
+				{
+					"name": "enlarged cisterns",
+					"id": "hp:0100952"
+				}
+			]
+		},
+		{
+			"name": "cerebral cortex",
+			"id": "hp:0002538",
+			"terms": [
+				{
+					"name": "atrophy",
+					"id": "hp:0002120",
+					"qualifiers": ["severity"]
+				},
+				{
+					"name": "dysgenesis/migration abnormality",
+					"id": "hp:0002538"
+				}
+			]
+		},
+		{
+			"name": "white matter",
+			"id": "hp:0002500",
+			"terms": [
+				{
+					"name": "hypomyelination",
+					"id": "hp:0006808"
+				},
+				{
+					"name": "demyelination",
+					"id": "hp:0007258"
+				},
+				{
+					"name": "dysmyelination",
+					"id": "hp:0007266"
+				},
+				{
+					"name": "delayed myelination",
+					"id": "hp:0002188"
+				},
+				{
+					"name": "white matter atrophy",
+					"id": "hp:0012762"
+				},
+				{
+					"name": "white matter gliosis",
+					"id": "hp:0002171"
+				},
+				{
+					"name": "PVL",
+					"id": "hp:0006970"
+				},
+				{
+					"name": "hypermyelination",
+					"id": "hp:0012754"
+				}
+			]
+		},
+		{
+			"name": "basal ganglia/thalami",
+			"id": "hp:0002134",
+			"terms": [
+				{
+					"name": "large basal ganglia",
+					"id": "hp:0007048"
+				},
+				{
+					"name": "small basal ganglia",
+					"id": "hp:0012697"
+				},
+				{
+					"name": "abnormal thalamic size",
+					"id": "hp:0012693"
+				},
+				{
+					"name": "abnormal MRI signal (basal ganglia)",
+					"id": "hp:0012751"
+				},
+				{
+					"name": "abnormal MRI signal (thalami)",
+					"id": "hp:0012696"
+				}
+			]
+		},
+		{
+			"name": "pituitary gland",
+			"id": "hp:0012503",
+			"terms": [
+				{
+					"name": "enlarged pituitary gland",
+					"id": "hp:0012505"
+				},
+				{
+					"name": "small pituitary gland",
+					"id": "hp:0012506"
+				},
+				{
+					"name": "pituitary tumor/mass",
+					"id": "hp:0011750"
+				},
+				{
+					"name": "hemorrhages",
+					"id": "hp:0001342"
+				},
+				{
+					"name": "calcifications",
+					"id": "hp:0010513"
+				},
+				{
+					"name": "abnormal vasculature",
+					"id": "hp:0100659"
+				}
+			]
+		},
+		{
+			"name": "MR spectroscopy",
+			"id": "Abnormality of MR Spectroscopy",
+			"terms": [
+				{
+					"name": "abnormal MRS imaging",
+					"id": "hp:0012705"
+				},
+				{
+					"name": "decreased NAA",
+					"id": "hp:0012708"
+				},
+				{
+					"name": "elevated NAA",
+					"id": "MR spectroscopy - elevated NAA"
+				},
+				{
+					"name": "elevated choline",
+					"id": "hp:0012706"
+				},
+				{
+					"name": "decreased choline",
+					"id": "MR spectroscopy - decreased choline"
+				},
+				{
+					"name": "elevated creatine",
+					"id": "MR spectroscopy - elevated creatine"
+				},
+				{
+					"name": "decreased creatine",
+					"id": "MR spectroscopy - decreased creatine"
+				},
+				{
+					"name": "elevated lactate",
+					"id": "hp:0012707"
+				},
+				{
+					"name": "decreased lactate",
+					"id": "MR spectroscopy - decreased lactate"
 				}
 			]
 		}
