@@ -97,6 +97,8 @@
     <!-- There is no Java code, speedup the build by skipping Clirr and Checkstyle checks -->
     <checkstyle.skip>true</checkstyle.skip>
     <clirr.skip>true</clirr.skip>
+    <!-- This is a commercial Gene42 project, skip licensing header check -->
+    <license.skip>true</license.skip>
   </properties>
 
   <modules>
