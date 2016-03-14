@@ -49,3 +49,6 @@ NOTES.txt
 
 #Weird build
 overlays
+
+#npm
+node_modules
