@@ -47,11 +47,6 @@
 			margin-bottom: 0.3em;
 			padding-bottom: 0.3em;
 		}
-		.add-note {
-			width: 200px;
-			font-size: 75%;
-			margin: 0; margin-top: 5px;
-		}
 		#main td .note {
 			visibility: hidden;
 		}
@@ -59,16 +54,22 @@
 			visibility: visible;
 		}
 		#main td .note {
-			height: 1.5em;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
 			width: 200px;
 			margin: 0;
 			margin-top: 5px;
-			font-size: 80%;
+			font-size: 12px;
 			position: relative;
 			padding-right: 26px;
+			height: 20px;
+		}
+		#main td .note .content {
+			line-height: 17px;
+		}
+		#main td .note button {
+			font-size: 11px;
 		}
 		#main td .note button.edit {
 			position: absolute;
@@ -76,9 +77,11 @@
 			font-size: 80%;
 		}
 		.popover textarea {
-			height: 100px;
-			width: 200px;
 			font-size: 90%;
+			font-family: sans-serif;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			overflow: auto;
 		}
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js"></script>

@@ -63,7 +63,9 @@ window.NeurologyTable.Section.Row.Cell.Note = React.createClass({
 					defaultValue: this.props.note,
 					onKeyPress: this.onTextAreaKeypress,
 					onFocus: this.onTextAreaFocus,
-					ref: "noteField"
+					ref: "noteField",
+					cols: 25,
+					rows: 8
 				},
 				null
 			)
