@@ -1,6 +1,31 @@
 {
 	"sections": [
 		{
+			"name": "Abnormality of the cerebral vasculature",
+			"id": "hp:0100659",
+			"terms": []
+		},
+		{
+			"name": "Cerebral hemorrhage",
+			"id": "hp:0001342",
+			"terms": []
+		},
+		{
+			"name": "Brain calcification",
+			"id": "hp:0002514",
+			"terms": []
+		},
+		{
+			"name": "Iron deposition in brain",
+			"id": "hp:0012675",
+			"terms": []
+		},
+		{
+			"name": "Copper deposition in brain",
+			"id": "hp:0012676",
+			"terms": []
+		},
+		{
 			"name": "corpus callosum",
 			"id": "hp:0001273",
 			"terms": [
@@ -21,6 +46,26 @@
 				{
 					"name": "agenesis",
 					"id": "hp:0001274"
+				}
+			]
+		},
+		{
+			"name": "brainstem",
+			"id": "hp:0002363",
+			"terms": [
+				{
+					"name": "hypoplasia",
+					"id": "hp:0002365",
+					"qualifiers": ["spatial_pattern"]
+				},
+				{
+					"name": "hyperplasia",
+					"id": "hp:0012755",
+					"qualifiers": ["spatial_pattern"]
+				},
+				{
+					"name": "abnormal MRI signal",
+					"id": "hp:0012747"
 				}
 			]
 		},
@@ -47,26 +92,20 @@
 				{
 					"name": "cerebellar gliosis",
 					"id": "hp:0012698"
+				},
+				{
+					"name": "swelling/edema",
+					"id": "swelling/edema of the cerebellum"
 				}
 			]
 		},
 		{
-			"name": "brainstem",
-			"id": "hp:0002363",
+			"name": "cisterns",
+			"id": "Abnormality of the cisterns",
 			"terms": [
 				{
-					"name": "hypoplasia",
-					"id": "hp:0002365",
-					"qualifiers": ["spatial_pattern"]
-				},
-				{
-					"name": "hyperplasia",
-					"id": "hp:0012755",
-					"qualifiers": ["spatial_pattern"]
-				},
-				{
-					"name": "abnormal MRI signal",
-					"id": "hp:0012747"
+					"name": "enlarged cisterns",
+					"id": "hp:0100952"
 				}
 			]
 		},
@@ -83,6 +122,10 @@
 					"name": "enlarged cerebellar subarachnoid space",
 					"id": "enlarged cerebellar subarachnoid space",
 					"qualifiers": ["spatial_pattern", "severity"]
+				},
+				{
+					"name": "arachnoid cycst",
+					"id": "hp:0100702"
 				}
 			]
 		},
@@ -94,16 +137,6 @@
 					"name": "ventriculomegaly",
 					"id": "hp:0002119",
 					"qualifiers": ["spatial_pattern", "severity"]
-				}
-			]
-		},
-		{
-			"name": "cisterns",
-			"id": "Abnormality of the cisterns",
-			"terms": [
-				{
-					"name": "enlarged cisterns",
-					"id": "hp:0100952"
 				}
 			]
 		},
@@ -157,11 +190,15 @@
 				{
 					"name": "hypermyelination",
 					"id": "hp:0012754"
+				},
+				{
+					"name": "cerebral edema",
+					"id": "hp:0002181"
 				}
 			]
 		},
 		{
-			"name": "basal ganglia/thalami",
+			"name": "basal ganglia",
 			"id": "hp:0002134",
 			"terms": [
 				{
@@ -173,18 +210,63 @@
 					"id": "hp:0012697"
 				},
 				{
-					"name": "abnormal thalamic size",
-					"id": "hp:0012693"
-				},
-				{
 					"name": "abnormal MRI signal (basal ganglia)",
 					"id": "hp:0012751"
 				},
 				{
-					"name": "abnormal MRI signal (thalami)",
-					"id": "hp:0012696"
+					"name": "dysgenesis",
+					"id": "basal ganglia - dysgenesis"
+				},
+				{
+					"name": "swelling/edema",
+					"id": "basal ganglia - swelling/edema"
 				}
 			]
+		},
+		{
+			"name": "thalami",
+			"id": "hp:0010663",
+			"terms": [
+				{
+					"name": "abnormal thalamic size",
+					"id": "hp:0012693"
+				},
+				{
+					"name": "abnormal MRI signal (thalami)",
+					"id": "hp:0012696"
+				},
+				{
+					"name": "dysgenesis",
+					"id": "thalami - dysgenesis"
+				},
+				{
+					"name": "swelling/edema",
+					"id": "thalami - swelling/edema"
+				}
+			]
+		},
+		{
+			"name": "hypothalamus",
+			"id": "hp:0012286",
+			"terms": [
+				{
+					"name": "hypothalamic atrophy",
+					"id": "hypothalamic atrophy"
+				},
+				{
+					"name": "hypothalamic gliosis",
+					"id": "hypothalamic gliosis"
+				},
+				{
+					"name": "hypothalamic dysgenesis",
+					"id": "hypothalamic dysgenesis"
+				}
+			]
+		},
+		{
+			"name": "olfactory apparatus",
+			"id": "abnormality of the olfactory apparatus",
+			"terms": []
 		},
 		{
 			"name": "pituitary gland",
@@ -199,20 +281,38 @@
 					"id": "hp:0012506"
 				},
 				{
+					"name": "abnormality of the pineal gland",
+					"id": "hp:0012680"
+				},
+				{
 					"name": "pituitary tumor/mass",
 					"id": "hp:0011750"
 				},
 				{
-					"name": "hemorrhages",
-					"id": "hp:0001342"
-				},
-				{
 					"name": "calcifications",
 					"id": "hp:0010513"
+				}
+			]
+		},
+		{
+			"name": "spine",
+			"id": "hp:0000925",
+			"terms": [
+				{
+					"name": "abnormality of the cervical spine",
+					"id": "hp:0003319"
 				},
 				{
-					"name": "abnormal vasculature",
-					"id": "hp:0100659"
+					"name": "abnormality of the thoracic spine",
+					"id": "hp:0100711"
+				},
+				{
+					"name": "abnormality of the lumbar spine",
+					"id": "hp:0100712"
+				},
+				{
+					"name": "abnormality of the sacrum",
+					"id": "hp:0005107"
 				}
 			]
 		},
