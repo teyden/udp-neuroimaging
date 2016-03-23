@@ -1,31 +1,6 @@
 {
 	"sections": [
 		{
-			"name": "cerebral vasculature",
-			"id": "hp:0100659",
-			"terms": []
-		},
-		{
-			"name": "cerebral hemorrhage",
-			"id": "hp:0001342",
-			"terms": []
-		},
-		{
-			"name": "brain calcification",
-			"id": "hp:0002514",
-			"terms": []
-		},
-		{
-			"name": "iron deposition in brain",
-			"id": "hp:0012675",
-			"terms": []
-		},
-		{
-			"name": "copper deposition in brain",
-			"id": "hp:0012676",
-			"terms": []
-		},
-		{
 			"name": "corpus callosum",
 			"id": "hp:0001273",
 			"terms": [
@@ -357,6 +332,31 @@
 					"id": "MR spectroscopy - decreased lactate"
 				}
 			]
+		},
+		{
+			"name": "cerebral vasculature",
+			"id": "hp:0100659",
+			"terms": []
+		},
+		{
+			"name": "cerebral hemorrhage",
+			"id": "hp:0001342",
+			"terms": []
+		},
+		{
+			"name": "brain calcification",
+			"id": "hp:0002514",
+			"terms": []
+		},
+		{
+			"name": "iron deposition in brain",
+			"id": "hp:0012675",
+			"terms": []
+		},
+		{
+			"name": "copper deposition in brain",
+			"id": "hp:0012676",
+			"terms": []
 		}
 	],
 	"qualifiers": {
