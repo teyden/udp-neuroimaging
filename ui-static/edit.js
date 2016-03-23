@@ -1,43 +1,224 @@
-window.samplePatientRecordNeuroState = [{
-	id: "hp:0002079",
-	date: "2015-01-20",
-	observed: true,
-	qualifiers: {
-		spatial_pattern: "HP:0012837",
-	}
-}, {
-	id: "hp:0001338",
-	date: "2015-01-20",
-	observed: true,
-	qualifiers: {
-		spatial_pattern: "HP:0012837",
-	}
-}, {
-	id: "hp:0008278",
-	date: "2015-10-01",
-	note: "Strong presence.",
-	observed: false
-}, {
-	id: "hp:0001338",
-	date: "2016-01-01",
-	qualifiers: {
-		spatial_pattern: "HP:0012837",
-	},
-	note: "Observed on MRI scan.",
-	observed: true,
-}, {
-	id: "enlarged cerebral subarachnoid space",
-	date: "2015-10-01",
-	qualifiers: {
-		spatial_pattern: "HP:0012837",
-		severity: "HP:0012828",
-	},
-	observed: true,
-}, {
-	id: "hp:0001273",
-	date: "2015-10-01",
-	observed: false,
-}];
+window.samplePatientRecordNeuroState = [
+{
+  "id": "hp:0100659",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0100659",
+  "date": "2015-3-1",
+  "observed": true,
+  "note": "enlarged vessels"
+},
+{
+  "id": "hp:0100659",
+  "date": "2016-3-1",
+  "observed": true,
+  "note": "enlarged vessels"
+},
+{
+  "id": "hp:0001342",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001342",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001342",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002514",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002514",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002514",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0012675",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0012675",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0012675",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0012676",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0012676",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0012676",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001273",
+  "date": "2014-3-1",
+  "observed": false,
+  "qualifiers": {
+    
+  }
+},
+{
+  "id": "hp:0007074",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002079",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001338",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001274",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001273",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0007074",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002079",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001338",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001274",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0007074",
+  "date": "2016-3-1",
+  "observed": true,
+  "qualifiers": {
+    "spatial_pattern": "HP:0012838"
+  },
+  "note": "in lower section"
+},
+{
+  "id": "hp:0001273",
+  "date": "2016-3-1",
+  "observed": true
+},
+{
+  "id": "hp:0002079",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001338",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001274",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002363",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002363",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0002363",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001317",
+  "date": "2014-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001317",
+  "date": "2015-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0001317",
+  "date": "2016-3-1",
+  "observed": false
+},
+{
+  "id": "hp:0100952",
+  "date": "2014-3-1",
+  "observed": true
+},
+{
+  "id": "Abnormality of the cisterns",
+  "date": "2014-3-1",
+  "observed": true
+},
+{
+  "id": "hp:0100952",
+  "date": "2015-3-1",
+  "observed": true
+},
+{
+  "id": "Abnormality of the cisterns",
+  "date": "2015-3-1",
+  "observed": true
+},
+{
+  "id": "hp:0100952",
+  "date": "2016-3-1",
+  "observed": true
+},
+{
+  "id": "Abnormality of the cisterns",
+  "date": "2016-3-1",
+  "observed": true
+}
+];
 
 var xmlhttp = new XMLHttpRequest();
 var url = "config.json";
