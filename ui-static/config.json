@@ -1,27 +1,27 @@
 {
 	"sections": [
 		{
-			"name": "Abnormality of the cerebral vasculature",
+			"name": "cerebral vasculature",
 			"id": "hp:0100659",
 			"terms": []
 		},
 		{
-			"name": "Cerebral hemorrhage",
+			"name": "cerebral hemorrhage",
 			"id": "hp:0001342",
 			"terms": []
 		},
 		{
-			"name": "Brain calcification",
+			"name": "brain calcification",
 			"id": "hp:0002514",
 			"terms": []
 		},
 		{
-			"name": "Iron deposition in brain",
+			"name": "iron deposition in brain",
 			"id": "hp:0012675",
 			"terms": []
 		},
 		{
-			"name": "Copper deposition in brain",
+			"name": "copper deposition in brain",
 			"id": "hp:0012676",
 			"terms": []
 		},
