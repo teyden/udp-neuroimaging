@@ -53,6 +53,23 @@ window.NeurologyTable = React.createClass({
 					observed: observed,
 				});
 			}
+
+			if (observed) {
+				// Set the section to be abnormal too 
+				var sectionId = this.getSectionIdByConditionId(conditionId);
+				if (sectionId) {
+					var sectionRecord = _.find(newState.conditions, { id: sectionId, date: date });
+					if (sectionRecord) {
+						sectionRecord.observed = true;
+					} else {
+						newState.conditions.push({
+							id: sectionId,
+							date: date,
+							observed: true,
+						});
+					}
+				}
+			}
 		} else {
 			_.pull(newState.conditions, existingRecord);
 		}
@@ -120,6 +137,18 @@ window.NeurologyTable = React.createClass({
 
 		this.setState(newState);
 		console.log(newState);
+	},
+
+	getSectionIdByConditionId: function(conditionId) {
+		var section = _.find(this.props.config.sections, function(section, idx, sections) {
+			if (section.id == conditionId) { // this condition is actually a section 
+				return false;
+			} else if(_.find(section.terms, {'id': conditionId})) {
+				return true;
+			}
+		});
+
+		return section ? section.id : undefined;
 	},
 
 	render: function() {

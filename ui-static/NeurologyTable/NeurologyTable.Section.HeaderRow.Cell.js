@@ -15,6 +15,7 @@ window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
 		var matchingConditions = _.filter(this.props.conditions, function(condition) {
 			var match = condition.date == _this.props.date;
 			match &= _.indexOf(thisSectionConditions, condition.id) > -1;
+			match &= condition.observed;
 			return match;
 		});
 
@@ -60,6 +61,7 @@ window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
 						type: "checkbox",
 						onChange: this.handleCheckboxChange,
 						checked: thisCondition && thisCondition.observed,
+						disabled: matchingConditions.length > 0,
 						value: "observed"
 					}
 				),
