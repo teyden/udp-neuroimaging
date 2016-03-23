@@ -2,7 +2,7 @@ window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
 	displayName: "Cell",
 
 	handleCheckboxChange: function (e) {
-		this.props.onConditionChange(this.props.section.id, this.props.date, null, [], e.target.checked, true);
+		this.props.onConditionChange(this.props.section.id, this.props.date, null, e.target.value, e.target.checked);
 	},
 
 	handleNoteChange: function(newNote) {
@@ -28,14 +28,9 @@ window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
 			null
 		);
 
-		var isChecked = matchingConditions.length == 0;
-		isChecked &= thisCondition && thisCondition.isNormal;
-
 		var classNames = [];
-		if (isChecked) {
-			classNames.push("has-selected");
-		} else if (matchingConditions.length) {
-			classNames.push("disabled");
+		if (thisCondition) {
+			classNames.push("is-investigated");
 		}
 
 		return React.createElement(
@@ -49,12 +44,26 @@ window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
 					{
 						type: "checkbox",
 						onChange: this.handleCheckboxChange,
-						checked: isChecked,
+						checked: thisCondition && !thisCondition.observed,
 						disabled: matchingConditions.length > 0,
-						value: "isNormal"
+						value: "notObserved"
 					}
 				),
 				"Normal"
+			),
+			React.createElement(
+				"label",
+				null,
+				React.createElement(
+					"input",
+					{
+						type: "checkbox",
+						onChange: this.handleCheckboxChange,
+						checked: thisCondition && thisCondition.observed,
+						value: "observed"
+					}
+				),
+				"Abnormal"
 			),
 			notes
 		);

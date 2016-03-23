@@ -16,13 +16,15 @@ window.NeurologyTable.Section.Row.Cell = React.createClass({
 	},
 
 	render: function () {
+		var qualCheckboxes, presenceCheckboxes;
 		var thisCondition = _.find(this.props.conditions, { date: this.props.date });
 		if (this.props.qualifiers && this.props.qualifiers.length) {
 			var _this = this;
 
-			var checkboxes = _.map(this.props.qualifiers, function(qual, qualIdx) {
+			qualCheckboxes = _.map(this.props.qualifiers, function(qual, qualIdx) {
 				var qualVals = _.map(_this.props.qualifiersToValues[qual], function(qualVal, qualValIdx) {
 					var isChecked = !!thisCondition 
+						&& !!thisCondition.qualifiers
 						&& !!thisCondition.qualifiers[qual] 
 						&& thisCondition.qualifiers[qual] == qualVal.id;
 
@@ -39,7 +41,7 @@ window.NeurologyTable.Section.Row.Cell = React.createClass({
 					); 
 				});
 
-				return new React.createElement("div", 
+				return React.createElement("div", 
 					{ 
 						key: qual,
 						className: 'qualifier-group'
@@ -47,15 +49,36 @@ window.NeurologyTable.Section.Row.Cell = React.createClass({
 					qualVals
 				);
 			});
-		} else {
-			checkboxes = [React.createElement("input", {
-				key: "affected",
-				type: "checkbox",
-				onChange: _.partial(this.handleCheckboxChange, null),
-				checked: !!thisCondition,
-				value: "affected"
-			})];
 		}
+		presenceCheckboxes = React.createElement("div", 
+			{ 
+				key: "presence",
+				className: 'presence'
+			},
+			React.createElement(
+				"label",
+				{ key: "present" },
+				React.createElement("input", {
+					type: "checkbox",
+					onChange: _.partial(this.handleCheckboxChange, null),
+					checked: thisCondition && thisCondition.observed,
+					value: "observed"
+				}),
+				"Present"
+			),
+			React.createElement(
+				"label",
+				{ key: "not-present" },
+				React.createElement("input", {
+					type: "checkbox",
+					onChange: _.partial(this.handleCheckboxChange, null),
+					checked: thisCondition && !thisCondition.observed,
+					value: "notObserved"
+				}),
+				"Not present"
+			)
+		);
+
 		var note = React.createElement(
 			NeurologyTable.Section.Row.Cell.Note,
 			{
@@ -65,10 +88,20 @@ window.NeurologyTable.Section.Row.Cell = React.createClass({
 			null
 		);
 
+		var classNames = [];
+		if (thisCondition) {
+			classNames.push("is-investigated");
+
+			if (thisCondition.observed) {
+				classNames.push("is-observed");
+			}
+		}
+
 		return React.createElement(
 			"td",
-			thisCondition ? { className: "has-selected" } : null,
-			checkboxes,
+			{ className: classNames.join(' ') },
+			presenceCheckboxes,
+			qualCheckboxes,
 			note
 		);
 	}

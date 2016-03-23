@@ -37,20 +37,32 @@
 		}
 		#main td label {
 			font-weight: normal;
-			display: block;
+			margin-right: 0.3em;
 		}
 		#main .term-header td.disabled {
 			color: #999;
+		}
+		#main td div.presence {
+			border-bottom: 1px dashed #aaa;
+			margin-bottom: 0.3em;
+			padding-bottom: 0.3em;
 		}
 		#main td div.qualifier-group {
 			border-bottom: 1px dotted #aaa;
 			margin-bottom: 0.3em;
 			padding-bottom: 0.3em;
+			visibility: hidden;
+		}
+		#main td.is-observed div.qualifier-group {
+			visibility: visible;
+		}
+		#main td div.qualifier-group label {
+			display: block;
 		}
 		#main td .note {
 			visibility: hidden;
 		}
-		#main td.has-selected .note {
+		#main td.is-investigated .note {
 			visibility: visible;
 		}
 		#main td .note {

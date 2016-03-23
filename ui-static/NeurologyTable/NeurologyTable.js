@@ -24,64 +24,46 @@ window.NeurologyTable = React.createClass({
 		};
 	},
 
-	handleConditionChange: function(conditionId, date, qualifier, qualifierVal, isChecked, isNormal) {
+	handleConditionChange: function(conditionId, date, qualifier, value, isChecked) {
 		var newState = _.cloneDeep(this.state);
 		var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
-		var toAdd = {
-			id: conditionId,
-			date: date,
-		};
-		if (qualifier) {
-			toAdd.qualifiers = {};
-			toAdd.qualifiers[qualifier] = qualifierVal;
-		}
-		if (isNormal) {
-			toAdd.isNormal = isChecked;
-		}
 
-		if (isChecked) {
-			this.handleCheckboxChecked(newState, existingRecord, toAdd);
+		if (qualifier) {
+			this.handleQualifierCheckboxChange(newState, existingRecord, qualifier, value, isChecked);
 		} else {
-			this.handleCheckboxUnchecked(newState, existingRecord, qualifier);
+			this.handlePresenceCheckboxChange(newState, existingRecord, conditionId, date, value, isChecked);
 		}
 
 		this.setState(newState);
 		console.log(newState);
 	},
 
-	handleCheckboxChecked: function(newState, existingRecord, toAdd) {
-		if (_.size(toAdd.qualifiers)) {
+	handlePresenceCheckboxChange: function(newState, existingRecord, conditionId, date, value, isChecked) {
+		if (isChecked) {
+			var observed = value == "observed";
 			if (existingRecord) {
-				_.merge(existingRecord, toAdd);
+				existingRecord.observed = observed;
+				if (!observed) {
+					existingRecord.qualifiers = {};
+				}
 			} else {
-				newState.conditions.push(toAdd);
+				newState.conditions.push({
+					id: conditionId,
+					date: date,
+					observed: observed,
+				});
 			}
 		} else {
-			if (existingRecord) {
-				// shouldn't happen
-			} else {
-				newState.conditions.push(toAdd);
-			}
+			_.pull(newState.conditions, existingRecord);
 		}
 	},
 
-	handleCheckboxUnchecked: function(newState, existingRecord, qualifier) {
-		if (qualifier) {
-			if (existingRecord) {
-				delete existingRecord.qualifiers[qualifier]
-
-				if (!_.size(existingRecord.qualifiers)) {
-					_.pull(newState.conditions, existingRecord);
-				}
-			} else {
-				// shouldn't happen
-			}
+	handleQualifierCheckboxChange: function(newState, existingRecord, qualifier, value, isChecked) {
+		if (isChecked) {
+			existingRecord.qualifiers = existingRecord.qualifiers || {};
+			existingRecord.qualifiers[qualifier] = value;
 		} else {
-			if (existingRecord) {
-				_.pull(newState.conditions, existingRecord);
-			} else {
-				// shouldn't happen
-			}
+			delete existingRecord.qualifiers[qualifier];
 		}
 	},
 
