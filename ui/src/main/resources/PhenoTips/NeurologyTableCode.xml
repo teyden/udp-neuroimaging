@@ -1,0 +1,2079 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc version="1.1">
+  <web>PhenoTips</web>
+  <name>NeurologyTableCode</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1459870000000</creationDate>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1459892614000</date>
+  <contentUpdateDate>1459892247000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>false</hidden>
+  <content>{
+  "sections": [
+    {
+      "name": "corpus callosum",
+      "id": "hp:0001273",
+      "terms": [
+        {
+          "name": "hyperplasia",
+          "id": "hp:0007074",
+          "qualifiers": ["spatial_pattern"]
+        },
+        {
+          "name": "hypoplasia",
+          "id": "hp:0002079",
+          "qualifiers": ["spatial_pattern"]
+        },
+        {
+          "name": "partial agenesis",
+          "id": "hp:0001338"
+        },
+        {
+          "name": "agenesis",
+          "id": "hp:0001274"
+        }
+      ]
+    },
+    {
+      "name": "brainstem",
+      "id": "hp:0002363",
+      "terms": [
+        {
+          "name": "hypoplasia",
+          "id": "hp:0002365",
+          "qualifiers": ["spatial_pattern"]
+        },
+        {
+          "name": "hyperplasia",
+          "id": "hp:0012755",
+          "qualifiers": ["spatial_pattern"]
+        },
+        {
+          "name": "abnormal MRI signal",
+          "id": "hp:0012747"
+        }
+      ]
+    },
+    {
+      "name": "cerebellum",
+      "id": "hp:0001317",
+      "terms": [
+        {
+          "name": "hemisphere atrophy",
+          "id": "hp:0008278"
+        },
+        {
+          "name": "vermis atrophy",
+          "id": "hp:0006855"
+        },
+        {
+          "name": "hemisphere hypoplasia",
+          "id": "hp:0100307"
+        },
+        {
+          "name": "vermis hypolasia",
+          "id": "hp:0001320"
+        },
+        {
+          "name": "cerebellar gliosis",
+          "id": "hp:0012698"
+        },
+        {
+          "name": "swelling/edema",
+          "id": "swelling/edema of the cerebellum"
+        }
+      ]
+    },
+    {
+      "name": "cisterns",
+      "id": "Abnormality of the cisterns",
+      "terms": [
+        {
+          "name": "enlarged cisterns",
+          "id": "hp:0100952"
+        }
+      ]
+    },
+    {
+      "name": "subarachnoid/csf space",
+      "id": "hp:0012703",
+      "terms": [
+        {
+          "name": "enlarged cerebral subarachnoid space",
+          "id": "enlarged cerebral subarachnoid space",
+          "qualifiers": ["spatial_pattern", "severity"]
+        },
+        {
+          "name": "enlarged cerebellar subarachnoid space",
+          "id": "enlarged cerebellar subarachnoid space",
+          "qualifiers": ["spatial_pattern", "severity"]
+        },
+        {
+          "name": "arachnoid cycst",
+          "id": "hp:0100702"
+        }
+      ]
+    },
+    {
+      "name": "ventricles",
+      "id": "hp:0002118",
+      "terms": [
+        {
+          "name": "ventriculomegaly",
+          "id": "hp:0002119",
+          "qualifiers": ["spatial_pattern", "severity"]
+        }
+      ]
+    },
+    {
+      "name": "cerebral cortex",
+      "id": "hp:0002538",
+      "terms": [
+        {
+          "name": "atrophy",
+          "id": "hp:0002120",
+          "qualifiers": ["severity"]
+        },
+        {
+          "name": "dysgenesis/migration abnormality",
+          "id": "hp:0002538"
+        }
+      ]
+    },
+    {
+      "name": "white matter",
+      "id": "hp:0002500",
+      "terms": [
+        {
+          "name": "hypomyelination",
+          "id": "hp:0006808"
+        },
+        {
+          "name": "demyelination",
+          "id": "hp:0007258"
+        },
+        {
+          "name": "dysmyelination",
+          "id": "hp:0007266"
+        },
+        {
+          "name": "delayed myelination",
+          "id": "hp:0002188"
+        },
+        {
+          "name": "white matter atrophy",
+          "id": "hp:0012762"
+        },
+        {
+          "name": "white matter gliosis",
+          "id": "hp:0002171"
+        },
+        {
+          "name": "PVL",
+          "id": "hp:0006970"
+        },
+        {
+          "name": "hypermyelination",
+          "id": "hp:0012754"
+        },
+        {
+          "name": "cerebral edema",
+          "id": "hp:0002181"
+        }
+      ]
+    },
+    {
+      "name": "basal ganglia",
+      "id": "hp:0002134",
+      "terms": [
+        {
+          "name": "large basal ganglia",
+          "id": "hp:0007048"
+        },
+        {
+          "name": "small basal ganglia",
+          "id": "hp:0012697"
+        },
+        {
+          "name": "abnormal MRI signal (basal ganglia)",
+          "id": "hp:0012751"
+        },
+        {
+          "name": "dysgenesis",
+          "id": "basal ganglia - dysgenesis"
+        },
+        {
+          "name": "swelling/edema",
+          "id": "basal ganglia - swelling/edema"
+        }
+      ]
+    },
+    {
+      "name": "thalami",
+      "id": "hp:0010663",
+      "terms": [
+        {
+          "name": "abnormal thalamic size",
+          "id": "hp:0012693"
+        },
+        {
+          "name": "abnormal MRI signal (thalami)",
+          "id": "hp:0012696"
+        },
+        {
+          "name": "dysgenesis",
+          "id": "thalami - dysgenesis"
+        },
+        {
+          "name": "swelling/edema",
+          "id": "thalami - swelling/edema"
+        }
+      ]
+    },
+    {
+      "name": "hypothalamus",
+      "id": "hp:0012286",
+      "terms": [
+        {
+          "name": "hypothalamic atrophy",
+          "id": "hypothalamic atrophy"
+        },
+        {
+          "name": "hypothalamic gliosis",
+          "id": "hypothalamic gliosis"
+        },
+        {
+          "name": "hypothalamic dysgenesis",
+          "id": "hypothalamic dysgenesis"
+        }
+      ]
+    },
+    {
+      "name": "olfactory apparatus",
+      "id": "abnormality of the olfactory apparatus",
+      "terms": []
+    },
+    {
+      "name": "pituitary gland",
+      "id": "hp:0012503",
+      "terms": [
+        {
+          "name": "enlarged pituitary gland",
+          "id": "hp:0012505"
+        },
+        {
+          "name": "small pituitary gland",
+          "id": "hp:0012506"
+        },
+        {
+          "name": "abnormality of the pineal gland",
+          "id": "hp:0012680"
+        },
+        {
+          "name": "pituitary tumor/mass",
+          "id": "hp:0011750"
+        },
+        {
+          "name": "calcifications",
+          "id": "hp:0010513"
+        }
+      ]
+    },
+    {
+      "name": "spine",
+      "id": "hp:0000925",
+      "terms": [
+        {
+          "name": "abnormality of the cervical spine",
+          "id": "hp:0003319"
+        },
+        {
+          "name": "abnormality of the thoracic spine",
+          "id": "hp:0100711"
+        },
+        {
+          "name": "abnormality of the lumbar spine",
+          "id": "hp:0100712"
+        },
+        {
+          "name": "abnormality of the sacrum",
+          "id": "hp:0005107"
+        }
+      ]
+    },
+    {
+      "name": "MR spectroscopy",
+      "id": "Abnormality of MR Spectroscopy",
+      "terms": [
+        {
+          "name": "abnormal MRS imaging",
+          "id": "hp:0012705"
+        },
+        {
+          "name": "decreased NAA",
+          "id": "hp:0012708"
+        },
+        {
+          "name": "elevated NAA",
+          "id": "MR spectroscopy - elevated NAA"
+        },
+        {
+          "name": "elevated choline",
+          "id": "hp:0012706"
+        },
+        {
+          "name": "decreased choline",
+          "id": "MR spectroscopy - decreased choline"
+        },
+        {
+          "name": "elevated creatine",
+          "id": "MR spectroscopy - elevated creatine"
+        },
+        {
+          "name": "decreased creatine",
+          "id": "MR spectroscopy - decreased creatine"
+        },
+        {
+          "name": "elevated lactate",
+          "id": "hp:0012707"
+        },
+        {
+          "name": "decreased lactate",
+          "id": "MR spectroscopy - decreased lactate"
+        }
+      ]
+    },
+    {
+      "name": "cerebral vasculature",
+      "id": "hp:0100659",
+      "terms": []
+    },
+    {
+      "name": "cerebral hemorrhage",
+      "id": "hp:0001342",
+      "terms": []
+    },
+    {
+      "name": "brain calcification",
+      "id": "hp:0002514",
+      "terms": []
+    },
+    {
+      "name": "iron deposition in brain",
+      "id": "hp:0012675",
+      "terms": []
+    },
+    {
+      "name": "copper deposition in brain",
+      "id": "hp:0012676",
+      "terms": []
+    }
+  ],
+  "qualifiers": {
+    "severity": [
+      {
+        "id": "HP:0012825",
+        "name": "Mild"
+      },
+      {
+        "id": "HP:0012826",
+        "name": "Moderate"
+      },
+      {
+        "id": "HP:0012828",
+        "name": "Severe"
+      }
+    ],
+    "spatial_pattern": [
+      {
+        "id": "HP:0012837",
+        "name": "Generalized"
+      },
+      {
+        "id": "HP:0012838",
+        "name": "Localized"
+      }
+    ]
+  }
+}</content>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>0</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>0e966dd6-fde4-4b8d-9ebe-d800dfb93ca5</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable = React.createClass({
+    displayName: "NeurologyTable",
+
+    statics: {
+        dateToString: function(date) {
+            return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+        },
+
+        stringToDate: function(str) {
+            var dateParts = str.split('-');
+            return new Date(dateParts[0], dateParts[1]-1, dateParts[2]);
+        },
+    },
+
+    getInitialState: function() {
+        var dates = _.uniq(_.map(window.samplePatientRecordNeuroState, 'date'));
+        dates = _.sortBy(dates, function (d) {
+            return new Date(d);
+        });
+
+        return {
+            dates: dates,
+            conditions: window.samplePatientRecordNeuroState
+        };
+    },
+
+    handleConditionChange: function(conditionId, date, qualifier, value, isChecked) {
+        var newState = _.cloneDeep(this.state);
+        var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
+
+        if (qualifier) {
+            this.handleQualifierCheckboxChange(newState, existingRecord, qualifier, value, isChecked);
+        } else {
+            this.handlePresenceCheckboxChange(newState, existingRecord, conditionId, date, value, isChecked);
+        }
+
+        this.setState(newState);
+        console.log(newState);
+    },
+
+    handlePresenceCheckboxChange: function(newState, existingRecord, conditionId, date, value, isChecked) {
+        if (isChecked) {
+            var observed = value == "observed";
+            if (existingRecord) {
+                existingRecord.observed = observed;
+                if (!observed) {
+                    existingRecord.qualifiers = {};
+                }
+            } else {
+                newState.conditions.push({
+                    id: conditionId,
+                    date: date,
+                    observed: observed,
+                });
+            }
+
+            if (observed) {
+                // Set the section to be abnormal too
+                var sectionId = this.getSectionIdByConditionId(conditionId);
+                if (sectionId) {
+                    var sectionRecord = _.find(newState.conditions, { id: sectionId, date: date });
+                    if (sectionRecord) {
+                        sectionRecord.observed = true;
+                    } else {
+                        newState.conditions.push({
+                            id: sectionId,
+                            date: date,
+                            observed: true,
+                        });
+                    }
+                }
+            }
+        } else {
+            _.pull(newState.conditions, existingRecord);
+        }
+    },
+
+    handleQualifierCheckboxChange: function(newState, existingRecord, qualifier, value, isChecked) {
+        if (isChecked) {
+            existingRecord.qualifiers = existingRecord.qualifiers || {};
+            existingRecord.qualifiers[qualifier] = value;
+        } else {
+            delete existingRecord.qualifiers[qualifier];
+        }
+    },
+
+    handleNoteChange: function(conditionId, newNote, date) {
+        var newState = _.cloneDeep(this.state);
+        var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
+
+        existingRecord.note = newNote;
+
+        this.setState(newState);
+        console.log(newState);
+    },
+
+    handleColDateChange: function(oldDate, newDate) {
+        var newState = _.cloneDeep(this.state);
+
+        _.forEach(newState.conditions, function(v, k) {
+            if (v.date == oldDate) {
+                v.date = newDate;
+            }
+        });
+
+        var existingDateIdx = _.indexOf(newState.dates, oldDate);
+        if (existingDateIdx &gt; -1) {
+            newState.dates[existingDateIdx] = newDate;
+        }
+
+        this.setState(newState);
+        console.log(newState);
+    },
+
+    handleAddColClick: function() {
+        var newState = _.cloneDeep(this.state);
+
+        var newDate = new Date();
+        newDate.setHours(0, 0, 0, 0);
+        var checkDupes = function(d) {
+            return (NeurologyTable.stringToDate(d).getTime() == newDate.getTime());
+        }
+        while (_.find(newState.dates, checkDupes)) {
+            newDate.setTime(newDate.getTime() + 86400000);
+        }
+        newState.dates.push(NeurologyTable.dateToString(newDate));
+
+        this.setState(newState);
+        console.log(newState);
+    },
+
+    handleRemoveColClick: function(date) {
+        var newState = _.cloneDeep(this.state);
+
+        _.pull(newState.dates, date);
+        _.remove(newState.conditions, _.matchesProperty('date', date));
+
+        this.setState(newState);
+        console.log(newState);
+    },
+
+    getSectionIdByConditionId: function(conditionId) {
+        var section = _.find(this.props.config.sections, function(section, idx, sections) {
+            if (section.id == conditionId) { // this condition is actually a section
+                return false;
+            } else if(_.find(section.terms, {'id': conditionId})) {
+                return true;
+            }
+        });
+
+        return section ? section.id : undefined;
+    },
+
+    render: function() {
+        var _this = this;
+        var colHeaderCells = this.state.dates.map(function (date) {
+            return React.createElement(
+                NeurologyTable.ColHeaderCell,
+                {
+                    key: date,
+                    date: date,
+                    onDateChange: _this.handleColDateChange,
+                    onRemove: _this.handleRemoveColClick
+                });
+        });
+        var sections = _.map(this.props.config.sections, function (val, idx, col) {
+            return React.createElement(NeurologyTable.Section, {
+                key: val.id,
+                section: val,
+                qualifiersToValues: _this.props.config.qualifiers,
+                conditions: _this.state.conditions,
+                dates: _this.state.dates,
+                onConditionChange: _this.handleConditionChange,
+                onNoteChange: _this.handleNoteChange
+            });
+        });
+
+        return React.createElement(
+            "table",
+            { id: "main" },
+            React.createElement(
+                "thead",
+                null,
+                React.createElement(
+                    "tr",
+                    null,
+                    React.createElement("th", null),
+                    colHeaderCells,
+                    React.createElement(
+                        "th",
+                        null,
+                        React.createElement(
+                            "button",
+                            {
+                                onClick: this.handleAddColClick
+                            },
+                            React.createElement("i", { "className": "fa fa-plus" })
+                        )
+                    )
+                )
+            ),
+            sections
+        );
+    }
+});
+</code>
+    </property>
+    <property>
+      <name>NeurologyTable</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>1</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>11c030d0-1779-44d5-a6e6-a4568b155a16</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable.ColHeaderCell = React.createClass({
+    displayName: "ColHeaderCell",
+
+    handleChange: function() {
+        var newDate = this.datePicker.getDate();
+        var newDateStr = NeurologyTable.dateToString(newDate);
+
+        this.props.onDateChange(this.props.date, newDateStr);
+    },
+
+    handleClickRemove: function() {
+        this.props.onRemove(this.props.date);
+    },
+
+    render: function () {
+        var dateInput = React.createElement(
+            "input",
+            {
+                type: "text",
+                defaultValue: this.props.date,
+                ref: "date"
+            },
+            null
+        );
+
+        var removeButton = React.createElement(
+            "button",
+            {
+                className: 'remove',
+                onClick: this.handleClickRemove
+            },
+            React.createElement("i", { "className": "fa fa-times" })
+        );
+
+        return React.createElement(
+            "th",
+            null,
+            dateInput,
+            removeButton
+        );
+    },
+
+    componentDidMount: function() {
+        this.datePicker = new Pikaday({
+            field: ReactDOM.findDOMNode(this.refs.date),
+            format: 'YYYY-MM-DD',
+            yearRange: [1950, new Date().getFullYear()],
+            onSelect: this.handleChange,
+            defaultDate: NeurologyTable.stringToDate(this.props.date),
+            setDefaultDate: true,
+        });
+    },
+});
+</code>
+    </property>
+    <property>
+      <name>NeurologyTable.ColHeaderCell</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>2</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>c7628cec-1322-4a7b-9b75-88221c0c384b</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable.Section = React.createClass({
+    displayName: "Section",
+
+    render: function () {
+        var _this = this;
+
+        var conditionsRows = _.map(this.props.section.terms, function (condition, condIdx) {
+            return React.createElement(NeurologyTable.Section.Row, {
+                key: condition.id || condition.name,
+                name: condition.name,
+                id: condition.id,
+                qualifiers: condition.qualifiers,
+                qualifiersToValues: _this.props.qualifiersToValues,
+                conditions: _.filter(_this.props.conditions, { id: condition.id }),
+                dates: _this.props.dates,
+                onConditionChange: _this.props.onConditionChange,
+                onNoteChange: _this.props.onNoteChange
+            });
+
+            return rows;
+        });
+
+        return React.createElement(
+            "tbody",
+            { className: "group" },
+            React.createElement(NeurologyTable.Section.HeaderRow, {
+                key: this.props.section.id || this.props.section.name,
+                section: this.props.section,
+                conditions: this.props.conditions,
+                dates: this.props.dates,
+                onConditionChange: _this.props.onConditionChange,
+                onNoteChange: _this.props.onNoteChange
+            }),
+            conditionsRows
+        );
+    }
+});</code>
+    </property>
+    <property>
+      <name>NeurologyTable.Section</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>3</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>9440f80e-0a8c-47d3-8c8e-9b8aa54b05ea</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable.Section.HeaderRow = React.createClass({
+    displayName: "HeaderRow",
+
+    render: function () {
+        var _this = this;
+        var cells = _.map(this.props.dates, function (val, idx, col) {
+            return React.createElement(NeurologyTable.Section.HeaderRow.Cell, {
+                key: _this.props.section.id + val,
+                section: _this.props.section,
+                date: val,
+                conditions: _this.props.conditions,
+                onConditionChange: _this.props.onConditionChange,
+                onNoteChange: _this.props.onNoteChange
+            });
+        });
+
+        return React.createElement(
+            "tr",
+            { className: "term-header" },
+            React.createElement(
+                "th",
+                null,
+                this.props.section.name
+            ),
+            cells,
+            React.createElement(
+                "td",
+                {className: "empty"},
+                null
+            )
+        );
+    }
+});</code>
+    </property>
+    <property>
+      <name>NeurologyTable.Section.HeaderRow</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>4</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>b22afe0a-9104-4338-965e-c03b073c2eca</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
+    displayName: "Cell",
+
+    handleCheckboxChange: function (e) {
+        this.props.onConditionChange(this.props.section.id, this.props.date, null, e.target.value, e.target.checked);
+    },
+
+    handleNoteChange: function(newNote) {
+        this.props.onNoteChange(this.props.section.id, newNote, this.props.date);
+    },
+
+    render: function () {
+        var thisSectionConditions = _.map(this.props.section.terms, 'id');
+        var _this = this;
+        var matchingConditions = _.filter(this.props.conditions, function(condition) {
+            var match = condition.date == _this.props.date;
+            match &amp;= _.indexOf(thisSectionConditions, condition.id) &gt; -1;
+            match &amp;= condition.observed;
+            return match;
+        });
+
+        var thisCondition = _.find(this.props.conditions, {id: this.props.section.id, date: this.props.date});
+        var notes = React.createElement(
+            NeurologyTable.Section.Row.Cell.Note,
+            {
+                note: thisCondition &amp;&amp; thisCondition.note || null,
+                onNoteChange: this.handleNoteChange,
+            },
+            null
+        );
+
+        var classNames = [];
+        if (thisCondition) {
+            classNames.push("is-investigated");
+        }
+
+        return React.createElement(
+            "td",
+            {className: classNames.join(' ')},
+            React.createElement(
+                "label",
+                null,
+                React.createElement(
+                    "input",
+                    {
+                        type: "checkbox",
+                        onChange: this.handleCheckboxChange,
+                        checked: thisCondition &amp;&amp; !thisCondition.observed,
+                        disabled: matchingConditions.length &gt; 0,
+                        value: "notObserved"
+                    }
+                ),
+                "Normal"
+            ),
+            React.createElement(
+                "label",
+                null,
+                React.createElement(
+                    "input",
+                    {
+                        type: "checkbox",
+                        onChange: this.handleCheckboxChange,
+                        checked: thisCondition &amp;&amp; thisCondition.observed,
+                        disabled: matchingConditions.length &gt; 0,
+                        value: "observed"
+                    }
+                ),
+                "Abnormal"
+            ),
+            notes
+        );
+    }
+});</code>
+    </property>
+    <property>
+      <name>NeurologyTable.Section.HeaderRow.Cell</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>5</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>0a0d01d7-1125-4be2-8a51-194103d2d202</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable.Section.Row = React.createClass({
+    displayName: "Row",
+
+    render: function () {
+
+        var _this = this;
+        var cells = _.map(this.props.dates, function (val, idx, col) {
+            return React.createElement(NeurologyTable.Section.Row.Cell, {
+                key: _this.props.id + val,
+                date: val,
+                name: _this.props.name,
+                id: _this.props.id,
+                qualifiers: _this.props.qualifiers,
+                qualifiersToValues: _this.props.qualifiersToValues,
+                conditions: _.filter(_this.props.conditions, { id: _this.props.id }),
+                onConditionChange: _this.props.onConditionChange,
+                onNoteChange: _this.props.onNoteChange,
+            });
+        });
+
+        return React.createElement(
+            "tr",
+            { className: "term-child" },
+            React.createElement(
+                "th",
+                null,
+                this.props.name
+            ),
+            cells,
+            React.createElement(
+                "td",
+                {className: "empty"},
+                null
+            )
+        );
+    }
+});</code>
+    </property>
+    <property>
+      <name>NeurologyTable.Section.Row</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>6</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>8f80677e-faa7-40a2-a7b8-ccb499879f95</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable.Section.Row.Cell = React.createClass({
+    displayName: "Cell",
+
+    handleCheckboxChange: function (qualifier, e) {
+        this.props.onConditionChange(
+            this.props.id, 
+            this.props.date, 
+            qualifier, 
+            e.target.value, 
+            e.target.checked
+        );
+    },
+
+    handleNoteChange: function(newNote) {
+        this.props.onNoteChange(this.props.id, newNote, this.props.date);
+    },
+
+    render: function () {
+        var qualCheckboxes, presenceCheckboxes;
+        var thisCondition = _.find(this.props.conditions, { date: this.props.date });
+        if (this.props.qualifiers &amp;&amp; this.props.qualifiers.length) {
+            var _this = this;
+
+            qualCheckboxes = _.map(this.props.qualifiers, function(qual, qualIdx) {
+                var qualVals = _.map(_this.props.qualifiersToValues[qual], function(qualVal, qualValIdx) {
+                    var isChecked = !!thisCondition 
+                        &amp;&amp; !!thisCondition.qualifiers
+                        &amp;&amp; !!thisCondition.qualifiers[qual] 
+                        &amp;&amp; thisCondition.qualifiers[qual] == qualVal.id;
+
+                    return React.createElement(
+                        "label",
+                        { key: qualVal.name },
+                        React.createElement("input", {
+                            type: "checkbox",
+                            onChange: _.partial(_this.handleCheckboxChange, qual),
+                            checked: isChecked,
+                            value: qualVal.id
+                        }),
+                        qualVal.name
+                    ); 
+                });
+
+                return React.createElement("div", 
+                    { 
+                        key: qual,
+                        className: 'qualifier-group'
+                    }, 
+                    qualVals
+                );
+            });
+        }
+        presenceCheckboxes = React.createElement("div", 
+            { 
+                key: "presence",
+                className: 'presence'
+            },
+            React.createElement(
+                "label",
+                { key: "present" },
+                React.createElement("input", {
+                    type: "checkbox",
+                    onChange: _.partial(this.handleCheckboxChange, null),
+                    checked: thisCondition &amp;&amp; thisCondition.observed,
+                    value: "observed"
+                }),
+                "Present"
+            ),
+            React.createElement(
+                "label",
+                { key: "not-present" },
+                React.createElement("input", {
+                    type: "checkbox",
+                    onChange: _.partial(this.handleCheckboxChange, null),
+                    checked: thisCondition &amp;&amp; !thisCondition.observed,
+                    value: "notObserved"
+                }),
+                "Not present"
+            )
+        );
+
+        var note = React.createElement(
+            NeurologyTable.Section.Row.Cell.Note,
+            {
+                note: thisCondition &amp;&amp; thisCondition.note || null,
+                onNoteChange: this.handleNoteChange,
+            },
+            null
+        );
+
+        var classNames = [];
+        if (thisCondition) {
+            classNames.push("is-investigated");
+
+            if (thisCondition.observed) {
+                classNames.push("is-observed");
+            }
+        }
+
+        return React.createElement(
+            "td",
+            { className: classNames.join(' ') },
+            presenceCheckboxes,
+            qualCheckboxes,
+            note
+        );
+    }
+});</code>
+    </property>
+    <property>
+      <name>NeurologyTable.Section.Row.Cell</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>7</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>3f397c05-65b3-421e-8073-9efaa402a6ca</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>window.NeurologyTable.Section.Row.Cell.Note = React.createClass({
+    displayName: "Note",
+
+    onTextAreaKeypress: function(e) {
+        if (e.charCode == 13) {
+            e.preventDefault();
+            this.refs.popoverTrigger.hide();
+        }
+    },
+
+    onPopoverReady: function() {
+        this.refs.noteField.focus();
+    },
+
+    // source: http://stackoverflow.com/questions/4715762/javascript-move-caret-to-last-character
+    moveCaretToEnd: function(el) {
+        if (typeof el.selectionStart == "number") {
+            el.selectionStart = el.selectionEnd = el.value.length;
+        } else if (typeof el.createTextRange != "undefined") {
+            el.focus();
+            var range = el.createTextRange();
+            range.collapse(false);
+            range.select();
+        }
+    },
+
+    onTextAreaFocus: function(e) {
+        this.moveCaretToEnd(e.target);
+    },
+
+    onPopoverHide: function() {
+        this.props.onNoteChange(this.refs.noteField.value);
+    },
+
+    render: function () {
+        if (!this.props.note) {
+            var currentNote = null;
+            var trigger = React.createElement(
+                "button",
+                { className: "add" },
+                "+ Add note"
+            );
+        } else {
+            var currentNote = React.createElement(
+                "span",
+                { className: "content" },
+                this.props.note
+            );
+            var trigger = React.createElement(
+                "button",
+                { className: "edit"},
+                React.createElement("i", { "className": "fa fa-pencil" })
+            );
+        }
+        var popover = React.createElement(
+            ReactBootstrap.Popover,
+            { 
+                placement: "right",
+            },
+            React.createElement(
+                "textarea",
+                {
+                    defaultValue: this.props.note,
+                    onKeyPress: this.onTextAreaKeypress,
+                    onFocus: this.onTextAreaFocus,
+                    ref: "noteField",
+                    cols: 25,
+                    rows: 8
+                },
+                null
+            )
+        );
+
+        return React.createElement(
+            "p",
+            { className: "note" },
+            currentNote,
+            React.createElement(
+                ReactBootstrap.OverlayTrigger,
+                { 
+                    trigger: "click", 
+                    placement: "right", 
+                    overlay: popover, 
+                    rootClose: true, 
+                    animation: true, 
+                    delay: 10,
+                    ref: "popoverTrigger",
+                    onEntered: this.onPopoverReady,
+                    onExit: this.onPopoverHide
+                },
+                trigger
+            )
+        );
+    }
+});</code>
+    </property>
+    <property>
+      <name>NeurologyTable.Section.Row.Cell.Note</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>8</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>712f4c40-bf75-44ff-9afa-09e90c303981</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>(function() {
+  var config = $xwiki.getDocument("PhenoTips.NeurologyTableCode").getContent();
+  
+  var init = function() {
+    ReactDOM.render(React.createElement(NeurologyTable, {config: config}), document.getElementById('neurology-table-container'));
+  }
+
+  (XWiki.domIsLoaded &amp;&amp; init()) || document.observe("xwiki:dom:loaded", init);
+})();
+</code>
+    </property>
+    <property>
+      <name>Initialization</name>
+    </property>
+    <property>
+      <parse>1</parse>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>0</number>
+    <className>XWiki.StyleSheetExtension</className>
+    <guid>85c8cebe-ca70-400e-b9f7-0622ca4f2f05</guid>
+    <class>
+      <name>XWiki.StyleSheetExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <contentType>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>contentType</name>
+        <number>6</number>
+        <prettyName>Content Type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>CSS|LESS</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </contentType>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>#neurology-table {
+  border-collapse: collapse;
+}
+#neurology-table td, #neurology-table th {
+  padding: 6px;
+  border: 1px solid #aaa;
+  vertical-align: top;
+}
+#neurology-table td.empty {
+  border: 0;
+}
+#neurology-table th {
+  text-align: right;
+}
+#neurology-table thead th {
+  text-align: left;
+}
+#neurology-table thead th button {
+  float: right;
+}
+#neurology-table tbody.group tr:first-child th,
+#neurology-table tbody.group tr:first-child td {
+  border-top-width: 5px;
+}
+#neurology-table .term-child th {
+  font-weight: normal;
+  font-style: italic;
+}
+#neurology-table td label {
+  font-weight: normal;
+  margin-right: 0.3em;
+}
+#neurology-table .term-header td.disabled {
+  color: #999;
+}
+#neurology-table td div.presence {
+  border-bottom: 1px dashed #aaa;
+  margin-bottom: 0.3em;
+  padding-bottom: 0.3em;
+}
+#neurology-table td div.qualifier-group {
+  border-bottom: 1px dotted #aaa;
+  margin-bottom: 0.3em;
+  padding-bottom: 0.3em;
+  visibility: hidden;
+}
+#neurology-table td.is-observed div.qualifier-group {
+  visibility: visible;
+}
+#neurology-table td div.qualifier-group label {
+  display: block;
+}
+#neurology-table td .note {
+  visibility: hidden;
+}
+#neurology-table td.is-investigated .note {
+  visibility: visible;
+}
+#neurology-table td .note {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  margin: 0;
+  margin-top: 5px;
+  font-size: 12px;
+  position: relative;
+  padding-right: 26px;
+  height: 20px;
+}
+#neurology-table td .note .content {
+  line-height: 17px;
+}
+#neurology-table td .note button {
+  font-size: 11px;
+}
+#neurology-table td .note button.edit {
+  position: absolute;
+  right: 0; top: 0;
+  font-size: 80%;
+}
+.popover textarea {
+  font-size: 90%;
+  font-family: sans-serif;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: auto;
+}</code>
+    </property>
+    <property>
+      <contentType>CSS</contentType>
+    </property>
+    <property>
+      <name>NeurologyTable</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+</xwikidoc>
