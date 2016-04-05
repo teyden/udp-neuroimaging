@@ -5,9 +5,7 @@
  * See the NOTICE file distributed with this work for additional
  * information regarding copyright ownership.
  */
-package org.phenotips.neurology.script;
-
-import org.phenotips.neurology.internal.NeurologyFeatureSet;
+package com.gene42.neurology.script;
 
 import org.xwiki.bridge.DocumentAccessBridge;
 import org.xwiki.component.annotation.Component;
@@ -17,6 +15,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import com.gene42.neurology.internal.NeurologyFeatureSet;
 import com.xpn.xwiki.api.Document;
 
 @Component

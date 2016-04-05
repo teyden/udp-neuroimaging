@@ -1,1 +1,1 @@
-org.phenotips.neurology.script.NeurologyScriptService
+com.gene42.neurology.script.NeurologyScriptService

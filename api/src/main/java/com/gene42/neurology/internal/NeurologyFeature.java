@@ -5,7 +5,7 @@
  * See the NOTICE file distributed with this work for additional
  * information regarding copyright ownership.
  */
-package org.phenotips.neurology.internal;
+package com.gene42.neurology.internal;
 
 import org.xwiki.bridge.DocumentAccessBridge;
 
