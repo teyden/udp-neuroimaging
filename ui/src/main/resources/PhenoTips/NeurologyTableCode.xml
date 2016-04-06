@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+ * This file is subject to the terms and conditions defined in file LICENSE,
+ * which is part of this source code package.
+ *
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+-->
+
 <xwikidoc version="1.1">
   <web>PhenoTips</web>
   <name>NeurologyTableCode</name>
@@ -10,8 +18,8 @@
   <creationDate>1459870000000</creationDate>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1459892614000</date>
-  <contentUpdateDate>1459892247000</contentUpdateDate>
+  <date>1459978052000</date>
+  <contentUpdateDate>1459968547000</contentUpdateDate>
   <version>1.1</version>
   <title/>
   <comment/>
@@ -486,212 +494,223 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable = React.createClass({
-    displayName: "NeurologyTable",
+      <code>define(
+"NeurologyTable",
+[
+    "react",
+    "react-dom",
+    "Pikaday",
+    "lodash",
+    "NeurologyTableSection",
+    "NeurologyTableColHeaderCell",
+    "NeurologyTableUtils"
+], function(
+    React,
+    ReactDOM,
+    Pikaday,
+    _,
+    NeurologyTableSection,
+    NeurologyTableColHeaderCell,
+    NeurologyTableUtils
+) {
+    var NeurologyTable = React.createClass({
+        displayName: "NeurologyTable",
 
-    statics: {
-        dateToString: function(date) {
-            return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+        getInitialState: function() {
+            var dates = _.uniq(_.map(this.props.initialState, 'date'));
+            dates = _.sortBy(dates, function (d) {
+                return new Date(d);
+            });
+
+            return {
+                dates: dates,
+                conditions: this.props.initialState
+            };
         },
 
-        stringToDate: function(str) {
-            var dateParts = str.split('-');
-            return new Date(dateParts[0], dateParts[1]-1, dateParts[2]);
-        },
-    },
+        handleConditionChange: function(conditionId, date, qualifier, value, isChecked) {
+            var newState = _.cloneDeep(this.state);
+            var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
 
-    getInitialState: function() {
-        var dates = _.uniq(_.map(window.samplePatientRecordNeuroState, 'date'));
-        dates = _.sortBy(dates, function (d) {
-            return new Date(d);
-        });
-
-        return {
-            dates: dates,
-            conditions: window.samplePatientRecordNeuroState
-        };
-    },
-
-    handleConditionChange: function(conditionId, date, qualifier, value, isChecked) {
-        var newState = _.cloneDeep(this.state);
-        var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
-
-        if (qualifier) {
-            this.handleQualifierCheckboxChange(newState, existingRecord, qualifier, value, isChecked);
-        } else {
-            this.handlePresenceCheckboxChange(newState, existingRecord, conditionId, date, value, isChecked);
-        }
-
-        this.setState(newState);
-        console.log(newState);
-    },
-
-    handlePresenceCheckboxChange: function(newState, existingRecord, conditionId, date, value, isChecked) {
-        if (isChecked) {
-            var observed = value == "observed";
-            if (existingRecord) {
-                existingRecord.observed = observed;
-                if (!observed) {
-                    existingRecord.qualifiers = {};
-                }
+            if (qualifier) {
+                this.handleQualifierCheckboxChange(newState, existingRecord, qualifier, value, isChecked);
             } else {
-                newState.conditions.push({
-                    id: conditionId,
-                    date: date,
-                    observed: observed,
-                });
+                this.handlePresenceCheckboxChange(newState, existingRecord, conditionId, date, value, isChecked);
             }
 
-            if (observed) {
-                // Set the section to be abnormal too
-                var sectionId = this.getSectionIdByConditionId(conditionId);
-                if (sectionId) {
-                    var sectionRecord = _.find(newState.conditions, { id: sectionId, date: date });
-                    if (sectionRecord) {
-                        sectionRecord.observed = true;
-                    } else {
-                        newState.conditions.push({
-                            id: sectionId,
-                            date: date,
-                            observed: true,
-                        });
+            this.setState(newState);
+            console.log(newState);
+        },
+
+        handlePresenceCheckboxChange: function(newState, existingRecord, conditionId, date, value, isChecked) {
+            if (isChecked) {
+                var observed = value == "observed";
+                if (existingRecord) {
+                    existingRecord.observed = observed;
+                    if (!observed) {
+                        existingRecord.qualifiers = {};
+                    }
+                } else {
+                    newState.conditions.push({
+                        id: conditionId,
+                        date: date,
+                        observed: observed,
+                    });
+                }
+
+                if (observed) {
+                    // Set the section to be abnormal too
+                    var sectionId = this.getSectionIdByConditionId(conditionId);
+                    if (sectionId) {
+                        var sectionRecord = _.find(newState.conditions, { id: sectionId, date: date });
+                        if (sectionRecord) {
+                            sectionRecord.observed = true;
+                        } else {
+                            newState.conditions.push({
+                                id: sectionId,
+                                date: date,
+                                observed: true,
+                            });
+                        }
                     }
                 }
+            } else {
+                _.pull(newState.conditions, existingRecord);
             }
-        } else {
-            _.pull(newState.conditions, existingRecord);
-        }
-    },
+        },
 
-    handleQualifierCheckboxChange: function(newState, existingRecord, qualifier, value, isChecked) {
-        if (isChecked) {
-            existingRecord.qualifiers = existingRecord.qualifiers || {};
-            existingRecord.qualifiers[qualifier] = value;
-        } else {
-            delete existingRecord.qualifiers[qualifier];
-        }
-    },
-
-    handleNoteChange: function(conditionId, newNote, date) {
-        var newState = _.cloneDeep(this.state);
-        var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
-
-        existingRecord.note = newNote;
-
-        this.setState(newState);
-        console.log(newState);
-    },
-
-    handleColDateChange: function(oldDate, newDate) {
-        var newState = _.cloneDeep(this.state);
-
-        _.forEach(newState.conditions, function(v, k) {
-            if (v.date == oldDate) {
-                v.date = newDate;
+        handleQualifierCheckboxChange: function(newState, existingRecord, qualifier, value, isChecked) {
+            if (isChecked) {
+                existingRecord.qualifiers = existingRecord.qualifiers || {};
+                existingRecord.qualifiers[qualifier] = value;
+            } else {
+                delete existingRecord.qualifiers[qualifier];
             }
-        });
+        },
 
-        var existingDateIdx = _.indexOf(newState.dates, oldDate);
-        if (existingDateIdx &gt; -1) {
-            newState.dates[existingDateIdx] = newDate;
-        }
+        handleNoteChange: function(conditionId, newNote, date) {
+            var newState = _.cloneDeep(this.state);
+            var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
 
-        this.setState(newState);
-        console.log(newState);
-    },
+            existingRecord.note = newNote;
 
-    handleAddColClick: function() {
-        var newState = _.cloneDeep(this.state);
+            this.setState(newState);
+            console.log(newState);
+        },
 
-        var newDate = new Date();
-        newDate.setHours(0, 0, 0, 0);
-        var checkDupes = function(d) {
-            return (NeurologyTable.stringToDate(d).getTime() == newDate.getTime());
-        }
-        while (_.find(newState.dates, checkDupes)) {
-            newDate.setTime(newDate.getTime() + 86400000);
-        }
-        newState.dates.push(NeurologyTable.dateToString(newDate));
+        handleColDateChange: function(oldDate, newDate) {
+            var newState = _.cloneDeep(this.state);
 
-        this.setState(newState);
-        console.log(newState);
-    },
-
-    handleRemoveColClick: function(date) {
-        var newState = _.cloneDeep(this.state);
-
-        _.pull(newState.dates, date);
-        _.remove(newState.conditions, _.matchesProperty('date', date));
-
-        this.setState(newState);
-        console.log(newState);
-    },
-
-    getSectionIdByConditionId: function(conditionId) {
-        var section = _.find(this.props.config.sections, function(section, idx, sections) {
-            if (section.id == conditionId) { // this condition is actually a section
-                return false;
-            } else if(_.find(section.terms, {'id': conditionId})) {
-                return true;
-            }
-        });
-
-        return section ? section.id : undefined;
-    },
-
-    render: function() {
-        var _this = this;
-        var colHeaderCells = this.state.dates.map(function (date) {
-            return React.createElement(
-                NeurologyTable.ColHeaderCell,
-                {
-                    key: date,
-                    date: date,
-                    onDateChange: _this.handleColDateChange,
-                    onRemove: _this.handleRemoveColClick
-                });
-        });
-        var sections = _.map(this.props.config.sections, function (val, idx, col) {
-            return React.createElement(NeurologyTable.Section, {
-                key: val.id,
-                section: val,
-                qualifiersToValues: _this.props.config.qualifiers,
-                conditions: _this.state.conditions,
-                dates: _this.state.dates,
-                onConditionChange: _this.handleConditionChange,
-                onNoteChange: _this.handleNoteChange
+            _.forEach(newState.conditions, function(v, k) {
+                if (v.date == oldDate) {
+                    v.date = newDate;
+                }
             });
-        });
 
-        return React.createElement(
-            "table",
-            { id: "main" },
-            React.createElement(
-                "thead",
-                null,
+            var existingDateIdx = _.indexOf(newState.dates, oldDate);
+            if (existingDateIdx &gt; -1) {
+                newState.dates[existingDateIdx] = newDate;
+            }
+
+            this.setState(newState);
+            console.log(newState);
+        },
+
+        handleAddColClick: function(e) {
+            e.preventDefault();
+            var newState = _.cloneDeep(this.state);
+
+            var newDate = new Date();
+            newDate.setHours(0, 0, 0, 0);
+            var checkDupes = function(d) {
+                return (NeurologyTableUtils.stringToDate(d).getTime() == newDate.getTime());
+            }
+            while (_.find(newState.dates, checkDupes)) {
+                newDate.setTime(newDate.getTime() + 86400000);
+            }
+            newState.dates.push(NeurologyTableUtils.dateToString(newDate));
+
+            this.setState(newState);
+            console.log(newState);
+        },
+
+        handleRemoveColClick: function(date) {
+            var newState = _.cloneDeep(this.state);
+
+            _.pull(newState.dates, date);
+            _.remove(newState.conditions, _.matchesProperty('date', date));
+
+            this.setState(newState);
+            console.log(newState);
+        },
+
+        getSectionIdByConditionId: function(conditionId) {
+            var section = _.find(this.props.config.sections, function(section, idx, sections) {
+                if (section.id == conditionId) { // this condition is actually a section
+                    return false;
+                } else if(_.find(section.terms, {'id': conditionId})) {
+                    return true;
+                }
+            });
+
+            return section ? section.id : undefined;
+        },
+
+        render: function() {
+            var _this = this;
+            var colHeaderCells = this.state.dates.map(function (date) {
+                return React.createElement(
+                    NeurologyTableColHeaderCell,
+                    {
+                        key: date,
+                        date: date,
+                        onDateChange: _this.handleColDateChange,
+                        onRemove: _this.handleRemoveColClick
+                    });
+            });
+            var sections = _.map(this.props.config.sections, function (val, idx, col) {
+                return React.createElement(NeurologyTableSection, {
+                    key: val.id,
+                    section: val,
+                    qualifiersToValues: _this.props.config.qualifiers,
+                    conditions: _this.state.conditions,
+                    dates: _this.state.dates,
+                    onConditionChange: _this.handleConditionChange,
+                    onNoteChange: _this.handleNoteChange
+                });
+            });
+
+            return React.createElement(
+                "table",
+                { id: "neurology-table" },
                 React.createElement(
-                    "tr",
+                    "thead",
                     null,
-                    React.createElement("th", null),
-                    colHeaderCells,
                     React.createElement(
-                        "th",
+                        "tr",
                         null,
+                        React.createElement("th", null),
+                        colHeaderCells,
                         React.createElement(
-                            "button",
-                            {
-                                onClick: this.handleAddColClick
-                            },
-                            React.createElement("i", { "className": "fa fa-plus" })
+                            "th",
+                            null,
+                            React.createElement(
+                                "button",
+                                {
+                                    onClick: this.handleAddColClick
+                                },
+                                React.createElement("i", { "className": "fa fa-plus" })
+                            )
                         )
                     )
-                )
-            ),
-            sections
-        );
-    }
-});
-</code>
+                ),
+                sections
+            );
+        }
+    });
+
+    return NeurologyTable;
+});</code>
     </property>
     <property>
       <name>NeurologyTable</name>
@@ -783,63 +802,77 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable.ColHeaderCell = React.createClass({
-    displayName: "ColHeaderCell",
+      <code>define(
+"NeurologyTableColHeaderCell",
+[
+    "react",
+    "react-dom",
+    "Pikaday",
+    "NeurologyTableUtils"
+], function(
+    React,
+    ReactDOM,
+    Pikaday,
+    NeurologyTableUtils
+) {
+    return React.createClass({
+        displayName: "ColHeaderCell",
 
-    handleChange: function() {
-        var newDate = this.datePicker.getDate();
-        var newDateStr = NeurologyTable.dateToString(newDate);
+        handleChange: function() {
+            var newDate = this.datePicker.getDate();
+            var newDateStr = NeurologyTableUtils.dateToString(newDate);
 
-        this.props.onDateChange(this.props.date, newDateStr);
-    },
+            this.props.onDateChange(this.props.date, newDateStr);
+        },
 
-    handleClickRemove: function() {
-        this.props.onRemove(this.props.date);
-    },
+        handleClickRemove: function() {
+            this.props.onRemove(this.props.date);
+        },
 
-    render: function () {
-        var dateInput = React.createElement(
-            "input",
-            {
-                type: "text",
-                defaultValue: this.props.date,
-                ref: "date"
-            },
-            null
-        );
+        render: function () {
+            var dateInput = React.createElement(
+                "input",
+                {
+                    type: "text",
+                    defaultValue: this.props.date,
+                    ref: "date"
+                },
+                null
+            );
 
-        var removeButton = React.createElement(
-            "button",
-            {
-                className: 'remove',
-                onClick: this.handleClickRemove
-            },
-            React.createElement("i", { "className": "fa fa-times" })
-        );
+            var removeButton = React.createElement(
+                "button",
+                {
+                    className: 'remove',
+                    onClick: this.handleClickRemove
+                },
+                React.createElement("i", { "className": "fa fa-times" })
+            );
 
-        return React.createElement(
-            "th",
-            null,
-            dateInput,
-            removeButton
-        );
-    },
+            return React.createElement(
+                "th",
+                null,
+                dateInput,
+                removeButton
+            );
+        },
 
-    componentDidMount: function() {
-        this.datePicker = new Pikaday({
-            field: ReactDOM.findDOMNode(this.refs.date),
-            format: 'YYYY-MM-DD',
-            yearRange: [1950, new Date().getFullYear()],
-            onSelect: this.handleChange,
-            defaultDate: NeurologyTable.stringToDate(this.props.date),
-            setDefaultDate: true,
-        });
-    },
+        componentDidMount: function() {
+            this.datePicker = new Pikaday({
+                field: ReactDOM.findDOMNode(this.refs.date),
+                format: 'YYYY-MM-DD',
+                yearRange: [1950, new Date().getFullYear()],
+                onSelect: this.handleChange,
+                defaultDate: NeurologyTableUtils.stringToDate(this.props.date),
+                setDefaultDate: true,
+            });
+        },
+    });
 });
 </code>
     </property>
     <property>
-      <name>NeurologyTable.ColHeaderCell</name>
+      <name>NeurologyTableColHeaderCell</name>
     </property>
     <property>
       <parse/>
@@ -928,46 +961,63 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable.Section = React.createClass({
-    displayName: "Section",
+      <code>define(
+"NeurologyTableSection",
+[
+    "react",
+    "react-dom",
+    "lodash",
+    "NeurologyTableSectionRow",
+    "NeurologyTableSectionHeaderRow"
+], function(
+    React,
+    ReactDOM,
+    _,
+    NeurologyTableSectionRow,
+    NeurologyTableSectionHeaderRow
+) {
+    var NeurologyTableSection = React.createClass({
+        displayName: "Section",
 
-    render: function () {
-        var _this = this;
+        render: function () {
+            var _this = this;
 
-        var conditionsRows = _.map(this.props.section.terms, function (condition, condIdx) {
-            return React.createElement(NeurologyTable.Section.Row, {
-                key: condition.id || condition.name,
-                name: condition.name,
-                id: condition.id,
-                qualifiers: condition.qualifiers,
-                qualifiersToValues: _this.props.qualifiersToValues,
-                conditions: _.filter(_this.props.conditions, { id: condition.id }),
-                dates: _this.props.dates,
-                onConditionChange: _this.props.onConditionChange,
-                onNoteChange: _this.props.onNoteChange
+            var conditionsRows = _.map(this.props.section.terms, function (condition, condIdx) {
+                return React.createElement(NeurologyTableSectionRow, {
+                    key: condition.id || condition.name,
+                    name: condition.name,
+                    id: condition.id,
+                    qualifiers: condition.qualifiers,
+                    qualifiersToValues: _this.props.qualifiersToValues,
+                    conditions: _.filter(_this.props.conditions, { id: condition.id }),
+                    dates: _this.props.dates,
+                    onConditionChange: _this.props.onConditionChange,
+                    onNoteChange: _this.props.onNoteChange
+                });
             });
 
-            return rows;
-        });
+            return React.createElement(
+                "tbody",
+                { className: "group" },
+                React.createElement(NeurologyTableSectionHeaderRow, {
+                    key: this.props.section.id || this.props.section.name,
+                    section: this.props.section,
+                    conditions: this.props.conditions,
+                    dates: this.props.dates,
+                    onConditionChange: _this.props.onConditionChange,
+                    onNoteChange: _this.props.onNoteChange
+                }),
+                conditionsRows
+            );
+        }
+    });
 
-        return React.createElement(
-            "tbody",
-            { className: "group" },
-            React.createElement(NeurologyTable.Section.HeaderRow, {
-                key: this.props.section.id || this.props.section.name,
-                section: this.props.section,
-                conditions: this.props.conditions,
-                dates: this.props.dates,
-                onConditionChange: _this.props.onConditionChange,
-                onNoteChange: _this.props.onNoteChange
-            }),
-            conditionsRows
-        );
-    }
-});</code>
+    return NeurologyTableSection;
+});
+</code>
     </property>
     <property>
-      <name>NeurologyTable.Section</name>
+      <name>NeurologyTableSection</name>
     </property>
     <property>
       <parse/>
@@ -1056,42 +1106,57 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable.Section.HeaderRow = React.createClass({
-    displayName: "HeaderRow",
+      <code>define(
+"NeurologyTableSectionHeaderRow",
+[
+    "react",
+    "lodash",
+    "NeurologyTableSectionHeaderRowCell"
+], function(
+    React,
+    _,
+    NeurologyTableSectionHeaderRowCell
+) {
+    var NeurologyTableSectionHeaderRow = React.createClass({
+        displayName: "HeaderRow",
 
-    render: function () {
-        var _this = this;
-        var cells = _.map(this.props.dates, function (val, idx, col) {
-            return React.createElement(NeurologyTable.Section.HeaderRow.Cell, {
-                key: _this.props.section.id + val,
-                section: _this.props.section,
-                date: val,
-                conditions: _this.props.conditions,
-                onConditionChange: _this.props.onConditionChange,
-                onNoteChange: _this.props.onNoteChange
+        render: function () {
+            var _this = this;
+            var cells = _.map(this.props.dates, function (val, idx, col) {
+                return React.createElement(NeurologyTableSectionHeaderRowCell, {
+                    key: _this.props.section.id + val,
+                    section: _this.props.section,
+                    date: val,
+                    conditions: _this.props.conditions,
+                    onConditionChange: _this.props.onConditionChange,
+                    onNoteChange: _this.props.onNoteChange
+                });
             });
-        });
 
-        return React.createElement(
-            "tr",
-            { className: "term-header" },
-            React.createElement(
-                "th",
-                null,
-                this.props.section.name
-            ),
-            cells,
-            React.createElement(
-                "td",
-                {className: "empty"},
-                null
-            )
-        );
-    }
-});</code>
+            return React.createElement(
+                "tr",
+                { className: "term-header" },
+                React.createElement(
+                    "th",
+                    null,
+                    this.props.section.name
+                ),
+                cells,
+                React.createElement(
+                    "td",
+                    {className: "empty"},
+                    null
+                )
+            );
+        }
+    });
+
+    return NeurologyTableSectionHeaderRow;
+});
+</code>
     </property>
     <property>
-      <name>NeurologyTable.Section.HeaderRow</name>
+      <name>NeurologyTableSectionHeaderRow</name>
     </property>
     <property>
       <parse/>
@@ -1180,82 +1245,99 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable.Section.HeaderRow.Cell = React.createClass({
-    displayName: "Cell",
+      <code>define(
+"NeurologyTableSectionHeaderRowCell",
+[
+    "react",
+    "react-dom",
+    "lodash",
+    "NeurologyTableSectionRowCellNote"
+], function(
+    React,
+    ReactDOM,
+    _,
+    NeurologyTableSectionRowCellNote
+) {
+    var NeurologyTableSectionHeaderRowCell = React.createClass({
+        displayName: "Cell",
 
-    handleCheckboxChange: function (e) {
-        this.props.onConditionChange(this.props.section.id, this.props.date, null, e.target.value, e.target.checked);
-    },
+        handleCheckboxChange: function (e) {
+            this.props.onConditionChange(this.props.section.id, this.props.date, null, e.target.value, e.target.checked);
+        },
 
-    handleNoteChange: function(newNote) {
-        this.props.onNoteChange(this.props.section.id, newNote, this.props.date);
-    },
+        handleNoteChange: function(newNote) {
+            this.props.onNoteChange(this.props.section.id, newNote, this.props.date);
+        },
 
-    render: function () {
-        var thisSectionConditions = _.map(this.props.section.terms, 'id');
-        var _this = this;
-        var matchingConditions = _.filter(this.props.conditions, function(condition) {
-            var match = condition.date == _this.props.date;
-            match &amp;= _.indexOf(thisSectionConditions, condition.id) &gt; -1;
-            match &amp;= condition.observed;
-            return match;
-        });
+        render: function () {
+            var thisSectionConditions = _.map(this.props.section.terms, 'id');
+            var _this = this;
+            var matchingConditions = _.filter(this.props.conditions, function(condition) {
+                var match = condition.date == _this.props.date;
+                match &amp;= _.indexOf(thisSectionConditions, condition.id) &gt; -1;
+                match &amp;= condition.observed;
+                return match;
+            });
 
-        var thisCondition = _.find(this.props.conditions, {id: this.props.section.id, date: this.props.date});
-        var notes = React.createElement(
-            NeurologyTable.Section.Row.Cell.Note,
-            {
-                note: thisCondition &amp;&amp; thisCondition.note || null,
-                onNoteChange: this.handleNoteChange,
-            },
-            null
-        );
+            var thisCondition = _.find(this.props.conditions, {id: this.props.section.id, date: this.props.date});
+            var notes = React.createElement(
+                NeurologyTableSectionRowCellNote,
+                {
+                    note: thisCondition &amp;&amp; thisCondition.note || null,
+                    onNoteChange: this.handleNoteChange,
+                },
+                null
+            );
 
-        var classNames = [];
-        if (thisCondition) {
-            classNames.push("is-investigated");
+            var classNames = [];
+            if (thisCondition) {
+                classNames.push("is-investigated");
+            }
+
+            return React.createElement(
+                "td",
+                {className: classNames.join(' ')},
+                React.createElement(
+                    "label",
+                    null,
+                    React.createElement(
+                        "input",
+                        {
+                            type: "checkbox",
+                            onChange: this.handleCheckboxChange,
+                            checked: thisCondition &amp;&amp; !thisCondition.observed,
+                            disabled: matchingConditions.length &gt; 0,
+                            value: "notObserved"
+                        }
+                    ),
+                    "Normal"
+                ),
+                React.createElement(
+                    "label",
+                    null,
+                    React.createElement(
+                        "input",
+                        {
+                            type: "checkbox",
+                            onChange: this.handleCheckboxChange,
+                            checked: thisCondition &amp;&amp; thisCondition.observed,
+                            disabled: matchingConditions.length &gt; 0,
+                            value: "observed"
+                        }
+                    ),
+                    "Abnormal"
+                ),
+                notes
+            );
         }
+    });
 
-        return React.createElement(
-            "td",
-            {className: classNames.join(' ')},
-            React.createElement(
-                "label",
-                null,
-                React.createElement(
-                    "input",
-                    {
-                        type: "checkbox",
-                        onChange: this.handleCheckboxChange,
-                        checked: thisCondition &amp;&amp; !thisCondition.observed,
-                        disabled: matchingConditions.length &gt; 0,
-                        value: "notObserved"
-                    }
-                ),
-                "Normal"
-            ),
-            React.createElement(
-                "label",
-                null,
-                React.createElement(
-                    "input",
-                    {
-                        type: "checkbox",
-                        onChange: this.handleCheckboxChange,
-                        checked: thisCondition &amp;&amp; thisCondition.observed,
-                        disabled: matchingConditions.length &gt; 0,
-                        value: "observed"
-                    }
-                ),
-                "Abnormal"
-            ),
-            notes
-        );
-    }
-});</code>
+    return NeurologyTableSectionHeaderRowCell;
+});
+</code>
     </property>
     <property>
-      <name>NeurologyTable.Section.HeaderRow.Cell</name>
+      <name>NeurologyTableSectionHeaderRowCell</name>
     </property>
     <property>
       <parse/>
@@ -1344,46 +1426,61 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable.Section.Row = React.createClass({
-    displayName: "Row",
+      <code>define(
+"NeurologyTableSectionRow",
+[
+    "react",
+    "lodash",
+    "NeurologyTableSectionRowCell"
+], function(
+    React,
+    _,
+    NeurologyTableSectionRowCell
+) {
+    var NeurologyTableSectionRow = React.createClass({
+        displayName: "Row",
 
-    render: function () {
+        render: function () {
 
-        var _this = this;
-        var cells = _.map(this.props.dates, function (val, idx, col) {
-            return React.createElement(NeurologyTable.Section.Row.Cell, {
-                key: _this.props.id + val,
-                date: val,
-                name: _this.props.name,
-                id: _this.props.id,
-                qualifiers: _this.props.qualifiers,
-                qualifiersToValues: _this.props.qualifiersToValues,
-                conditions: _.filter(_this.props.conditions, { id: _this.props.id }),
-                onConditionChange: _this.props.onConditionChange,
-                onNoteChange: _this.props.onNoteChange,
+            var _this = this;
+            var cells = _.map(this.props.dates, function (val, idx, col) {
+                return React.createElement(NeurologyTableSectionRowCell, {
+                    key: _this.props.id + val,
+                    date: val,
+                    name: _this.props.name,
+                    id: _this.props.id,
+                    qualifiers: _this.props.qualifiers,
+                    qualifiersToValues: _this.props.qualifiersToValues,
+                    conditions: _.filter(_this.props.conditions, { id: _this.props.id }),
+                    onConditionChange: _this.props.onConditionChange,
+                    onNoteChange: _this.props.onNoteChange,
+                });
             });
-        });
 
-        return React.createElement(
-            "tr",
-            { className: "term-child" },
-            React.createElement(
-                "th",
-                null,
-                this.props.name
-            ),
-            cells,
-            React.createElement(
-                "td",
-                {className: "empty"},
-                null
-            )
-        );
-    }
-});</code>
+            return React.createElement(
+                "tr",
+                { className: "term-child" },
+                React.createElement(
+                    "th",
+                    null,
+                    this.props.name
+                ),
+                cells,
+                React.createElement(
+                    "td",
+                    {className: "empty"},
+                    null
+                )
+            );
+        }
+    });
+
+    return NeurologyTableSectionRow;
+});
+</code>
     </property>
     <property>
-      <name>NeurologyTable.Section.Row</name>
+      <name>NeurologyTableSectionRow</name>
     </property>
     <property>
       <parse/>
@@ -1472,117 +1569,132 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable.Section.Row.Cell = React.createClass({
-    displayName: "Cell",
+      <code>define(
+"NeurologyTableSectionRowCell",
+[
+    "react",
+    "lodash",
+    "NeurologyTableSectionRowCellNote"
+], function(
+    React,
+    _,
+    NeurologyTableSectionRowCellNote
+) {
+    var NeurologyTableSectionRowCell = React.createClass({
+        displayName: "Cell",
 
-    handleCheckboxChange: function (qualifier, e) {
-        this.props.onConditionChange(
-            this.props.id, 
-            this.props.date, 
-            qualifier, 
-            e.target.value, 
-            e.target.checked
-        );
-    },
+        handleCheckboxChange: function (qualifier, e) {
+            this.props.onConditionChange(
+                this.props.id,
+                this.props.date,
+                qualifier,
+                e.target.value,
+                e.target.checked
+            );
+        },
 
-    handleNoteChange: function(newNote) {
-        this.props.onNoteChange(this.props.id, newNote, this.props.date);
-    },
+        handleNoteChange: function(newNote) {
+            this.props.onNoteChange(this.props.id, newNote, this.props.date);
+        },
 
-    render: function () {
-        var qualCheckboxes, presenceCheckboxes;
-        var thisCondition = _.find(this.props.conditions, { date: this.props.date });
-        if (this.props.qualifiers &amp;&amp; this.props.qualifiers.length) {
-            var _this = this;
+        render: function () {
+            var qualCheckboxes, presenceCheckboxes;
+            var thisCondition = _.find(this.props.conditions, { date: this.props.date });
+            if (this.props.qualifiers &amp;&amp; this.props.qualifiers.length) {
+                var _this = this;
 
-            qualCheckboxes = _.map(this.props.qualifiers, function(qual, qualIdx) {
-                var qualVals = _.map(_this.props.qualifiersToValues[qual], function(qualVal, qualValIdx) {
-                    var isChecked = !!thisCondition 
-                        &amp;&amp; !!thisCondition.qualifiers
-                        &amp;&amp; !!thisCondition.qualifiers[qual] 
-                        &amp;&amp; thisCondition.qualifiers[qual] == qualVal.id;
+                qualCheckboxes = _.map(this.props.qualifiers, function(qual, qualIdx) {
+                    var qualVals = _.map(_this.props.qualifiersToValues[qual], function(qualVal, qualValIdx) {
+                        var isChecked = !!thisCondition
+                            &amp;&amp; !!thisCondition.qualifiers
+                            &amp;&amp; !!thisCondition.qualifiers[qual]
+                            &amp;&amp; thisCondition.qualifiers[qual] == qualVal.id;
 
-                    return React.createElement(
-                        "label",
-                        { key: qualVal.name },
-                        React.createElement("input", {
-                            type: "checkbox",
-                            onChange: _.partial(_this.handleCheckboxChange, qual),
-                            checked: isChecked,
-                            value: qualVal.id
-                        }),
-                        qualVal.name
-                    ); 
+                        return React.createElement(
+                            "label",
+                            { key: qualVal.name },
+                            React.createElement("input", {
+                                type: "checkbox",
+                                onChange: _.partial(_this.handleCheckboxChange, qual),
+                                checked: isChecked,
+                                value: qualVal.id
+                            }),
+                            qualVal.name
+                        );
+                    });
+
+                    return React.createElement("div",
+                        {
+                            key: qual,
+                            className: 'qualifier-group'
+                        },
+                        qualVals
+                    );
                 });
-
-                return React.createElement("div", 
-                    { 
-                        key: qual,
-                        className: 'qualifier-group'
-                    }, 
-                    qualVals
-                );
-            });
-        }
-        presenceCheckboxes = React.createElement("div", 
-            { 
-                key: "presence",
-                className: 'presence'
-            },
-            React.createElement(
-                "label",
-                { key: "present" },
-                React.createElement("input", {
-                    type: "checkbox",
-                    onChange: _.partial(this.handleCheckboxChange, null),
-                    checked: thisCondition &amp;&amp; thisCondition.observed,
-                    value: "observed"
-                }),
-                "Present"
-            ),
-            React.createElement(
-                "label",
-                { key: "not-present" },
-                React.createElement("input", {
-                    type: "checkbox",
-                    onChange: _.partial(this.handleCheckboxChange, null),
-                    checked: thisCondition &amp;&amp; !thisCondition.observed,
-                    value: "notObserved"
-                }),
-                "Not present"
-            )
-        );
-
-        var note = React.createElement(
-            NeurologyTable.Section.Row.Cell.Note,
-            {
-                note: thisCondition &amp;&amp; thisCondition.note || null,
-                onNoteChange: this.handleNoteChange,
-            },
-            null
-        );
-
-        var classNames = [];
-        if (thisCondition) {
-            classNames.push("is-investigated");
-
-            if (thisCondition.observed) {
-                classNames.push("is-observed");
             }
-        }
+            presenceCheckboxes = React.createElement("div",
+                {
+                    key: "presence",
+                    className: 'presence'
+                },
+                React.createElement(
+                    "label",
+                    { key: "present" },
+                    React.createElement("input", {
+                        type: "checkbox",
+                        onChange: _.partial(this.handleCheckboxChange, null),
+                        checked: thisCondition &amp;&amp; thisCondition.observed,
+                        value: "observed"
+                    }),
+                    "Present"
+                ),
+                React.createElement(
+                    "label",
+                    { key: "not-present" },
+                    React.createElement("input", {
+                        type: "checkbox",
+                        onChange: _.partial(this.handleCheckboxChange, null),
+                        checked: thisCondition &amp;&amp; !thisCondition.observed,
+                        value: "notObserved"
+                    }),
+                    "Not present"
+                )
+            );
 
-        return React.createElement(
-            "td",
-            { className: classNames.join(' ') },
-            presenceCheckboxes,
-            qualCheckboxes,
-            note
-        );
-    }
-});</code>
+            var note = React.createElement(
+                NeurologyTableSectionRowCellNote,
+                {
+                    note: thisCondition &amp;&amp; thisCondition.note || null,
+                    onNoteChange: this.handleNoteChange,
+                },
+                null
+            );
+
+            var classNames = [];
+            if (thisCondition) {
+                classNames.push("is-investigated");
+
+                if (thisCondition.observed) {
+                    classNames.push("is-observed");
+                }
+            }
+
+            return React.createElement(
+                "td",
+                { className: classNames.join(' ') },
+                presenceCheckboxes,
+                qualCheckboxes,
+                note
+            );
+        }
+    });
+
+    return NeurologyTableSectionRowCell;
+});
+</code>
     </property>
     <property>
-      <name>NeurologyTable.Section.Row.Cell</name>
+      <name>NeurologyTableSectionRowCell</name>
     </property>
     <property>
       <parse/>
@@ -1671,104 +1783,126 @@
       <cache>long</cache>
     </property>
     <property>
-      <code>window.NeurologyTable.Section.Row.Cell.Note = React.createClass({
-    displayName: "Note",
+      <code>define(
+"NeurologyTableSectionRowCellNote",
+[
+    "react",
+    "lodash",
+    "react-bootstrap"
+], function(
+    React,
+    _,
+    ReactBootstrap
+) {
+    var NeurologyTableSectionRowCellNote = React.createClass({
+        displayName: "Note",
 
-    onTextAreaKeypress: function(e) {
-        if (e.charCode == 13) {
-            e.preventDefault();
-            this.refs.popoverTrigger.hide();
-        }
-    },
+        onTextAreaKeypress: function(e) {
+            if (e.charCode == 13) {
+                e.preventDefault();
+                this.refs.popoverTrigger.hide();
+            }
+        },
 
-    onPopoverReady: function() {
-        this.refs.noteField.focus();
-    },
+        onPopoverReady: function() {
+            this.refs.noteField.focus();
+        },
 
-    // source: http://stackoverflow.com/questions/4715762/javascript-move-caret-to-last-character
-    moveCaretToEnd: function(el) {
-        if (typeof el.selectionStart == "number") {
-            el.selectionStart = el.selectionEnd = el.value.length;
-        } else if (typeof el.createTextRange != "undefined") {
-            el.focus();
-            var range = el.createTextRange();
-            range.collapse(false);
-            range.select();
-        }
-    },
+        // source: http://stackoverflow.com/questions/4715762/javascript-move-caret-to-last-character
+        moveCaretToEnd: function(el) {
+            if (typeof el.selectionStart == "number") {
+                el.selectionStart = el.selectionEnd = el.value.length;
+            } else if (typeof el.createTextRange != "undefined") {
+                el.focus();
+                var range = el.createTextRange();
+                range.collapse(false);
+                range.select();
+            }
+        },
 
-    onTextAreaFocus: function(e) {
-        this.moveCaretToEnd(e.target);
-    },
+        onTextAreaFocus: function(e) {
+            this.moveCaretToEnd(e.target);
+        },
 
-    onPopoverHide: function() {
-        this.props.onNoteChange(this.refs.noteField.value);
-    },
+        onPopoverHide: function() {
+            this.props.onNoteChange(this.refs.noteField.value);
+        },
 
-    render: function () {
-        if (!this.props.note) {
-            var currentNote = null;
-            var trigger = React.createElement(
-                "button",
-                { className: "add" },
-                "+ Add note"
-            );
-        } else {
-            var currentNote = React.createElement(
-                "span",
-                { className: "content" },
-                this.props.note
-            );
-            var trigger = React.createElement(
-                "button",
-                { className: "edit"},
-                React.createElement("i", { "className": "fa fa-pencil" })
-            );
-        }
-        var popover = React.createElement(
-            ReactBootstrap.Popover,
-            { 
-                placement: "right",
-            },
-            React.createElement(
-                "textarea",
+        render: function () {
+            var currentNote, trigger;
+            if (!this.props.note) {
+                currentNote = null;
+                trigger = React.createElement(
+                    "button",
+                    {
+                    	className: "add",
+                    	onClick: function(e) { e.preventDefault(); }
+                    },
+                    "+ Add note"
+                );
+            } else {
+                currentNote = React.createElement(
+                    "span",
+                    { className: "content" },
+                    this.props.note
+                );
+                trigger = React.createElement(
+                    "button",
+                    {
+                    	className: "edit",
+                    	onClick: function(e) { e.preventDefault(); }
+                    },
+                    React.createElement("i", { "className": "fa fa-pencil" })
+                );
+            }
+            var popover = React.createElement(
+                ReactBootstrap.Popover,
                 {
-                    defaultValue: this.props.note,
-                    onKeyPress: this.onTextAreaKeypress,
-                    onFocus: this.onTextAreaFocus,
-                    ref: "noteField",
-                    cols: 25,
-                    rows: 8
+                    placement: "right",
                 },
-                null
-            )
-        );
+                React.createElement(
+                    "textarea",
+                    {
+                        defaultValue: this.props.note,
+                        onKeyPress: this.onTextAreaKeypress,
+                        onFocus: this.onTextAreaFocus,
+                        ref: "noteField",
+                        cols: 25,
+                        rows: 8
+                    },
+                    null
+                )
+            );
 
-        return React.createElement(
-            "p",
-            { className: "note" },
-            currentNote,
-            React.createElement(
-                ReactBootstrap.OverlayTrigger,
-                { 
-                    trigger: "click", 
-                    placement: "right", 
-                    overlay: popover, 
-                    rootClose: true, 
-                    animation: true, 
-                    delay: 10,
-                    ref: "popoverTrigger",
-                    onEntered: this.onPopoverReady,
-                    onExit: this.onPopoverHide
-                },
-                trigger
-            )
-        );
-    }
-});</code>
+            return React.createElement(
+                "p",
+                { className: "note" },
+                currentNote,
+                React.createElement(
+                    ReactBootstrap.OverlayTrigger,
+                    {
+                        trigger: "click",
+                        placement: "right",
+                        overlay: popover,
+                        rootClose: true,
+                        animation: true,
+                        delay: 10,
+                        ref: "popoverTrigger",
+                        onEntered: this.onPopoverReady,
+                        onExit: this.onPopoverHide
+                    },
+                    trigger
+                )
+            );
+        }
+    });
+
+    return NeurologyTableSectionRowCellNote;
+});
+</code>
     </property>
     <property>
-      <name>NeurologyTable.Section.Row.Cell.Note</name>
+      <name>NeurologyTableSectionRowCellNote</name>
     </property>
     <property>
       <parse/>
@@ -1854,25 +1988,139 @@
       </use>
     </class>
     <property>
-      <cache>long</cache>
+      <cache>forbid</cache>
     </property>
     <property>
-      <code>(function() {
-  var config = $xwiki.getDocument("PhenoTips.NeurologyTableCode").getContent();
-  
-  var init = function() {
-    ReactDOM.render(React.createElement(NeurologyTable, {config: config}), document.getElementById('neurology-table-container'));
-  }
+      <code>require.config({
+	paths: {
+		"react": "$services.webjars.url('react', 'react.min.js')",
+		"react-dom": "$services.webjars.url('react', 'react-dom.min.js')",
+		"react-bootstrap": "$services.webjars.url('react-bootstrap', 'react-bootstrap.min.js')",
+		"Pikaday": "$services.webjars.url('org.webjars.npm:pikaday', 'pikaday.js')",
+		"lodash": "$services.webjars.url('org.webjars.bower:lodash', 'dist/lodash.min.js')"
+	},
+});
 
-  (XWiki.domIsLoaded &amp;&amp; init()) || document.observe("xwiki:dom:loaded", init);
-})();
-</code>
+require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, NeurologyTable) {
+	var config = $xwiki.getDocument("PhenoTips.NeurologyTableCode").getContent();
+
+	var initialState = JSON.parse(document.getElementById('neurology-table-container').dataset.init);
+
+	var init = function() {
+		ReactDOM.render(React.createElement(NeurologyTable, { config: config, initialState: initialState }), document.getElementById('neurology-table-container'));
+	};
+
+	(XWiki.domIsLoaded &amp;&amp; init()) || document.observe("xwiki:dom:loaded", init);
+});</code>
     </property>
     <property>
       <name>Initialization</name>
     </property>
     <property>
       <parse>1</parse>
+    </property>
+    <property>
+      <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>9</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>6d08a253-0c57-43f6-9860-a46684c8f983</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>define("NeurologyTableUtils", [], function() {
+    return {
+        dateToString: function(date) {
+            return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+        },
+
+        stringToDate: function(str) {
+            var dateParts = str.split('-');
+            return new Date(dateParts[0], dateParts[1]-1, dateParts[2]);
+        },
+    };
+});</code>
+    </property>
+    <property>
+      <name>NeurologyTableUtils</name>
+    </property>
+    <property>
+      <parse/>
     </property>
     <property>
       <use>onDemand</use>
@@ -2070,7 +2318,7 @@
       <name>NeurologyTable</name>
     </property>
     <property>
-      <parse/>
+      <parse>1</parse>
     </property>
     <property>
       <use>onDemand</use>

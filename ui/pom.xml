@@ -26,6 +26,30 @@
       <type>xar</type>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>react</artifactId>
+      <version>0.14.8</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>react-bootstrap</artifactId>
+      <version>0.28.1</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>pikaday</artifactId>
+      <version>1.4.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>lodash</artifactId>
+      <version>4.6.1</version>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
   <build>
     <extensions>

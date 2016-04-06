@@ -97,20 +97,28 @@
 		}
 	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="bootstrap.css">
+	<link rel="stylesheet" href="bootstrap-popover-custom.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css">
-	<script type="text/javascript" src="NeurologyTable/vendor/bundle.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+	<script type="text/javascript">
+		require.config({
+			baseUrl: "/NeurologyTable",
+			paths: {
+				"react": "https://fb.me/react-0.14.8.min",
+				"react-bootstrap": "https://cdnjs.cloudflare.com/ajax/libs/react-bootstrap/0.28.5/react-bootstrap.min",
+				"react-dom": "https://fb.me/react-dom-0.14.8.min",
+				"Pikaday": "https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min",
+				"lodash": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.8.2/lodash.min",
+				"init": "/edit"
+			},
+			waitSeconds: 15
+		});
+		require(['init'], function(init) {
+			init();
+		});
+	</script>
 </head>
 <body>
 	<div id="table-container"></div>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.js"></script>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.ColHeaderCell.js"></script>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.js"></script>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.HeaderRow.js"></script>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.HeaderRow.Cell.js"></script>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.Row.js"></script>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.Row.Cell.js"></script>
-	<script type="text/javascript" src="NeurologyTable/NeurologyTable.Section.Row.Cell.Note.js"></script>
-	<script type="text/javascript" src="edit.js"></script>
 </body>
 </html>

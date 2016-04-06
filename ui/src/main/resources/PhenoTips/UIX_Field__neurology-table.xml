@@ -19,7 +19,7 @@
   <parent>PhenoTips.PatientSheet</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1459893140000</date>
+  <date>1459977424000</date>
   <contentUpdateDate>1459869160000</contentUpdateDate>
   <version>1.1</version>
   <title>Neurology Table</title>
@@ -99,14 +99,15 @@
     </class>
     <property>
       <content>{{velocity}}
+$xwiki.ssrx.use('/com/gene42/neurology/bootstrap-popover-custom.css')
 $xwiki.ssx.use('PhenoTips.NeurologyTableCode')
 $xwiki.jsx.use('PhenoTips.NeurologyTableCode')
-{{/velocity}}
+$xwiki.linkx.use($services.webjars.url('org.webjars.npm:pikaday', 'css/pikaday.css'), {'type': 'text/css', 'rel': 'stylesheet'})
 
-{{html}}
-Neurology table:
-&lt;div id="neurology-table-container"&gt;&lt;/div&gt;
-{{/html}}</content>
+{{html clean=false}}
+&lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
+{{/html}}
+{{/velocity}}</content>
     </property>
     <property>
       <extensionPointId>org.phenotips.patientSheet.section.neurology</extensionPointId>
