@@ -2233,6 +2233,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
     <property>
       <code>#neurology-table {
   border-collapse: collapse;
+  background-color: #f9f9f9;
 }
 #neurology-table td, #neurology-table th {
   padding: 6px;
@@ -2247,6 +2248,9 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 }
 #neurology-table thead th {
   text-align: left;
+}
+#neurology-table thead th input {
+  width: 80%;
 }
 #neurology-table thead th button {
   float: right;
