@@ -68,7 +68,20 @@
       <validationRegExp/>
       <classType>com.xpn.xwiki.objects.classes.DateClass</classType>
     </date>
-    <observed>
+    <id>
+      <customDisplay/>
+      <disabled>0</disabled>
+      <name>id</name>
+      <number>2</number>
+      <picker>0</picker>
+      <prettyName>Phenotype term</prettyName>
+      <size>30</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+    </id>
+    <isObserved>
       <customDisplay/>
       <defaultValue/>
       <disabled>0</disabled>
@@ -81,7 +94,7 @@
       <validationMessage/>
       <validationRegExp/>
       <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
-    </observed>
+    </isObserved>
     <severity>
       <customDisplay/>
       <disabled>0</disabled>
@@ -108,18 +121,5 @@
       <validationRegExp/>
       <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
     </spatial_pattern>
-    <term>
-      <customDisplay/>
-      <disabled>0</disabled>
-      <name>term</name>
-      <number>2</number>
-      <picker>0</picker>
-      <prettyName>Phenotype term</prettyName>
-      <size>30</size>
-      <unmodifiable>0</unmodifiable>
-      <validationMessage/>
-      <validationRegExp/>
-      <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-    </term>
   </class>
 </xwikidoc>

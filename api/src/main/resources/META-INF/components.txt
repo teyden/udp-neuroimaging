@@ -1,1 +1,3 @@
 com.gene42.neurology.script.NeurologyScriptService
+com.gene42.neurology.internal.NeurologyFeaturesUpdater
+com.gene42.neurology.internal.NeurologyFeaturesController

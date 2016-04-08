@@ -30,71 +30,71 @@
   "sections": [
     {
       "name": "corpus callosum",
-      "id": "hp:0001273",
+      "id": "HP:0001273",
       "terms": [
         {
           "name": "hyperplasia",
-          "id": "hp:0007074",
+          "id": "HP:0007074",
           "qualifiers": ["spatial_pattern"]
         },
         {
           "name": "hypoplasia",
-          "id": "hp:0002079",
+          "id": "HP:0002079",
           "qualifiers": ["spatial_pattern"]
         },
         {
           "name": "partial agenesis",
-          "id": "hp:0001338"
+          "id": "HP:0001338"
         },
         {
           "name": "agenesis",
-          "id": "hp:0001274"
+          "id": "HP:0001274"
         }
       ]
     },
     {
       "name": "brainstem",
-      "id": "hp:0002363",
+      "id": "HP:0002363",
       "terms": [
         {
           "name": "hypoplasia",
-          "id": "hp:0002365",
+          "id": "HP:0002365",
           "qualifiers": ["spatial_pattern"]
         },
         {
           "name": "hyperplasia",
-          "id": "hp:0012755",
+          "id": "HP:0012755",
           "qualifiers": ["spatial_pattern"]
         },
         {
           "name": "abnormal MRI signal",
-          "id": "hp:0012747"
+          "id": "HP:0012747"
         }
       ]
     },
     {
       "name": "cerebellum",
-      "id": "hp:0001317",
+      "id": "HP:0001317",
       "terms": [
         {
           "name": "hemisphere atrophy",
-          "id": "hp:0008278"
+          "id": "HP:0008278"
         },
         {
           "name": "vermis atrophy",
-          "id": "hp:0006855"
+          "id": "HP:0006855"
         },
         {
           "name": "hemisphere hypoplasia",
-          "id": "hp:0100307"
+          "id": "HP:0100307"
         },
         {
           "name": "vermis hypolasia",
-          "id": "hp:0001320"
+          "id": "HP:0001320"
         },
         {
           "name": "cerebellar gliosis",
-          "id": "hp:0012698"
+          "id": "HP:0012698"
         },
         {
           "name": "swelling/edema",
@@ -108,13 +108,13 @@
       "terms": [
         {
           "name": "enlarged cisterns",
-          "id": "hp:0100952"
+          "id": "HP:0100952"
         }
       ]
     },
     {
       "name": "subarachnoid/csf space",
-      "id": "hp:0012703",
+      "id": "HP:0012703",
       "terms": [
         {
           "name": "enlarged cerebral subarachnoid space",
@@ -128,93 +128,93 @@
         },
         {
           "name": "arachnoid cycst",
-          "id": "hp:0100702"
+          "id": "HP:0100702"
         }
       ]
     },
     {
       "name": "ventricles",
-      "id": "hp:0002118",
+      "id": "HP:0002118",
       "terms": [
         {
           "name": "ventriculomegaly",
-          "id": "hp:0002119",
+          "id": "HP:0002119",
           "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
     {
       "name": "cerebral cortex",
-      "id": "hp:0002538",
+      "id": "HP:0002538",
       "terms": [
         {
           "name": "atrophy",
-          "id": "hp:0002120",
+          "id": "HP:0002120",
           "qualifiers": ["severity"]
         },
         {
           "name": "dysgenesis/migration abnormality",
-          "id": "hp:0002538"
+          "id": "HP:0002538"
         }
       ]
     },
     {
       "name": "white matter",
-      "id": "hp:0002500",
+      "id": "HP:0002500",
       "terms": [
         {
           "name": "hypomyelination",
-          "id": "hp:0006808"
+          "id": "HP:0006808"
         },
         {
           "name": "demyelination",
-          "id": "hp:0007258"
+          "id": "HP:0007258"
         },
         {
           "name": "dysmyelination",
-          "id": "hp:0007266"
+          "id": "HP:0007266"
         },
         {
           "name": "delayed myelination",
-          "id": "hp:0002188"
+          "id": "HP:0002188"
         },
         {
           "name": "white matter atrophy",
-          "id": "hp:0012762"
+          "id": "HP:0012762"
         },
         {
           "name": "white matter gliosis",
-          "id": "hp:0002171"
+          "id": "HP:0002171"
         },
         {
           "name": "PVL",
-          "id": "hp:0006970"
+          "id": "HP:0006970"
         },
         {
           "name": "hypermyelination",
-          "id": "hp:0012754"
+          "id": "HP:0012754"
         },
         {
           "name": "cerebral edema",
-          "id": "hp:0002181"
+          "id": "HP:0002181"
         }
       ]
     },
     {
       "name": "basal ganglia",
-      "id": "hp:0002134",
+      "id": "HP:0002134",
       "terms": [
         {
           "name": "large basal ganglia",
-          "id": "hp:0007048"
+          "id": "HP:0007048"
         },
         {
           "name": "small basal ganglia",
-          "id": "hp:0012697"
+          "id": "HP:0012697"
         },
         {
           "name": "abnormal MRI signal (basal ganglia)",
-          "id": "hp:0012751"
+          "id": "HP:0012751"
         },
         {
           "name": "dysgenesis",
@@ -228,15 +228,15 @@
     },
     {
       "name": "thalami",
-      "id": "hp:0010663",
+      "id": "HP:0010663",
       "terms": [
         {
           "name": "abnormal thalamic size",
-          "id": "hp:0012693"
+          "id": "HP:0012693"
         },
         {
           "name": "abnormal MRI signal (thalami)",
-          "id": "hp:0012696"
+          "id": "HP:0012696"
         },
         {
           "name": "dysgenesis",
@@ -250,7 +250,7 @@
     },
     {
       "name": "hypothalamus",
-      "id": "hp:0012286",
+      "id": "HP:0012286",
       "terms": [
         {
           "name": "hypothalamic atrophy",
@@ -273,49 +273,49 @@
     },
     {
       "name": "pituitary gland",
-      "id": "hp:0012503",
+      "id": "HP:0012503",
       "terms": [
         {
           "name": "enlarged pituitary gland",
-          "id": "hp:0012505"
+          "id": "HP:0012505"
         },
         {
           "name": "small pituitary gland",
-          "id": "hp:0012506"
+          "id": "HP:0012506"
         },
         {
           "name": "abnormality of the pineal gland",
-          "id": "hp:0012680"
+          "id": "HP:0012680"
         },
         {
           "name": "pituitary tumor/mass",
-          "id": "hp:0011750"
+          "id": "HP:0011750"
         },
         {
           "name": "calcifications",
-          "id": "hp:0010513"
+          "id": "HP:0010513"
         }
       ]
     },
     {
       "name": "spine",
-      "id": "hp:0000925",
+      "id": "HP:0000925",
       "terms": [
         {
           "name": "abnormality of the cervical spine",
-          "id": "hp:0003319"
+          "id": "HP:0003319"
         },
         {
           "name": "abnormality of the thoracic spine",
-          "id": "hp:0100711"
+          "id": "HP:0100711"
         },
         {
           "name": "abnormality of the lumbar spine",
-          "id": "hp:0100712"
+          "id": "HP:0100712"
         },
         {
           "name": "abnormality of the sacrum",
-          "id": "hp:0005107"
+          "id": "HP:0005107"
         }
       ]
     },
@@ -325,11 +325,11 @@
       "terms": [
         {
           "name": "abnormal MRS imaging",
-          "id": "hp:0012705"
+          "id": "HP:0012705"
         },
         {
           "name": "decreased NAA",
-          "id": "hp:0012708"
+          "id": "HP:0012708"
         },
         {
           "name": "elevated NAA",
@@ -337,7 +337,7 @@
         },
         {
           "name": "elevated choline",
-          "id": "hp:0012706"
+          "id": "HP:0012706"
         },
         {
           "name": "decreased choline",
@@ -353,7 +353,7 @@
         },
         {
           "name": "elevated lactate",
-          "id": "hp:0012707"
+          "id": "HP:0012707"
         },
         {
           "name": "decreased lactate",
@@ -363,27 +363,27 @@
     },
     {
       "name": "cerebral vasculature",
-      "id": "hp:0100659",
+      "id": "HP:0100659",
       "terms": []
     },
     {
       "name": "cerebral hemorrhage",
-      "id": "hp:0001342",
+      "id": "HP:0001342",
       "terms": []
     },
     {
       "name": "brain calcification",
-      "id": "hp:0002514",
+      "id": "HP:0002514",
       "terms": []
     },
     {
       "name": "iron deposition in brain",
-      "id": "hp:0012675",
+      "id": "HP:0012675",
       "terms": []
     },
     {
       "name": "copper deposition in brain",
-      "id": "hp:0012676",
+      "id": "HP:0012676",
       "terms": []
     }
   ],
@@ -497,17 +497,17 @@
       <code>define(
 "NeurologyTable",
 [
-    "react",
-    "react-dom",
-    "Pikaday",
+    "react", 
+    "react-dom", 
+    "Pikaday", 
     "lodash",
     "NeurologyTableSection",
     "NeurologyTableColHeaderCell",
     "NeurologyTableUtils"
 ], function(
-    React,
-    ReactDOM,
-    Pikaday,
+    React, 
+    ReactDOM, 
+    Pikaday, 
     _,
     NeurologyTableSection,
     NeurologyTableColHeaderCell,
@@ -528,6 +528,10 @@
             };
         },
 
+        componentDidMount: function() {
+            this.setHiddenInputValue(this.state);
+        },
+
         handleConditionChange: function(conditionId, date, qualifier, value, isChecked) {
             var newState = _.cloneDeep(this.state);
             var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
@@ -539,14 +543,13 @@
             }
 
             this.setState(newState);
-            console.log(newState);
         },
 
         handlePresenceCheckboxChange: function(newState, existingRecord, conditionId, date, value, isChecked) {
             if (isChecked) {
                 var observed = value == "observed";
                 if (existingRecord) {
-                    existingRecord.observed = observed;
+                    existingRecord.isObserved = observed;
                     if (!observed) {
                         existingRecord.qualifiers = {};
                     }
@@ -554,7 +557,7 @@
                     newState.conditions.push({
                         id: conditionId,
                         date: date,
-                        observed: observed,
+                        isObserved: observed,
                     });
                 }
 
@@ -564,12 +567,12 @@
                     if (sectionId) {
                         var sectionRecord = _.find(newState.conditions, { id: sectionId, date: date });
                         if (sectionRecord) {
-                            sectionRecord.observed = true;
+                            sectionRecord.isObserved = true;
                         } else {
                             newState.conditions.push({
                                 id: sectionId,
                                 date: date,
-                                observed: true,
+                                isObserved: true,
                             });
                         }
                     }
@@ -592,10 +595,9 @@
             var newState = _.cloneDeep(this.state);
             var existingRecord = _.find(newState.conditions, { id: conditionId, date: date });
 
-            existingRecord.note = newNote;
+            existingRecord.comments = newNote;
 
             this.setState(newState);
-            console.log(newState);
         },
 
         handleColDateChange: function(oldDate, newDate) {
@@ -613,7 +615,6 @@
             }
 
             this.setState(newState);
-            console.log(newState);
         },
 
         handleAddColClick: function(e) {
@@ -631,7 +632,6 @@
             newState.dates.push(NeurologyTableUtils.dateToString(newDate));
 
             this.setState(newState);
-            console.log(newState);
         },
 
         handleRemoveColClick: function(date) {
@@ -641,7 +641,6 @@
             _.remove(newState.conditions, _.matchesProperty('date', date));
 
             this.setState(newState);
-            console.log(newState);
         },
 
         getSectionIdByConditionId: function(conditionId) {
@@ -654,6 +653,16 @@
             });
 
             return section ? section.id : undefined;
+        },
+
+        setHiddenInputValue: function(state) {
+            document.getElementById('neurology_table_state').value = JSON.stringify({
+                "neurology": state.conditions
+            });
+        },
+
+        componentWillUpdate: function(nextProps, nextState) {
+            this.setHiddenInputValue(nextState);
         },
 
         render: function() {
@@ -708,7 +717,7 @@
             );
         }
     });
-
+    
     return NeurologyTable;
 });</code>
     </property>
@@ -805,14 +814,14 @@
       <code>define(
 "NeurologyTableColHeaderCell",
 [
-    "react",
-    "react-dom",
-    "Pikaday",
+    "react", 
+    "react-dom", 
+    "Pikaday", 
     "NeurologyTableUtils"
 ], function(
-    React,
-    ReactDOM,
-    Pikaday,
+    React, 
+    ReactDOM, 
+    Pikaday, 
     NeurologyTableUtils
 ) {
     return React.createClass({
@@ -964,14 +973,14 @@
       <code>define(
 "NeurologyTableSection",
 [
-    "react",
-    "react-dom",
+    "react", 
+    "react-dom", 
     "lodash",
     "NeurologyTableSectionRow",
     "NeurologyTableSectionHeaderRow"
 ], function(
-    React,
-    ReactDOM,
+    React, 
+    ReactDOM, 
     _,
     NeurologyTableSectionRow,
     NeurologyTableSectionHeaderRow
@@ -1109,11 +1118,11 @@
       <code>define(
 "NeurologyTableSectionHeaderRow",
 [
-    "react",
+    "react", 
     "lodash",
     "NeurologyTableSectionHeaderRowCell"
 ], function(
-    React,
+    React, 
     _,
     NeurologyTableSectionHeaderRowCell
 ) {
@@ -1248,13 +1257,13 @@
       <code>define(
 "NeurologyTableSectionHeaderRowCell",
 [
-    "react",
-    "react-dom",
+    "react", 
+    "react-dom", 
     "lodash",
     "NeurologyTableSectionRowCellNote"
 ], function(
-    React,
-    ReactDOM,
+    React, 
+    ReactDOM, 
     _,
     NeurologyTableSectionRowCellNote
 ) {
@@ -1275,7 +1284,7 @@
             var matchingConditions = _.filter(this.props.conditions, function(condition) {
                 var match = condition.date == _this.props.date;
                 match &amp;= _.indexOf(thisSectionConditions, condition.id) &gt; -1;
-                match &amp;= condition.observed;
+                match &amp;= condition.isObserved;
                 return match;
             });
 
@@ -1283,7 +1292,7 @@
             var notes = React.createElement(
                 NeurologyTableSectionRowCellNote,
                 {
-                    note: thisCondition &amp;&amp; thisCondition.note || null,
+                    note: thisCondition &amp;&amp; thisCondition.comments || null,
                     onNoteChange: this.handleNoteChange,
                 },
                 null
@@ -1305,7 +1314,7 @@
                         {
                             type: "checkbox",
                             onChange: this.handleCheckboxChange,
-                            checked: thisCondition &amp;&amp; !thisCondition.observed,
+                            checked: thisCondition &amp;&amp; !thisCondition.isObserved,
                             disabled: matchingConditions.length &gt; 0,
                             value: "notObserved"
                         }
@@ -1320,7 +1329,7 @@
                         {
                             type: "checkbox",
                             onChange: this.handleCheckboxChange,
-                            checked: thisCondition &amp;&amp; thisCondition.observed,
+                            checked: thisCondition &amp;&amp; thisCondition.isObserved,
                             disabled: matchingConditions.length &gt; 0,
                             value: "observed"
                         }
@@ -1429,11 +1438,11 @@
       <code>define(
 "NeurologyTableSectionRow",
 [
-    "react",
+    "react", 
     "lodash",
     "NeurologyTableSectionRowCell"
 ], function(
-    React,
+    React, 
     _,
     NeurologyTableSectionRowCell
 ) {
@@ -1572,11 +1581,11 @@
       <code>define(
 "NeurologyTableSectionRowCell",
 [
-    "react",
+    "react", 
     "lodash",
     "NeurologyTableSectionRowCellNote"
 ], function(
-    React,
+    React, 
     _,
     NeurologyTableSectionRowCellNote
 ) {
@@ -1643,7 +1652,7 @@
                     React.createElement("input", {
                         type: "checkbox",
                         onChange: _.partial(this.handleCheckboxChange, null),
-                        checked: thisCondition &amp;&amp; thisCondition.observed,
+                        checked: thisCondition &amp;&amp; thisCondition.isObserved,
                         value: "observed"
                     }),
                     "Present"
@@ -1654,7 +1663,7 @@
                     React.createElement("input", {
                         type: "checkbox",
                         onChange: _.partial(this.handleCheckboxChange, null),
-                        checked: thisCondition &amp;&amp; !thisCondition.observed,
+                        checked: thisCondition &amp;&amp; !thisCondition.isObserved,
                         value: "notObserved"
                     }),
                     "Not present"
@@ -1664,7 +1673,7 @@
             var note = React.createElement(
                 NeurologyTableSectionRowCellNote,
                 {
-                    note: thisCondition &amp;&amp; thisCondition.note || null,
+                    note: thisCondition &amp;&amp; thisCondition.comments || null,
                     onNoteChange: this.handleNoteChange,
                 },
                 null
@@ -1674,7 +1683,7 @@
             if (thisCondition) {
                 classNames.push("is-investigated");
 
-                if (thisCondition.observed) {
+                if (thisCondition.isObserved) {
                     classNames.push("is-observed");
                 }
             }
@@ -1786,11 +1795,11 @@
       <code>define(
 "NeurologyTableSectionRowCellNote",
 [
-    "react",
+    "react", 
     "lodash",
     "react-bootstrap"
 ], function(
-    React,
+    React, 
     _,
     ReactBootstrap
 ) {
@@ -1834,7 +1843,7 @@
                 currentNote = null;
                 trigger = React.createElement(
                     "button",
-                    {
+                    { 
                     	className: "add",
                     	onClick: function(e) { e.preventDefault(); }
                     },
@@ -1848,7 +1857,7 @@
                 );
                 trigger = React.createElement(
                     "button",
-                    {
+                    { 
                     	className: "edit",
                     	onClick: function(e) { e.preventDefault(); }
                     },

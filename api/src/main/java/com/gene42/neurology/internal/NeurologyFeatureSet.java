@@ -31,7 +31,14 @@ public class NeurologyFeatureSet
         List<BaseObject> xObjects = doc.getXObjects(CLASS_REFERENCE);
         features = new LinkedList<>();
 
+        if (xObjects == null) {
+            return;
+        }
         for (BaseObject feature : xObjects) {
+            if (feature == null) {
+                continue;
+            }
+
             NeurologyFeature neurologyFeature = new NeurologyFeature(feature, bridge);
             features.add(neurologyFeature);
         }

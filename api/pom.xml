@@ -53,5 +53,15 @@
       <artifactId>json</artifactId>
       <version>20160212</version>
     </dependency>
+    <dependency>
+      <groupId>org.phenotips</groupId>
+      <artifactId>patient-data-api</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+    </dependency>
   </dependencies>
 </project>
