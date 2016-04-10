@@ -44,14 +44,24 @@ public class NeurologyFeatureSet
         }
     }
 
-    public String toJson()
+    public JSONArray toJsonArray()
     {
         JSONArray featuresJson = new JSONArray();
         for (NeurologyFeature feature : features) {
             featuresJson.put(feature.getJsonObj());
         }
 
-        return featuresJson.toString();
+        return featuresJson;
+    }
+
+    public String toJson()
+    {
+        return toJsonArray().toString();
+    }
+
+    public List<NeurologyFeature> getFeatures()
+    {
+        return features;
     }
 
     private List<NeurologyFeature> features;

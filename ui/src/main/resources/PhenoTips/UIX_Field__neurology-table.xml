@@ -104,12 +104,16 @@ $xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
   $xwiki.jsx.use('PhenoTips.NeurologyTableCode')##
   $xwiki.ssrx.use('/com/gene42/neurology/bootstrap-popover-custom.css')##
   $xwiki.linkx.use($services.webjars.url('org.webjars.npm:pikaday', 'css/pikaday.css'), {'type': 'text/css', 'rel': 'stylesheet'})##
-#end
 
-{{html clean=false}}
-&lt;input type="hidden" name="neurology_table_state" id="neurology_table_state"&gt;
-&lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
-{{/html}}
+  {{html clean=false}}
+  &lt;input type="hidden" name="neurology_table_state" id="neurology_table_state"&gt;
+  &lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
+  {{/html}}
+#else
+  {{html clean=false}}
+  $services.neurology.getFeatureSetViewHtml($doc)
+  {{/html}}
+#end
 {{/velocity}}</content>
     </property>
     <property>

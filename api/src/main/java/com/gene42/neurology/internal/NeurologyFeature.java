@@ -20,15 +20,16 @@ import com.xpn.xwiki.objects.BaseObject;
 
 public class NeurologyFeature
 {
-    private static final String DATE_FORMAT = "yyyy-MM-dd";
-    private static final String JSON_KEY_IS_OBSERVED = "isObserved";
-    private static final String JSON_KEY_ID = "id";
-    private static final String JSON_KEY_COMMENTS = "comments";
-    private static final String JSON_KEY_SPATIAL_PATTERN = "spatial_pattern";
-    private static final String JSON_KEY_SEVERITY = "severity";
-    private static final String JSON_KEY_DATE = "date";
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+    public static final String JSON_KEY_IS_OBSERVED = "isObserved";
+    public static final String JSON_KEY_ID = "id";
+    public static final String JSON_KEY_COMMENTS = "comments";
+    public static final String JSON_KEY_SPATIAL_PATTERN = "spatial_pattern";
+    public static final String JSON_KEY_SEVERITY = "severity";
+    public static final String JSON_KEY_DATE = "date";
+    public static final String JSON_KEY_QUALIFIERS = "qualifiers";
 
-    private final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    public static final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
 
     public NeurologyFeature(JSONObject json)
     {
@@ -40,7 +41,7 @@ public class NeurologyFeature
         } catch (ParseException e) {
 
         }
-        JSONObject qualifiers = json.optJSONObject("qualifiers");
+        JSONObject qualifiers = json.optJSONObject(JSON_KEY_QUALIFIERS);
         if (qualifiers != null) {
             spatial_pattern = qualifiers.optString(JSON_KEY_SPATIAL_PATTERN);
             severity = qualifiers.optString(JSON_KEY_SEVERITY);

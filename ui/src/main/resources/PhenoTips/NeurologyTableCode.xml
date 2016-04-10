@@ -1891,7 +1891,7 @@
                     ReactBootstrap.OverlayTrigger,
                     {
                         trigger: "click",
-                        placement: "right",
+                        placement: this.props.note ? "left" : "right",
                         overlay: popover,
                         rootClose: true,
                         animation: true,
@@ -2287,13 +2287,13 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 #neurology-table td div.qualifier-group label {
   display: block;
 }
-#neurology-table td .note {
+.editbody #neurology-table td .note {
   visibility: hidden;
 }
-#neurology-table td.is-investigated .note {
+.editbody #neurology-table td.is-investigated .note {
   visibility: visible;
 }
-#neurology-table td .note {
+.editbody #neurology-table td .note {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -2308,10 +2308,10 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 #neurology-table td .note .content {
   line-height: 17px;
 }
-#neurology-table td .note button {
+.editbody #neurology-table td .note button {
   font-size: 11px;
 }
-#neurology-table td .note button.edit {
+.editbody #neurology-table td .note button.edit {
   position: absolute;
   right: 0; top: 0;
   font-size: 80%;
@@ -2322,6 +2322,33 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow: auto;
+}
+.viewbody #neurology-table td, .viewbody #neurology-table th {
+  border: 1px solid #aaa; border-right-width: 0;
+  vertical-align: top;
+}
+.viewbody #neurology-table td:last-child, .viewbody #neurology-table th:last-child {
+  border-right-width: 1px;
+}
+.viewbody #neurology-table .term-header td.observed {
+  border-left-color: red;
+  border-top-color: red;
+}
+.viewbody #neurology-table .term-header td.not-observed {
+  border-left-color: green;
+  border-top-color: green;
+}
+.viewbody #neurology-table td .note {
+  font-size: 80%;
+  text-align: left;
+  max-width: 200px;
+}
+.viewbody #neurology-table td ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style: disc inside;
+  text-align: left;
 }</code>
     </property>
     <property>
