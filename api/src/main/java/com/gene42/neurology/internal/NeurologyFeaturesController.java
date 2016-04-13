@@ -21,13 +21,13 @@ import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 
 import com.xpn.xwiki.XWikiContext;
 import com.xpn.xwiki.doc.XWikiDocument;
 import com.xpn.xwiki.objects.BaseObject;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 @Component(roles = { PatientDataController.class })
 @Named("neurology")
@@ -120,7 +120,7 @@ public class NeurologyFeaturesController implements PatientDataController<Neurol
         while (iterator.hasNext()) {
             NeurologyFeature feature = iterator.next();
 
-            container.add(feature.getJsonObj());
+            container.put(feature.getJsonObj());
         }
     }
 
@@ -134,7 +134,7 @@ public class NeurologyFeaturesController implements PatientDataController<Neurol
         try {
             JSONArray featuresJson = json.getJSONArray(CONTROLLER_NAME);
             List<NeurologyFeature> features = new LinkedList<NeurologyFeature>();
-            for (int i = 0; i < featuresJson.size(); ++i) {
+            for (int i = 0; i < featuresJson.length(); ++i) {
                 JSONObject featureJson = featuresJson.getJSONObject(i);
                 NeurologyFeature feature = new NeurologyFeature(new org.json.JSONObject(featureJson));
 
