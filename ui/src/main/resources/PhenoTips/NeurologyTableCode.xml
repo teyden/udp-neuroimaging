@@ -503,15 +503,17 @@
     "lodash",
     "NeurologyTableSection",
     "NeurologyTableColHeaderCell",
-    "NeurologyTableUtils"
+    "NeurologyTableUtils",
+    "PhenotypeSelectionUtils",
 ], function(
     React, 
     ReactDOM, 
-    Pikaday, 
+    Pikaday,
     _,
     NeurologyTableSection,
     NeurologyTableColHeaderCell,
-    NeurologyTableUtils
+    NeurologyTableUtils,
+    PhenotypeSelectionUtils
 ) {
     var NeurologyTable = React.createClass({
         displayName: "NeurologyTable",
@@ -662,7 +664,11 @@
         },
 
         componentWillUpdate: function(nextProps, nextState) {
+
             this.setHiddenInputValue(nextState);
+            var curPhenotypes = NeurologyTableUtils.getPhenotypesForFeatures(this.state.conditions, this.state.dates);
+            var nextPhenotypes = NeurologyTableUtils.getPhenotypesForFeatures(nextState.conditions, nextState.dates);
+            NeurologyTableUtils.updateSelectedPhenotypes(curPhenotypes, nextPhenotypes);
         },
 
         render: function() {
@@ -2112,7 +2118,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
       <cache>long</cache>
     </property>
     <property>
-      <code>define("NeurologyTableUtils", [], function() {
+      <code>define("NeurologyTableUtils", ["PhenotypeSelectionUtils"], function(PhenotypeSelectionUtils) {
     return {
         dateToString: function(date) {
             return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
@@ -2122,6 +2128,57 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
             var dateParts = str.split('-');
             return new Date(dateParts[0], dateParts[1]-1, dateParts[2]);
         },
+
+        getPhenotypesForFeatures: function(features, dates) {
+            var getAggregateTermMetadata = function(terms) {
+                terms = _.sortBy(terms, function (term) {
+                    return new Date(term.date);
+                });
+                var allQualifiers = _.cloneDeep(_.map(terms, 'qualifiers'));
+                return _.assign.apply(_, allQualifiers);
+            };
+
+            var phenotypes = [];
+
+            var featuresById = _.groupBy(features, 'id');
+
+            _.each(featuresById, function(features, id) {
+                if (_.find(features, 'isObserved')) {
+                    var phenotype = {id: id, isObserved: true};
+                    phenotype.qualifiers = getAggregateTermMetadata(_.filter(features, 'isObserved'));
+                    phenotypes.push(phenotype);
+                } else {
+                    var hasNegated = _.every(dates, function(date) {
+                        return _.find(features, {isObserved: false, date: date});
+                    });
+                    hasNegated &amp;&amp; phenotypes.push({id: id, isObserved: false});
+                }
+            });
+
+            return phenotypes;
+        },
+
+        updateSelectedPhenotypes: function(curPhenotypes, nextPhenotypes) {
+            var toAdd = _.differenceWith(nextPhenotypes, curPhenotypes, _.isEqual);
+            var toRemove = _.differenceWith(curPhenotypes, nextPhenotypes, _.isEqual);
+
+            var idIsHpoTerm = function(id) {
+                return /^HP:.+$/.test(id);
+            };
+
+            _.each(toRemove, function(phenotype) {
+                if (!idIsHpoTerm(phenotype.id)) {
+                    return;
+                }
+                PhenotypeSelectionUtils.deselectPhenotype(phenotype);
+            });
+            _.each(toAdd, function(phenotype) {
+                if (!idIsHpoTerm(phenotype.id)) {
+                    return;
+                }
+                PhenotypeSelectionUtils.selectPhenotype(phenotype, 'neurology features');
+            });
+        }
     };
 });</code>
     </property>
@@ -2133,6 +2190,182 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
     </property>
     <property>
       <use>onDemand</use>
+    </property>
+  </object>
+  <object>
+    <name>PhenoTips.NeurologyTableCode</name>
+    <number>10</number>
+    <className>XWiki.JavaScriptExtension</className>
+    <guid>28d6e323-d40f-4a43-a287-5b04240dff39</guid>
+    <class>
+      <name>XWiki.JavaScriptExtension</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <cache>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>cache</name>
+        <number>5</number>
+        <prettyName>Caching policy</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>long|short|default|forbid</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </cache>
+      <code>
+        <disabled>0</disabled>
+        <name>code</name>
+        <number>2</number>
+        <prettyName>Code</prettyName>
+        <rows>20</rows>
+        <size>50</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <parse>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>parse</name>
+        <number>4</number>
+        <prettyName>Parse content</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </parse>
+      <use>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <multiSelect>0</multiSelect>
+        <name>use</name>
+        <number>3</number>
+        <prettyName>Use this extension</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>currentPage|onDemand|always</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </use>
+    </class>
+    <property>
+      <cache>long</cache>
+    </property>
+    <property>
+      <code>define("PhenotypeSelectionUtils", [], function() {
+  return {    
+  	/* 
+  	  phenotype data structure:
+  	  id &lt;- an HPO id or arbitrary text
+  	  isObserved &lt;- boolean describing whether or not the phenotype was observed
+  	  qualifiers: {
+  	    spatial_pattern &lt;- HPO ID
+  	    severity &lt;- HPO ID
+  	  }
+  	*/
+  	
+    /**
+     * Selects a phenotype. If the phenotype is already selected, do nothing.
+     * @param  {object} phenotype         the phenotype. see object spec above.
+     * @param  {string} autoSelectSrcDesc a string describing the reason for auto-selection of this phenotype, if applicable.
+     */
+    selectPhenotype: function(phenotype, autoSelectSrcDesc) {
+      var suggestWidget = $("quick-phenotype-search")._suggestWidget;
+      if (!suggestWidget) {
+         return null;
+      }
+      var _this = this;
+      var id = phenotype.id;
+      var searchUrl = new XWiki.Document('SolrService', 'PhenoTips').getURL("get", "q=" + id);
+      new Ajax.Request(searchUrl, {
+        method: 'get',
+        onSuccess: function(transport) {
+          var response = transport.responseJSON.rows[0];
+          if (response) {
+            var categories = '&lt;span class="hidden term-category"&gt;';
+            response.term_category.each(function(category){categories += '&lt;input type="hidden" value="' + category + '"&gt;';});
+            categories += "&lt;/span&gt;";
+            var data = {
+              id: id, 
+              value: response.name, 
+              category: categories,
+              negative: !phenotype.isObserved
+            };
+            var title = response.name;
+            suggestWidget.acceptEntry(data, title, title, true);
+            var phenotypeEl = _this._findFormElementForPhenotype(id);
+            
+            var addedItem = $('current-phenotype-selection').down('label input[value="' + phenotypeEl.value + '"]');
+            if (addedItem &amp;&amp; autoSelectSrcDesc) {
+              addedItem.up('label').insert({before : new Element('span', {
+                                                                   'class' : 'fa fa-bolt',
+                                                                   'title' : 'This phenotype was automatically added based on ' + autoSelectSrcDesc
+              }).update(' ')});
+            }
+          }
+        }
+      });
+    },
+    
+    /**
+     * Deselects a phenotype. If the phenotype is not selected, do nothing.
+     * @param  {object} phenotype the phenotype. see object spec above.
+     */
+    deselectPhenotype: function(phenotype) {
+      var phenotypeEl = this._findFormElementForPhenotype(phenotype.id);
+      if (phenotypeEl) {
+        if (phenotypeEl) {
+          phenotypeEl._ynpicker._onUnselect();
+        } else {
+          phenotypeEl.checked = false;
+        }
+      }
+    },
+
+    /**
+     * Updates a selected phenotype. If the phenotype is not selected, do nothing.
+     */
+    /*updateSelectedPhenotype: function(phenotype) {
+    },*/
+
+    _findFormElementForPhenotype: function(id, negative, subtype) {
+      var result = null;
+      if ($('prefix')) {
+        result = $($('prefix').value + (negative ? 'negative_' : '') + (subtype ? subtype + '_' : '') + 'phenotype_' + id);
+      }
+      return result;
+    },
+  };
+});</code>
+    </property>
+    <property>
+      <name>PhenotypeSelectionUtils</name>
+    </property>
+    <property>
+      <parse/>
+    </property>
+    <property>
+      <use>currentPage</use>
     </property>
   </object>
   <object>
