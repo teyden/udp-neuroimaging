@@ -154,8 +154,8 @@
           "qualifiers": ["severity"]
         },
         {
-          "name": "cerebral dysgenesis/migration abnormality",
-          "id": "cerebral cortex - cerebral dysgenesis/migration abnormality"
+          "name": "dysgenesis/migration abnormality",
+          "id": "cerebral cortex - dysgenesis/migration abnormality"
         }
       ]
     },
