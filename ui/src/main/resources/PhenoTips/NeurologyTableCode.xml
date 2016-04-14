@@ -2291,41 +2291,59 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
      * @param  {string} autoSelectSrcDesc a string describing the reason for auto-selection of this phenotype, if applicable.
      */
     selectPhenotype: function(phenotype, autoSelectSrcDesc) {
-      var suggestWidget = $("quick-phenotype-search")._suggestWidget;
-      if (!suggestWidget) {
-         return null;
-      }
       var _this = this;
-      var id = phenotype.id;
-      var searchUrl = new XWiki.Document('SolrService', 'PhenoTips').getURL("get", "q=" + id);
-      new Ajax.Request(searchUrl, {
-        method: 'get',
-        onSuccess: function(transport) {
-          var response = transport.responseJSON.rows[0];
-          if (response) {
-            var categories = '&lt;span class="hidden term-category"&gt;';
-            response.term_category.each(function(category){categories += '&lt;input type="hidden" value="' + category + '"&gt;';});
-            categories += "&lt;/span&gt;";
-            var data = {
-              id: id, 
-              value: response.name, 
-              category: categories,
-              negative: !phenotype.isObserved
-            };
-            var title = response.name;
-            suggestWidget.acceptEntry(data, title, title, true);
-            var phenotypeEl = _this._findFormElementForPhenotype(id);
-            
-            var addedItem = $('current-phenotype-selection').down('label input[value="' + phenotypeEl.value + '"]');
-            if (addedItem &amp;&amp; autoSelectSrcDesc) {
-              addedItem.up('label').insert({before : new Element('span', {
-                                                                   'class' : 'fa fa-bolt',
-                                                                   'title' : 'This phenotype was automatically added based on ' + autoSelectSrcDesc
-              }).update(' ')});
+      var addAutomaticSelectionIndicator = function(phenotypeEl) {
+        var addedItem = $('current-phenotype-selection').down('label input[value="' + phenotypeEl.value + '"]');
+        if (addedItem &amp;&amp; autoSelectSrcDesc) {
+          addedItem.up('label').insert({before : new Element('span', {
+                                                               'class' : 'fa fa-bolt',
+                                                               'title' : 'This phenotype was automatically added based on ' + autoSelectSrcDesc
+          }).update(' ')});
+        }
+      };
+
+      var existingEl = this._findFormElementForPhenotype(phenotype.id, !phenotype.isObserved);
+      if (existingEl) {
+        if (existingEl._ynpicker) {
+          existingEl._ynpicker._select(phenotype.isObserved ? 'yes' : 'no');
+        } else {
+          existingEl.checked = true;
+        }
+        addAutomaticSelectionIndicator(existingEl);
+      } else {
+        var suggestWidget = $("quick-phenotype-search")._suggestWidget;
+        if (!suggestWidget) {
+           return null;
+        }
+        var id = phenotype.id;
+        var searchUrl = new XWiki.Document('SolrService', 'PhenoTips').getURL("get", "q=" + id);
+        new Ajax.Request(searchUrl, {
+          method: 'get',
+          onSuccess: function(transport) {
+            var response = transport.responseJSON.rows[0];
+            if (response) {
+              var categories = "";
+              if (!phenotype.isObserved) {
+                categories += '&lt;input type="hidden" name="fieldName" value="PhenoTips.PatientClass_0_negative_phenotype" class="no"&gt;';
+              }
+              categories += '&lt;span class="hidden term-category"&gt;';
+              response.term_category.each(function(category){categories += '&lt;input type="hidden" value="' + category + '"&gt;';});
+              categories += "&lt;/span&gt;";
+              var data = {
+                id: id, 
+                value: response.name, 
+                category: categories,
+                negative: !phenotype.isObserved
+              };
+              var title = response.name;
+              suggestWidget.acceptEntry(data, title, title, true);
+
+              existingEl = _this._findFormElementForPhenotype(phenotype.id, !phenotype.isObserved);
+              addAutomaticSelectionIndicator(existingEl);
             }
           }
-        }
-      });
+        });
+      }
     },
     
     /**
@@ -2333,7 +2351,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
      * @param  {object} phenotype the phenotype. see object spec above.
      */
     deselectPhenotype: function(phenotype) {
-      var phenotypeEl = this._findFormElementForPhenotype(phenotype.id);
+      var phenotypeEl = this._findFormElementForPhenotype(phenotype.id, !phenotype.isObserved);
       if (phenotypeEl) {
         if (phenotypeEl) {
           phenotypeEl._ynpicker._onUnselect();
