@@ -111,7 +111,12 @@ $xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
   {{/html}}
 #else
   {{html clean=false}}
-  $services.neurology.getFeatureSetViewHtml($doc)
+  #if ($xcontext.action == 'view')
+    #set($useSymbols = true)
+  #else
+    #set($useSymbols = false)
+  #end
+  $!services.neurology.getFeatureSetViewHtml($doc, $useSymbols)
   {{/html}}
 #end
 {{/velocity}}</content>

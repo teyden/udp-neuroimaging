@@ -31,11 +31,13 @@ public class NeurologyFeaturesTableGenerator
     private Document document;
     private final Set<Date> dates;
     private Map<String, String> qualifierValIdToLabel = new HashMap<>();
+    private boolean useSymbols;
 
-    public NeurologyFeaturesTableGenerator(JSONArray features, JSONObject config) throws Exception
+    public NeurologyFeaturesTableGenerator(JSONArray features, JSONObject config, boolean useSymbols) throws Exception
     {
         this.features = features;
         this.config = config;
+        this.useSymbols = useSymbols;
 
         dates = new TreeSet<>();
         for (int i = 0; i < features.length(); i++) {
@@ -70,6 +72,10 @@ public class NeurologyFeaturesTableGenerator
     public String getHtml() throws Exception
     {
         JSONArray sections = config.getJSONArray("sections");
+
+        if (features.length() == 0) {
+            return null;
+        }
 
         Element table = (Element) document.createElement("table");
         table.setAttribute("id", "neurology-table");
@@ -140,10 +146,10 @@ public class NeurologyFeaturesTableGenerator
         if (feature != null) {
             String text;
             if (feature.getBoolean(NeurologyFeature.JSON_KEY_IS_OBSERVED)) {
-                text = isSectionHeader ? "Abnormal" : "✔";
+                text = isSectionHeader ? "Abnormal" : (useSymbols ? "✔" : "Present");
                 cellEl.setAttribute("class", "observed");
             } else {
-                text = isSectionHeader ? "Normal" : "✘";
+                text = isSectionHeader ? "Normal" : (useSymbols ? "✘" : "Not present");
                 cellEl.setAttribute("class", "not-observed");
             }
             cellEl.appendChild(document.createTextNode(text));

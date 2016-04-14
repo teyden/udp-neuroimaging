@@ -44,12 +44,12 @@ public class NeurologyScriptService implements ScriptService
         return featureSet.toJson();
     }
 
-    public String getFeatureSetViewHtml(Document doc) throws Exception
+    public String getFeatureSetViewHtml(Document doc, boolean useSymbols) throws Exception
     {
         NeurologyFeatureSet features = new NeurologyFeatureSet(doc.getDocument(), documentAccessBridge);
 
         NeurologyFeaturesTableGenerator tableGen =
-                new NeurologyFeaturesTableGenerator(features.toJsonArray(), getNeurologyTableConfig());
+                new NeurologyFeaturesTableGenerator(features.toJsonArray(), getNeurologyTableConfig(), useSymbols);
 
         return tableGen.getHtml();
     }
