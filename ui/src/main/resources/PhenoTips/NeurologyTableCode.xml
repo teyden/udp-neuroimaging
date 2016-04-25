@@ -498,17 +498,17 @@
       <code>define(
 "NeurologyTable",
 [
-    "react", 
-    "react-dom", 
-    "Pikaday", 
+    "react",
+    "react-dom",
+    "Pikaday",
     "lodash",
     "NeurologyTableSection",
     "NeurologyTableColHeaderCell",
     "NeurologyTableUtils",
     "PhenotypeSelectionUtils",
 ], function(
-    React, 
-    ReactDOM, 
+    React,
+    ReactDOM,
     Pikaday,
     _,
     NeurologyTableSection,
@@ -724,7 +724,7 @@
             );
         }
     });
-    
+
     return NeurologyTable;
 });</code>
     </property>
@@ -821,14 +821,14 @@
       <code>define(
 "NeurologyTableColHeaderCell",
 [
-    "react", 
-    "react-dom", 
-    "Pikaday", 
+    "react",
+    "react-dom",
+    "Pikaday",
     "NeurologyTableUtils"
 ], function(
-    React, 
-    ReactDOM, 
-    Pikaday, 
+    React,
+    ReactDOM,
+    Pikaday,
     NeurologyTableUtils
 ) {
     return React.createClass({
@@ -980,14 +980,14 @@
       <code>define(
 "NeurologyTableSection",
 [
-    "react", 
-    "react-dom", 
+    "react",
+    "react-dom",
     "lodash",
     "NeurologyTableSectionRow",
     "NeurologyTableSectionHeaderRow"
 ], function(
-    React, 
-    ReactDOM, 
+    React,
+    ReactDOM,
     _,
     NeurologyTableSectionRow,
     NeurologyTableSectionHeaderRow
@@ -1125,11 +1125,11 @@
       <code>define(
 "NeurologyTableSectionHeaderRow",
 [
-    "react", 
+    "react",
     "lodash",
     "NeurologyTableSectionHeaderRowCell"
 ], function(
-    React, 
+    React,
     _,
     NeurologyTableSectionHeaderRowCell
 ) {
@@ -1264,13 +1264,13 @@
       <code>define(
 "NeurologyTableSectionHeaderRowCell",
 [
-    "react", 
-    "react-dom", 
+    "react",
+    "react-dom",
     "lodash",
     "NeurologyTableSectionRowCellNote"
 ], function(
-    React, 
-    ReactDOM, 
+    React,
+    ReactDOM,
     _,
     NeurologyTableSectionRowCellNote
 ) {
@@ -1445,11 +1445,11 @@
       <code>define(
 "NeurologyTableSectionRow",
 [
-    "react", 
+    "react",
     "lodash",
     "NeurologyTableSectionRowCell"
 ], function(
-    React, 
+    React,
     _,
     NeurologyTableSectionRowCell
 ) {
@@ -1588,11 +1588,11 @@
       <code>define(
 "NeurologyTableSectionRowCell",
 [
-    "react", 
+    "react",
     "lodash",
     "NeurologyTableSectionRowCellNote"
 ], function(
-    React, 
+    React,
     _,
     NeurologyTableSectionRowCellNote
 ) {
@@ -1802,11 +1802,11 @@
       <code>define(
 "NeurologyTableSectionRowCellNote",
 [
-    "react", 
+    "react",
     "lodash",
     "react-bootstrap"
 ], function(
-    React, 
+    React,
     _,
     ReactBootstrap
 ) {
@@ -1850,9 +1850,9 @@
                 currentNote = null;
                 trigger = React.createElement(
                     "button",
-                    { 
-                    	className: "add",
-                    	onClick: function(e) { e.preventDefault(); }
+                    {
+                      className: "add",
+                      onClick: function(e) { e.preventDefault(); }
                     },
                     "+ Add note"
                 );
@@ -1864,9 +1864,9 @@
                 );
                 trigger = React.createElement(
                     "button",
-                    { 
-                    	className: "edit",
-                    	onClick: function(e) { e.preventDefault(); }
+                    {
+                      className: "edit",
+                      onClick: function(e) { e.preventDefault(); }
                     },
                     React.createElement("i", { "className": "fa fa-pencil" })
                 );
@@ -2008,25 +2008,25 @@
     </property>
     <property>
       <code>require.config({
-	paths: {
-		"react": "$services.webjars.url('react', 'react.min.js')",
-		"react-dom": "$services.webjars.url('react', 'react-dom.min.js')",
-		"react-bootstrap": "$services.webjars.url('react-bootstrap', 'react-bootstrap.min.js')",
-		"Pikaday": "$services.webjars.url('org.webjars.npm:pikaday', 'pikaday.js')",
-		"lodash": "$services.webjars.url('org.webjars.bower:lodash', 'dist/lodash.min.js')"
-	},
+  paths: {
+    "react": "$services.webjars.url('react', 'react.min.js')",
+    "react-dom": "$services.webjars.url('react', 'react-dom.min.js')",
+    "react-bootstrap": "$services.webjars.url('react-bootstrap', 'react-bootstrap.min.js')",
+    "Pikaday": "$services.webjars.url('org.webjars.npm:pikaday', 'pikaday.js')",
+    "lodash": "$services.webjars.url('org.webjars.bower:lodash', 'dist/lodash.min.js')"
+  },
 });
 
 require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, NeurologyTable) {
-	var config = $xwiki.getDocument("PhenoTips.NeurologyTableCode").getContent();
+  var config = $xwiki.getDocument("PhenoTips.NeurologyTableCode").getContent();
 
-	var initialState = JSON.parse(document.getElementById('neurology-table-container').dataset.init);
+  var initialState = JSON.parse(document.getElementById('neurology-table-container').dataset.init);
 
-	var init = function() {
-		ReactDOM.render(React.createElement(NeurologyTable, { config: config, initialState: initialState }), document.getElementById('neurology-table-container'));
-	};
+  var init = function() {
+    ReactDOM.render(React.createElement(NeurologyTable, { config: config, initialState: initialState }), document.getElementById('neurology-table-container'));
+  };
 
-	(XWiki.domIsLoaded &amp;&amp; init()) || document.observe("xwiki:dom:loaded", init);
+  (XWiki.domIsLoaded &amp;&amp; init()) || document.observe("xwiki:dom:loaded", init);
 });</code>
     </property>
     <property>
@@ -2274,17 +2274,17 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
     </property>
     <property>
       <code>define("PhenotypeSelectionUtils", [], function() {
-  return {    
-  	/* 
-  	  phenotype data structure:
-  	  id &lt;- an HPO id or arbitrary text
-  	  isObserved &lt;- boolean describing whether or not the phenotype was observed
-  	  qualifiers: {
-  	    spatial_pattern &lt;- HPO ID
-  	    severity &lt;- HPO ID
-  	  }
-  	*/
-  	
+  return {
+    /*
+      phenotype data structure:
+      id &lt;- an HPO id or arbitrary text
+      isObserved &lt;- boolean describing whether or not the phenotype was observed
+      qualifiers: {
+        spatial_pattern &lt;- HPO ID
+        severity &lt;- HPO ID
+      }
+    */
+
     /**
      * Selects a phenotype. If the phenotype is already selected, do nothing.
      * @param  {object} phenotype         the phenotype. see object spec above.
@@ -2330,8 +2330,8 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
               response.term_category.each(function(category){categories += '&lt;input type="hidden" value="' + category + '"&gt;';});
               categories += "&lt;/span&gt;";
               var data = {
-                id: id, 
-                value: response.name, 
+                id: id,
+                value: response.name,
                 category: categories,
                 negative: !phenotype.isObserved
               };
@@ -2345,7 +2345,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
         });
       }
     },
-    
+
     /**
      * Deselects a phenotype. If the phenotype is not selected, do nothing.
      * @param  {object} phenotype the phenotype. see object spec above.
