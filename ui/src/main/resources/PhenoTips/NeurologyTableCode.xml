@@ -2541,11 +2541,6 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 }
 .editbody #neurology-table td .note {
   visibility: hidden;
-}
-.editbody #neurology-table td.is-investigated .note {
-  visibility: visible;
-}
-.editbody #neurology-table td .note {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -2556,6 +2551,9 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
   position: relative;
   padding-right: 26px;
   height: 20px;
+}
+.editbody #neurology-table td.is-investigated .note {
+  visibility: visible;
 }
 #neurology-table td .note .content {
   line-height: 17px;
