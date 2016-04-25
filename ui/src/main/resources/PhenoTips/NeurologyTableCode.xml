@@ -2550,7 +2550,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
   font-size: 12px;
   position: relative;
   padding-right: 26px;
-  height: 20px;
+  height: 1.8em;
 }
 .editbody #neurology-table td.is-investigated .note {
   visibility: visible;
