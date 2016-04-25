@@ -121,4 +121,37 @@
     <module>api</module>
     <module>resources</module>
   </modules>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <excludePackageNames>*.internal.*</excludePackageNames>
+            <maxmemory>300m</maxmemory>
+            <taglets>
+              <taglet>
+                <tagletClass>org.phenotips.tools.javadoc.NoteTaglet</tagletClass>
+              </taglet>
+              <taglet>
+                <tagletClass>org.phenotips.tools.javadoc.TodoTaglet</tagletClass>
+              </taglet>
+              <taglet>
+                <tagletClass>org.phenotips.tools.javadoc.FixmeTaglet</tagletClass>
+              </taglet>
+              <taglet>
+                <tagletClass>org.phenotips.tools.javadoc.WarningTaglet</tagletClass>
+              </taglet>
+            </taglets>
+            <tagletArtifact>
+              <groupId>org.phenotips</groupId>
+              <artifactId>phenotips-taglets</artifactId>
+              <version>1.3</version>
+            </tagletArtifact>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
