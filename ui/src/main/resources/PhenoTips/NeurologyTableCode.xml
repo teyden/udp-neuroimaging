@@ -2490,6 +2490,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 #neurology-table td, #neurology-table th {
   padding: 6px;
   border: 1px solid #aaa;
+  text-align: left;
   vertical-align: top;
 }
 #neurology-table td.empty {
