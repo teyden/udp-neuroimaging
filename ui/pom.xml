@@ -20,6 +20,12 @@
   <packaging>xar</packaging>
   <dependencies>
     <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>udp-neuro-api</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
       <groupId>org.phenotips</groupId>
       <artifactId>phenotips-ui</artifactId>
       <version>${phenotips.version}</version>
