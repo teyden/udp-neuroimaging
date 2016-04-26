@@ -19,10 +19,10 @@
 
   <groupId>com.gene42</groupId>
   <artifactId>udp-neuro-parent</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0-rc-3</version>
   <packaging>pom</packaging>
   <name>UDP Neuroimaging - Parent POM</name>
-  <description></description>
+  <description />
   <url>http://www.gene42.com</url>
   <inceptionYear>2015</inceptionYear>
 
@@ -30,7 +30,7 @@
     <connection>scm:git:git://github.com/Gene42/udp-neuroimaging.git</connection>
     <developerConnection>scm:git:git@github.com:Gene42/udp-neuroimaging.git</developerConnection>
     <url>https://github.com/Gene42/udp-neuroimaging</url>
-    <tag>HEAD</tag>
+    <tag>neuroimaging-1.0-rc-3</tag>
   </scm>
 
   <organization>
