@@ -57,7 +57,7 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>org.webjars.npm</groupId>
+      <groupId>org.webjars.bower</groupId>
       <artifactId>lodash</artifactId>
       <version>4.6.1</version>
       <scope>runtime</scope>
