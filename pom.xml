@@ -117,9 +117,8 @@
   </properties>
 
   <modules>
-    <module>ui</module>
     <module>api</module>
-    <module>resources</module>
+    <module>ui</module>
   </modules>
 
   <build>
