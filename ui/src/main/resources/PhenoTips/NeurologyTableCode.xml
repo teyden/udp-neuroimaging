@@ -2613,7 +2613,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
       <name>NeurologyTable</name>
     </property>
     <property>
-      <parse>1</parse>
+      <parse>0</parse>
     </property>
     <property>
       <use>onDemand</use>
