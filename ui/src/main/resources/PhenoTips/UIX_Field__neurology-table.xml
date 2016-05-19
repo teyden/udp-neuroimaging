@@ -102,7 +102,6 @@
 $xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
 #if ($xcontext.action == 'edit')
   $xwiki.jsx.use('PhenoTips.NeurologyTableCode')##
-  $xwiki.ssrx.use('/com/gene42/neurology/bootstrap-popover-custom.css')##
   $xwiki.linkx.use($services.webjars.url('org.webjars.npm:pikaday', 'css/pikaday.css'), {'type': 'text/css', 'rel': 'stylesheet'})##
 
   {{html clean=false}}
