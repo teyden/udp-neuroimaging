@@ -299,10 +299,6 @@
         {
           "name": "pituitary tumor/mass",
           "id": "HP:0011750"
-        },
-        {
-          "name": "calcifications",
-          "id": "HP:0010513"
         }
       ]
     },
