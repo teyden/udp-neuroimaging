@@ -293,14 +293,15 @@
           "id": "HP:0012506"
         },
         {
-          "name": "abnormality of the pineal gland",
-          "id": "HP:0012680"
-        },
-        {
           "name": "pituitary tumor/mass",
           "id": "HP:0011750"
         }
       ]
+    },
+    {
+      "name": "abnormality of the pineal gland",
+      "id": "HP:0012680",
+      "term": []
     },
     {
       "name": "MR spectroscopy",
