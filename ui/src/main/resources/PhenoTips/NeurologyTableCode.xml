@@ -74,6 +74,10 @@
         {
           "name": "abnormal MRI signal",
           "id": "HP:0012747"
+        },
+        {
+          "name": "atrophy/degeneration",
+          "id": "HP:0007366"
         }
       ]
     },
