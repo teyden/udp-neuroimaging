@@ -2031,7 +2031,7 @@
 require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, NeurologyTable) {
   var config = $xwiki.getDocument("PhenoTips.NeurologyTableCode").getContent();
 
-  var initialState = JSON.parse(document.getElementById('neurology-table-container').dataset.init);
+  var initialState = JSON.parse(document.getElementById('neurology-table-container').getAttribute('init'));
 
   var init = function() {
     ReactDOM.render(React.createElement(NeurologyTable, { config: config, initialState: initialState }), document.getElementById('neurology-table-container'));
