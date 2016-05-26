@@ -299,28 +299,6 @@
       ]
     },
     {
-      "name": "spine",
-      "id": "HP:0000925",
-      "terms": [
-        {
-          "name": "abnormality of the cervical spine",
-          "id": "HP:0003319"
-        },
-        {
-          "name": "abnormality of the thoracic spine",
-          "id": "HP:0100711"
-        },
-        {
-          "name": "abnormality of the lumbar spine",
-          "id": "HP:0100712"
-        },
-        {
-          "name": "abnormality of the sacrum",
-          "id": "HP:0005107"
-        }
-      ]
-    },
-    {
       "name": "MR spectroscopy",
       "id": "Abnormality of MR Spectroscopy",
       "terms": [
@@ -386,6 +364,28 @@
       "name": "copper deposition in brain",
       "id": "HP:0012676",
       "terms": []
+    },
+    {
+      "name": "spine",
+      "id": "HP:0000925",
+      "terms": [
+        {
+          "name": "abnormality of the cervical spine",
+          "id": "HP:0003319"
+        },
+        {
+          "name": "abnormality of the thoracic spine",
+          "id": "HP:0100711"
+        },
+        {
+          "name": "abnormality of the lumbar spine",
+          "id": "HP:0100712"
+        },
+        {
+          "name": "abnormality of the sacrum",
+          "id": "HP:0005107"
+        }
+      ]
     }
   ],
   "qualifiers": {
