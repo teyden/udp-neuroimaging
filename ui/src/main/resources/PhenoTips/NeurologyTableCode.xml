@@ -50,6 +50,10 @@
         {
           "name": "agenesis",
           "id": "HP:0001274"
+        },
+        {
+          "name": "atrophy",
+          "id": "HP:0007371"
         }
       ]
     },
