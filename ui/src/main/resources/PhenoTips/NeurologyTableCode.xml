@@ -160,6 +160,10 @@
         {
           "name": "dysgenesis/migration abnormality",
           "id": "cerebral cortex - dysgenesis/migration abnormality"
+        },
+        {
+          "name": "enlarged hippocampus",
+          "id":"HP:0100961"
         }
       ]
     },
