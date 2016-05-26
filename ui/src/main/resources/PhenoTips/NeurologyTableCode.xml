@@ -846,7 +846,11 @@
         },
 
         handleClickRemove: function() {
-            this.props.onRemove(this.props.date);
+        	var confirmed = confirm("Are you sure you want to delete this column?");
+        	
+        	if (confirmed) {
+        		this.props.onRemove(this.props.date);
+        	} 
         },
 
         render: function () {
