@@ -210,6 +210,10 @@
         {
           "name": "cerebral edema",
           "id": "HP:0002181"
+        },
+        {
+          "name": "hypointensity of cerebral white matter on MRI",
+          "id": "HP:0007103"
         }
       ]
     },
