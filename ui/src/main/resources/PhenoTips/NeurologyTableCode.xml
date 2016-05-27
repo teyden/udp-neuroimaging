@@ -846,7 +846,11 @@
         },
 
         handleClickRemove: function() {
-            this.props.onRemove(this.props.date);
+            var confirmed = confirm("Are you sure you want to delete this column?");
+
+            if (confirmed) {
+                this.props.onRemove(this.props.date);
+            }
         },
 
         render: function () {
@@ -886,6 +890,9 @@
                 defaultDate: NeurologyTableUtils.stringToDate(this.props.date),
                 setDefaultDate: true,
             });
+
+            var input = ReactDOM.findDOMNode(this.refs.date);
+            input.addEventListener('keydown', function(e) { if (e.keyCode == '13') input.blur(); });
         },
     });
 });
@@ -2024,7 +2031,7 @@
 require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, NeurologyTable) {
   var config = $xwiki.getDocument("PhenoTips.NeurologyTableCode").getContent();
 
-  var initialState = JSON.parse(document.getElementById('neurology-table-container').dataset.init);
+  var initialState = JSON.parse(document.getElementById('neurology-table-container').getAttribute('data-init'));
 
   var init = function() {
     ReactDOM.render(React.createElement(NeurologyTable, { config: config, initialState: initialState }), document.getElementById('neurology-table-container'));
