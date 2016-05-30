@@ -845,12 +845,32 @@
             this.props.onDateChange(this.props.date, newDateStr);
         },
 
-        handleClickRemove: function() {
-            var confirmed = confirm("Are you sure you want to delete this column?");
+        handleClickRemove: function(e) {
+            e.preventDefault();
 
-            if (confirmed) {
-                this.props.onRemove(this.props.date);
-            }
+            var date = this.props.date; 
+            var onRemove = this.props.onRemove;
+
+            var launchRequest = function() {
+                jQuery.ajax({
+                    url: '',
+                    success: function() {
+                        onRemove(date);
+                    }
+                });
+            };
+
+            new XWiki.widgets.ConfirmationBox(
+                {
+                    onYes: launchRequest,
+                    onNo: function() { }
+                },
+                {
+                    confirmationText: "Are you sure you want to delete this column?",
+                    yesButtonText: "Yes, I confirm", 
+                    noButtonText: "No, cancel"
+                }
+            );
         },
 
         render: function () {
