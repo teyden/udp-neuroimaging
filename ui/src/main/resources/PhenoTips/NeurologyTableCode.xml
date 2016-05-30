@@ -891,8 +891,15 @@
                 setDefaultDate: true,
             });
 
+            var datePicker = this.datePicker; 
+
             var input = ReactDOM.findDOMNode(this.refs.date);
-            input.addEventListener('keydown', function(e) { if (e.keyCode == '13') input.blur(); });
+            input.addEventListener('keydown', function(e) { 
+                if (e.keyCode == '13') {
+                    input.blur();
+                    datePicker.hide(); 
+                }
+            });
         },
     });
 });
