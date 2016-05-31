@@ -893,7 +893,7 @@
                 removeButton
             );
         },
-
+        
         componentDidMount: function() {
             this.datePicker = new Pikaday({
                 field: ReactDOM.findDOMNode(this.refs.date),
@@ -905,8 +905,8 @@
             });
 
             var datePicker = this.datePicker; 
-
             var input = ReactDOM.findDOMNode(this.refs.date);
+
             input.addEventListener('keydown', function(e) { 
                 if (e.keyCode == '13') {
                     input.blur();
