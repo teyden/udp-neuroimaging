@@ -851,18 +851,11 @@
             var date = this.props.date; 
             var onRemove = this.props.onRemove;
 
-            var launchRequest = function() {
-                jQuery.ajax({
-                    url: '',
-                    success: function() {
-                        onRemove(date);
-                    }
-                });
-            };
-
             new XWiki.widgets.ConfirmationBox(
                 {
-                    onYes: launchRequest,
+                    onYes: function() {
+                        onRemove(date);
+                    },
                     onNo: function() { }
                 },
                 {
