@@ -845,12 +845,25 @@
             this.props.onDateChange(this.props.date, newDateStr);
         },
 
-        handleClickRemove: function() {
-            var confirmed = confirm("Are you sure you want to delete this column?");
+        handleClickRemove: function(e) {
+            e.preventDefault();
 
-            if (confirmed) {
-                this.props.onRemove(this.props.date);
-            }
+            var date = this.props.date; 
+            var onRemove = this.props.onRemove;
+
+            new XWiki.widgets.ConfirmationBox(
+                {
+                    onYes: function() {
+                        onRemove(date);
+                    },
+                    onNo: function() { }
+                },
+                {
+                    confirmationText: "Are you sure you want to delete this column?",
+                    yesButtonText: "Yes, I confirm", 
+                    noButtonText: "No, cancel"
+                }
+            );
         },
 
         render: function () {
@@ -880,7 +893,7 @@
                 removeButton
             );
         },
-
+        
         componentDidMount: function() {
             this.datePicker = new Pikaday({
                 field: ReactDOM.findDOMNode(this.refs.date),
@@ -891,8 +904,15 @@
                 setDefaultDate: true,
             });
 
+            var datePicker = this.datePicker; 
             var input = ReactDOM.findDOMNode(this.refs.date);
-            input.addEventListener('keydown', function(e) { if (e.keyCode == '13') input.blur(); });
+
+            input.addEventListener('keydown', function(e) { 
+                if (e.keyCode == '13') {
+                    input.blur();
+                    datePicker.hide(); 
+                }
+            });
         },
     });
 });
