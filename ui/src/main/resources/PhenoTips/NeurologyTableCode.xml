@@ -167,7 +167,7 @@
         },
         {
           "name": "enlarged hippocampus",
-          "id":"HP:0100961"
+          "id": "HP:0100961"
         }
       ]
     },
@@ -309,7 +309,7 @@
     {
       "name": "abnormality of the pineal gland",
       "id": "HP:0012680",
-      "term": []
+      "terms": []
     },
     {
       "name": "MR spectroscopy",
