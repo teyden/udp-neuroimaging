@@ -50,6 +50,10 @@
         {
           "name": "agenesis",
           "id": "HP:0001274"
+        },
+        {
+          "name": "atrophy",
+          "id": "HP:0007371"
         }
       ]
     },
@@ -70,6 +74,10 @@
         {
           "name": "abnormal MRI signal",
           "id": "HP:0012747"
+        },
+        {
+          "name": "atrophy/degeneration",
+          "id": "HP:0007366"
         }
       ]
     },
@@ -128,7 +136,7 @@
           "qualifiers": ["spatial_pattern", "severity"]
         },
         {
-          "name": "arachnoid cycst",
+          "name": "arachnoid cyst",
           "id": "HP:0100702"
         }
       ]
@@ -156,6 +164,10 @@
         {
           "name": "dysgenesis/migration abnormality",
           "id": "cerebral cortex - dysgenesis/migration abnormality"
+        },
+        {
+          "name": "enlarged hippocampus",
+          "id":"HP:0100961"
         }
       ]
     },
@@ -198,6 +210,10 @@
         {
           "name": "cerebral edema",
           "id": "HP:0002181"
+        },
+        {
+          "name": "hypointensity of cerebral white matter on MRI",
+          "id": "HP:0007103"
         }
       ]
     },
@@ -285,40 +301,15 @@
           "id": "HP:0012506"
         },
         {
-          "name": "abnormality of the pineal gland",
-          "id": "HP:0012680"
-        },
-        {
           "name": "pituitary tumor/mass",
           "id": "HP:0011750"
-        },
-        {
-          "name": "calcifications",
-          "id": "HP:0010513"
         }
       ]
     },
     {
-      "name": "spine",
-      "id": "HP:0000925",
-      "terms": [
-        {
-          "name": "abnormality of the cervical spine",
-          "id": "HP:0003319"
-        },
-        {
-          "name": "abnormality of the thoracic spine",
-          "id": "HP:0100711"
-        },
-        {
-          "name": "abnormality of the lumbar spine",
-          "id": "HP:0100712"
-        },
-        {
-          "name": "abnormality of the sacrum",
-          "id": "HP:0005107"
-        }
-      ]
+      "name": "abnormality of the pineal gland",
+      "id": "HP:0012680",
+      "term": []
     },
     {
       "name": "MR spectroscopy",
@@ -386,6 +377,28 @@
       "name": "copper deposition in brain",
       "id": "HP:0012676",
       "terms": []
+    },
+    {
+      "name": "spine",
+      "id": "HP:0000925",
+      "terms": [
+        {
+          "name": "abnormality of the cervical spine",
+          "id": "HP:0003319"
+        },
+        {
+          "name": "abnormality of the thoracic spine",
+          "id": "HP:0100711"
+        },
+        {
+          "name": "abnormality of the lumbar spine",
+          "id": "HP:0100712"
+        },
+        {
+          "name": "abnormality of the sacrum",
+          "id": "HP:0005107"
+        }
+      ]
     }
   ],
   "qualifiers": {
