@@ -686,7 +686,6 @@
         },
 
         componentWillUpdate: function(nextProps, nextState) {
-
             this.setHiddenInputValue(nextState);
             var curPhenotypes = NeurologyTableUtils.getPhenotypesForFeatures(this.state.conditions, this.state.dates);
             var nextPhenotypes = NeurologyTableUtils.getPhenotypesForFeatures(nextState.conditions, nextState.dates);
