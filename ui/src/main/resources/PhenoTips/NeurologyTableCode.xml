@@ -581,7 +581,24 @@
                     }
                 }
             } else {
-                _.pull(newState.conditions, existingRecord);
+                if (!existingRecord.comments) {  
+                    _.pull(newState.conditions, existingRecord);
+                } else {
+                    var _this = this;
+                    new XWiki.widgets.ConfirmationBox(
+                        {
+                            onYes: function() { 
+                                _this.handleNoteChange(conditionId, "", date);   
+                                _this.handleConditionChange(conditionId, date, null, value, isChecked);
+                            }
+                        },
+                        {  
+                            confirmationText: "Are you sure you want to clear the entire cell (message and checkbox)?",
+                            yesButtonText: "Yes, I confirm",
+                            noButtonText: "No, cancel"
+                        }
+                    );
+                }
             }
         },
 
