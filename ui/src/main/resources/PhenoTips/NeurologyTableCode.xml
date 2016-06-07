@@ -51,12 +51,12 @@
         {
           "name": "hyperplasia",
           "id": "HP:0007074",
-          "qualifiers": ["spatial_pattern"]
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "hypoplasia",
           "id": "HP:0002079",
-          "qualifiers": ["spatial_pattern"]
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "partial agenesis",
@@ -68,7 +68,8 @@
         },
         {
           "name": "atrophy",
-          "id": "HP:0007371"
+          "id": "HP:0007371",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -79,20 +80,22 @@
         {
           "name": "hypoplasia",
           "id": "HP:0002365",
-          "qualifiers": ["spatial_pattern"]
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "hyperplasia",
           "id": "HP:0012755",
-          "qualifiers": ["spatial_pattern"]
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "abnormal MRI signal",
-          "id": "HP:0012747"
+          "id": "HP:0012747",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "atrophy/degeneration",
-          "id": "HP:0007366"
+          "id": "HP:0007366",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -102,27 +105,33 @@
       "terms": [
         {
           "name": "hemisphere atrophy",
-          "id": "HP:0008278"
+          "id": "HP:0008278",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "vermis atrophy",
-          "id": "HP:0006855"
+          "id": "HP:0006855",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "hemisphere hypoplasia",
-          "id": "HP:0100307"
+          "id": "HP:0100307",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "vermis hypolasia",
-          "id": "HP:0001320"
+          "id": "HP:0001320",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "cerebellar gliosis",
-          "id": "HP:0012698"
+          "id": "HP:0012698",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "swelling/edema",
-          "id": "swelling/edema of the cerebellum"
+          "id": "swelling/edema of the cerebellum",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -132,7 +141,8 @@
       "terms": [
         {
           "name": "enlarged cisterns",
-          "id": "HP:0100952"
+          "id": "HP:0100952",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -174,7 +184,7 @@
         {
           "name": "atrophy",
           "id": "HP:0002120",
-          "qualifiers": ["severity"]
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "dysgenesis/migration abnormality",
@@ -182,7 +192,8 @@
         },
         {
           "name": "enlarged hippocampus",
-          "id":"HP:0100961"
+          "id":"HP:0100961",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -192,43 +203,53 @@
       "terms": [
         {
           "name": "hypomyelination",
-          "id": "HP:0006808"
+          "id": "HP:0006808",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "demyelination",
-          "id": "HP:0007258"
+          "id": "HP:0007258",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "dysmyelination",
-          "id": "HP:0007266"
+          "id": "HP:0007266",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "delayed myelination",
-          "id": "HP:0002188"
+          "id": "HP:0002188",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "white matter atrophy",
-          "id": "HP:0012762"
+          "id": "HP:0012762",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "white matter gliosis",
-          "id": "HP:0002171"
+          "id": "HP:0002171",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "PVL",
-          "id": "HP:0006970"
+          "id": "HP:0006970",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "hypermyelination",
-          "id": "HP:0012754"
+          "id": "HP:0012754",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "cerebral edema",
-          "id": "HP:0002181"
+          "id": "HP:0002181",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "hypointensity of cerebral white matter on MRI",
-          "id": "HP:0007103"
+          "id": "HP:0007103",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -264,19 +285,23 @@
       "terms": [
         {
           "name": "abnormal thalamic size",
-          "id": "HP:0012693"
+          "id": "HP:0012693",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "abnormal MRI signal (thalami)",
-          "id": "HP:0012696"
+          "id": "HP:0012696",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "dysgenesis",
-          "id": "thalami - dysgenesis"
+          "id": "thalami - dysgenesis",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "swelling/edema",
-          "id": "thalami - swelling/edema"
+          "id": "thalami - swelling/edema",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -286,15 +311,18 @@
       "terms": [
         {
           "name": "hypothalamic atrophy",
-          "id": "hypothalamic atrophy"
+          "id": "hypothalamic atrophy",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "hypothalamic gliosis",
-          "id": "hypothalamic gliosis"
+          "id": "hypothalamic gliosis",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "hypothalamic dysgenesis",
-          "id": "hypothalamic dysgenesis"
+          "id": "hypothalamic dysgenesis",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -325,11 +353,13 @@
       "terms": [
         {
           "name": "enlarged pituitary gland",
-          "id": "HP:0012505"
+          "id": "HP:0012505",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "small pituitary gland",
-          "id": "HP:0012506"
+          "id": "HP:0012506",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "pituitary tumor/mass",
@@ -391,12 +421,12 @@
         {
           "name": "iron deposition in brain",
           "id": "HP:0012675",
-          "qualifiers": []
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "copper deposition in brain",
           "id": "HP:0012676",
-          "qualifiers": []
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     },
@@ -406,19 +436,23 @@
       "terms": [
         {
           "name": "abnormality of the cervical spine",
-          "id": "HP:0003319"
+          "id": "HP:0003319",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "abnormality of the thoracic spine",
-          "id": "HP:0100711"
+          "id": "HP:0100711",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "abnormality of the lumbar spine",
-          "id": "HP:0100712"
+          "id": "HP:0100712",
+          "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "abnormality of the sacrum",
-          "id": "HP:0005107"
+          "id": "HP:0005107",
+          "qualifiers": ["spatial_pattern", "severity"]
         }
       ]
     }
