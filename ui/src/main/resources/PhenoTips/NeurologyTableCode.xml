@@ -1389,7 +1389,7 @@
                     React.createElement(
                         "input",
                         {
-                            type: "checkbox",
+                            type: "radio",
                             onChange: this.handleCheckboxChange,
                             checked: thisCondition &amp;&amp; !thisCondition.isObserved,
                             disabled: matchingConditions.length &gt; 0,
@@ -1404,7 +1404,7 @@
                     React.createElement(
                         "input",
                         {
-                            type: "checkbox",
+                            type: "radio",
                             onChange: this.handleCheckboxChange,
                             checked: thisCondition &amp;&amp; thisCondition.isObserved,
                             disabled: matchingConditions.length &gt; 0,
@@ -1774,7 +1774,7 @@
                     "label",
                     { key: "present" },
                     React.createElement("input", {
-                        type: "checkbox",
+                        type: "radio",
                         onChange: _.partial(this.handleCheckboxChange, null),
                         checked: thisCondition &amp;&amp; thisCondition.isObserved,
                         value: "observed"
@@ -1785,7 +1785,7 @@
                     "label",
                     { key: "not-present" },
                     React.createElement("input", {
-                        type: "checkbox",
+                        type: "radio",
                         onChange: _.partial(this.handleCheckboxChange, null),
                         checked: thisCondition &amp;&amp; !thisCondition.isObserved,
                         value: "notObserved"
