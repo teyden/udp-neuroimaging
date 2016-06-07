@@ -581,24 +581,8 @@
                     }
                 }
             } else {
-                if (!existingRecord.comments) {  
-                    _.pull(newState.conditions, existingRecord);
-                } else {
-                    var _this = this;
-                    new XWiki.widgets.ConfirmationBox(
-                        {
-                            onYes: function() { 
-                                _this.handleNoteChange(conditionId, "", date);   
-                                _this.handleConditionChange(conditionId, date, null, value, isChecked);
-                            }
-                        },
-                        {  
-                            confirmationText: "Are you sure you want to clear the entire cell (message and checkbox)?",
-                            yesButtonText: "Yes, I confirm",
-                            noButtonText: "No, cancel"
-                        }
-                    );
-                }
+                // Enters here ONLY if reset button is confirmed
+                _.pull(newState.conditions, existingRecord);
             }
         },
 
@@ -1332,6 +1316,30 @@
             this.props.onNoteChange(this.props.section.id, newNote, this.props.date);
         },
 
+        handleClickReset: function(isObserved, e) {
+            e.preventDefault();
+            var _this = this;
+            
+            new XWiki.widgets.ConfirmationBox(
+                {
+                    onYes: function() {
+                        _this.props.onConditionChange(
+                            _this.props.section.id,
+                            _this.props.date,
+                            null,
+                            isObserved,
+                            false
+                        );
+                    }
+                },
+                {
+                    confirmationText: "Please confirm to reset the cell (message and checkbox):",
+                    yesButtonText: "Yes, I confirm",
+                    noButtonText: "No, cancel"
+                }
+            );
+        },
+
         render: function () {
             var thisSectionConditions = _.map(this.props.section.terms, 'id');
             var _this = this;
@@ -1352,9 +1360,24 @@
                 null
             );
 
+            var resetButton; 
             var classNames = [];
             if (thisCondition) {
                 classNames.push("is-investigated");
+
+                if (matchingConditions.length &gt; 0) {
+                    resetButton = null; 
+                } else {
+                    resetButton = React.createElement("button", {
+                            className: "reset",
+                            onClick: _.partial(this.handleClickReset, thisCondition.isObserved),
+                        }, 
+                        React.createElement( "i", {
+                            className: "fa fa-undo",
+                            title: "reset cell"
+                        })
+                    );
+                }
             }
 
             return React.createElement(
@@ -1390,6 +1413,7 @@
                     ),
                     "Abnormal"
                 ),
+                resetButton,
                 notes
             );
         }
@@ -1660,8 +1684,32 @@
             this.props.onNoteChange(this.props.id, newNote, this.props.date);
         },
 
+        handleClickReset: function(isObserved, e) {
+            e.preventDefault();
+            var _this = this;
+            
+            new XWiki.widgets.ConfirmationBox(
+                {
+                    onYes: function() {
+                        _this.props.onConditionChange(
+                            _this.props.id,
+                            _this.props.date,
+                            null,
+                            isObserved,
+                            false
+                        );
+                    }
+                },
+                {
+                    confirmationText: "Please confirm to reset the cell (message and checkbox):",
+                    yesButtonText: "Yes, I confirm",
+                    noButtonText: "No, cancel"
+                }
+            );
+        },
+
         render: function () {
-            var qualCheckboxes, presenceCheckboxes;
+            var qualCheckboxes, presenceCheckboxes, resetButton;
             var thisCondition = _.find(this.props.conditions, { date: this.props.date });
             if (this.props.qualifiers &amp;&amp; this.props.qualifiers.length) {
                 var _this = this;
@@ -1695,6 +1743,28 @@
                     );
                 });
             }
+
+            var classNames = [];
+            if (thisCondition) {
+                classNames.push("is-investigated");
+
+                if (thisCondition.isObserved) {
+                    classNames.push("is-observed");
+                }
+
+                resetButton = React.createElement("button", {
+                        className: "reset",
+                        onClick: _.partial(this.handleClickReset, thisCondition.isObserved),
+                    }, 
+                    React.createElement( "i", {
+                        className: "fa fa-undo",
+                        title: "reset cell"
+                    })
+                );
+            } else {
+                resetButton = null;
+            }
+            
             presenceCheckboxes = React.createElement("div",
                 {
                     key: "presence",
@@ -1721,7 +1791,8 @@
                         value: "notObserved"
                     }),
                     "Not present"
-                )
+                ),
+                resetButton
             );
 
             var note = React.createElement(
@@ -1732,15 +1803,6 @@
                 },
                 null
             );
-
-            var classNames = [];
-            if (thisCondition) {
-                classNames.push("is-investigated");
-
-                if (thisCondition.isObserved) {
-                    classNames.push("is-observed");
-                }
-            }
 
             return React.createElement(
                 "td",
