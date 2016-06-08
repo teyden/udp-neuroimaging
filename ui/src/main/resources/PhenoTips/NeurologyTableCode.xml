@@ -152,12 +152,12 @@
       "terms": [
         {
           "name": "enlarged cerebral subarachnoid space",
-          "id": "enlarged cerebral subarachnoid space",
+          "id": "HP:0012766",
           "qualifiers": ["spatial_pattern", "severity"]
         },
         {
           "name": "enlarged cerebellar subarachnoid space",
-          "id": "enlarged cerebellar subarachnoid space",
+          "id": "HP:0012765",
           "qualifiers": ["spatial_pattern", "severity"]
         },
         {
