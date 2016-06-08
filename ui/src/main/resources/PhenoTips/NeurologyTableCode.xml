@@ -1333,7 +1333,7 @@
                     }
                 },
                 {
-                    confirmationText: "Please confirm to reset the cell (message and checkbox):",
+                    confirmationText: "Please confirm to reset cell contents (note and selected option):",
                     yesButtonText: "Yes, I confirm",
                     noButtonText: "No, cancel"
                 }
@@ -1701,7 +1701,7 @@
                     }
                 },
                 {
-                    confirmationText: "Please confirm to reset the cell (message and checkbox):",
+                    confirmationText: "Please confirm to reset cell contents (note and selected option):",
                     yesButtonText: "Yes, I confirm",
                     noButtonText: "No, cancel"
                 }
