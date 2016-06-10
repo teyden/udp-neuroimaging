@@ -336,7 +336,7 @@
       "id": "abnormality of the ophthalmic apparatus",
       "terms": [
         {
-          "name": "abnormailty of optic nerve",
+          "name": "abnormality of optic nerve",
           "id": "HP:0000587",
           "qualifiers": ["spatial_pattern", "severity"]
         },
