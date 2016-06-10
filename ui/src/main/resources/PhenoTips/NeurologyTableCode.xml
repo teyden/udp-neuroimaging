@@ -581,7 +581,6 @@
                     }
                 }
             } else {
-                // Enters here ONLY if reset button is confirmed
                 _.pull(newState.conditions, existingRecord);
             }
         },
@@ -2685,7 +2684,6 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 .editbody #neurology-table td .note button.edit {
   position: absolute;
   right: 0; top: 0;
-  // font-size: 80%;
   float: right;
   line-height: 0.75em;
   font-weight: normal;
