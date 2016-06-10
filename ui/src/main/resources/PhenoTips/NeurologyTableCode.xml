@@ -2627,9 +2627,6 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
   padding: .125em;
   border-radius: 25px;
 }
-#neurology-table .is-investigated button.reset:hover {
-  content: attr(title);
-}
 #neurology-table .term-child th {
   font-weight: normal;
   font-style: italic;
