@@ -738,7 +738,6 @@
         },
 
         componentWillUpdate: function(nextProps, nextState) {
-
             this.setHiddenInputValue(nextState);
             var curPhenotypes = NeurologyTableUtils.getPhenotypesForFeatures(this.state.conditions, this.state.dates);
             var nextPhenotypes = NeurologyTableUtils.getPhenotypesForFeatures(nextState.conditions, nextState.dates);
@@ -1385,6 +1384,30 @@
             this.props.onNoteChange(this.props.section.id, newNote, this.props.date);
         },
 
+        handleClickReset: function(isObserved, e) {
+            e.preventDefault();
+            var _this = this;
+            
+            new XWiki.widgets.ConfirmationBox(
+                {
+                    onYes: function() {
+                        _this.props.onConditionChange(
+                            _this.props.section.id,
+                            _this.props.date,
+                            null,
+                            isObserved,
+                            false
+                        );
+                    }
+                },
+                {
+                    confirmationText: "Please confirm to reset cell contents (note and selected option):",
+                    yesButtonText: "Yes, I confirm",
+                    noButtonText: "No, cancel"
+                }
+            );
+        },
+
         render: function () {
             var thisSectionConditions = _.map(this.props.section.terms, 'id');
             var _this = this;
@@ -1405,9 +1428,24 @@
                 null
             );
 
+            var resetButton; 
             var classNames = [];
             if (thisCondition) {
                 classNames.push("is-investigated");
+
+                if (matchingConditions.length &gt; 0) {
+                    resetButton = null; 
+                } else {
+                    resetButton = React.createElement("button", {
+                            className: "reset",
+                            onClick: _.partial(this.handleClickReset, thisCondition.isObserved),
+                        }, 
+                        React.createElement( "i", {
+                            className: "fa fa-undo",
+                            title: "reset cell"
+                        })
+                    );
+                }
             }
 
             return React.createElement(
@@ -1419,7 +1457,7 @@
                     React.createElement(
                         "input",
                         {
-                            type: "checkbox",
+                            type: "radio",
                             onChange: this.handleCheckboxChange,
                             checked: thisCondition &amp;&amp; !thisCondition.isObserved,
                             disabled: matchingConditions.length &gt; 0,
@@ -1434,7 +1472,7 @@
                     React.createElement(
                         "input",
                         {
-                            type: "checkbox",
+                            type: "radio",
                             onChange: this.handleCheckboxChange,
                             checked: thisCondition &amp;&amp; thisCondition.isObserved,
                             disabled: matchingConditions.length &gt; 0,
@@ -1443,6 +1481,7 @@
                     ),
                     "Abnormal"
                 ),
+                resetButton,
                 notes
             );
         }
@@ -1713,8 +1752,32 @@
             this.props.onNoteChange(this.props.id, newNote, this.props.date);
         },
 
+        handleClickReset: function(isObserved, e) {
+            e.preventDefault();
+            var _this = this;
+            
+            new XWiki.widgets.ConfirmationBox(
+                {
+                    onYes: function() {
+                        _this.props.onConditionChange(
+                            _this.props.id,
+                            _this.props.date,
+                            null,
+                            isObserved,
+                            false
+                        );
+                    }
+                },
+                {
+                    confirmationText: "Please confirm to reset cell contents (note and selected option):",
+                    yesButtonText: "Yes, I confirm",
+                    noButtonText: "No, cancel"
+                }
+            );
+        },
+
         render: function () {
-            var qualCheckboxes, presenceCheckboxes;
+            var qualCheckboxes, presenceCheckboxes, resetButton;
             var thisCondition = _.find(this.props.conditions, { date: this.props.date });
             if (this.props.qualifiers &amp;&amp; this.props.qualifiers.length) {
                 var _this = this;
@@ -1748,6 +1811,28 @@
                     );
                 });
             }
+
+            var classNames = [];
+            if (thisCondition) {
+                classNames.push("is-investigated");
+
+                if (thisCondition.isObserved) {
+                    classNames.push("is-observed");
+                }
+
+                resetButton = React.createElement("button", {
+                        className: "reset",
+                        onClick: _.partial(this.handleClickReset, thisCondition.isObserved),
+                    }, 
+                    React.createElement( "i", {
+                        className: "fa fa-undo",
+                        title: "reset cell"
+                    })
+                );
+            } else {
+                resetButton = null;
+            }
+            
             presenceCheckboxes = React.createElement("div",
                 {
                     key: "presence",
@@ -1757,7 +1842,7 @@
                     "label",
                     { key: "present" },
                     React.createElement("input", {
-                        type: "checkbox",
+                        type: "radio",
                         onChange: _.partial(this.handleCheckboxChange, null),
                         checked: thisCondition &amp;&amp; thisCondition.isObserved,
                         value: "observed"
@@ -1768,13 +1853,14 @@
                     "label",
                     { key: "not-present" },
                     React.createElement("input", {
-                        type: "checkbox",
+                        type: "radio",
                         onChange: _.partial(this.handleCheckboxChange, null),
                         checked: thisCondition &amp;&amp; !thisCondition.isObserved,
                         value: "notObserved"
                     }),
                     "Not present"
-                )
+                ),
+                resetButton
             );
 
             var note = React.createElement(
@@ -1785,15 +1871,6 @@
                 },
                 null
             );
-
-            var classNames = [];
-            if (thisCondition) {
-                classNames.push("is-investigated");
-
-                if (thisCondition.isObserved) {
-                    classNames.push("is-observed");
-                }
-            }
 
             return React.createElement(
                 "td",
@@ -2612,6 +2689,13 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 #neurology-table tbody.group tr:first-child td {
   border-top-width: 5px;
 }
+#neurology-table .is-investigated button.reset {
+  float: right;
+  line-height: 0.75em;
+  font-weight: normal;
+  padding: .125em;
+  border-radius: 25px;
+}
 #neurology-table .term-child th {
   font-weight: normal;
   font-style: italic;
@@ -2635,7 +2719,7 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
   visibility: hidden;
 }
 #neurology-table td.is-observed div.qualifier-group {
-  visibility: visible;
+  visibility: visible; 
 }
 #neurology-table td div.qualifier-group label {
   display: block;
@@ -2661,11 +2745,16 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 }
 .editbody #neurology-table td .note button {
   font-size: 11px;
+  line-height: .75em;
 }
 .editbody #neurology-table td .note button.edit {
   position: absolute;
   right: 0; top: 0;
-  font-size: 80%;
+  float: right;
+  line-height: 0.75em;
+  font-weight: normal;
+  padding: .125em;
+  border-radius: 25px;
 }
 .popover textarea {
   font-size: 90%;
