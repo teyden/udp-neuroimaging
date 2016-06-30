@@ -2685,9 +2685,8 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 #neurology-table thead th button {
   float: right;
 }
-#neurology-table tbody.group tr:first-child th,
-#neurology-table tbody.group tr:first-child td {
-  border-top-width: 5px;
+#neurology-table tr.term-header &gt; * {
+  border-top-width: 5px !important;
 }
 #neurology-table .is-investigated button.reset {
   float: right;
@@ -2780,15 +2779,12 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
 }
 .viewbody #neurology-table td .note {
   font-size: 80%;
-  text-align: left;
   max-width: 200px;
 }
 .viewbody #neurology-table td ul {
   margin: 0;
   padding: 0;
-  text-align: left;
   list-style: disc inside;
-  text-align: left;
 }</code>
     </property>
     <property>
