@@ -2661,8 +2661,9 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
     </property>
     <property>
       <code>#neurology-table {
-  border-collapse: collapse;
-  background-color: #f9f9f9;
+  border: 1px solid #aaa;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 #neurology-table td, #neurology-table th {
   padding: 6px;
@@ -2762,20 +2763,14 @@ require(['react', 'react-dom', 'NeurologyTable'], function(React, ReactDOM, Neur
   word-wrap: break-word;
   overflow: auto;
 }
-.viewbody #neurology-table td, .viewbody #neurology-table th {
-  border: 1px solid #aaa; border-right-width: 0;
-  vertical-align: top;
-}
-.viewbody #neurology-table td:last-child, .viewbody #neurology-table th:last-child {
-  border-right-width: 1px;
-}
+
 .viewbody #neurology-table .term-header td.observed {
-  border-left-color: red;
-  border-top-color: red;
+  border-color: #C40;
+  border-width: 2px;
 }
 .viewbody #neurology-table .term-header td.not-observed {
-  border-left-color: green;
-  border-top-color: green;
+  border-color: #4B2;
+  border-width: 2px;
 }
 .viewbody #neurology-table td .note {
   font-size: 80%;
