@@ -64,7 +64,7 @@ public class NeurologySection
         is_normal = metaObject.getStringValue(JSON_KEY_IS_NORMAL);
         clinical_status = checkboxValueToJsonValue(metaObject.getStringValue(JSON_KEY_IS_NORMAL));
         section_notes = metaObject.getStringValue(JSON_KEY_SECTION_NOTES);
-        end_notes = metaObject.getStringValue(JSON_KEY_SECTION_NOTES);
+        end_notes = metaObject.getStringValue(JSON_KEY_END_NOTES);
 
         for (BaseObject object : featureObjects) {
             if (object == null || object.getFieldList().size() == 0) {
