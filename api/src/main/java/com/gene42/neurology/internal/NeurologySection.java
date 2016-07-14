@@ -64,16 +64,6 @@ public class NeurologySection
         }
     }
 
-    public NeurologySection(BaseObject metaObject, DocumentAccessBridge bridge)
-    {
-        is_normal = metaObject.getStringValue(JSON_KEY_IS_NORMAL);
-        clinical_status = checkboxValueToJsonValue(metaObject.getStringValue(JSON_KEY_IS_NORMAL));
-        section_notes = metaObject.getStringValue(JSON_KEY_SECTION_NOTES);
-
-        end_notes = "";
-        features = new LinkedList<>();
-    }
-
     public NeurologySection(BaseObject metaObject, List<BaseObject> featureObjects, DocumentAccessBridge bridge)
     {
         is_normal = metaObject.getStringValue(JSON_KEY_IS_NORMAL);
