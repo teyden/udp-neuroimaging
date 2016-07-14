@@ -1,10 +1,7 @@
 package com.gene42.neurology.internal;
 
 import org.phenotips.Constants;
-import org.phenotips.data.IndexedPatientData;
-import org.phenotips.data.Patient;
-import org.phenotips.data.PatientData;
-import org.phenotips.data.PatientDataController;
+import org.phenotips.data.*;
 
 import org.xwiki.bridge.DocumentAccessBridge;
 import org.xwiki.component.annotation.Component;
@@ -32,10 +29,14 @@ import com.xpn.xwiki.objects.BaseObject;
 @Component(roles = { PatientDataController.class })
 @Named("neurology")
 @Singleton
-public class NeurologyFeaturesController implements PatientDataController<NeurologyFeature>
+public class NeurologyDataController implements PatientDataController<NeurologySection>
 {
-    /** The XClass used for storing gene data. */
-    public static final EntityReference NEUROLOGY_CLASS_REFERENCE = new EntityReference("NeurologyFeatureClass",
+    /** The XClass used for storing neurology meta data. */
+    public static final EntityReference NEUROLOGY_META_CLASS_REFERENCE = new EntityReference("NeurologyMetaClass",
+            EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
+
+    /** The XClass used for storing neurology feature data. */
+    public static final EntityReference NEUROLOGY_FEATURE_CLASS_REFERENCE = new EntityReference("NeurologyFeatureClass",
             EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
 
     private static final String NEUROLOGY_STRING = "neurology";
@@ -60,28 +61,31 @@ public class NeurologyFeaturesController implements PatientDataController<Neurol
     }
 
     @Override
-    public PatientData<NeurologyFeature> load(Patient patient)
+    public PatientData<NeurologySection> load(Patient patient)
     {
         try {
             XWikiDocument doc = (XWikiDocument) this.documentAccessBridge.getDocument(patient.getDocument());
-            List<BaseObject> baseObjects = doc.getXObjects(NEUROLOGY_CLASS_REFERENCE);
-            if (baseObjects == null || baseObjects.isEmpty()) {
-                this.logger.debug("No neurology information found, returning");
+
+            BaseObject metaObject = doc.getXObject(NEUROLOGY_META_CLASS_REFERENCE);
+            List<BaseObject> featureObjects = doc.getXObjects(NEUROLOGY_FEATURE_CLASS_REFERENCE);
+
+            if (metaObject == null) {
+                this.logger.debug("No neurology data found, returning");
                 return null;
             }
 
-            List<NeurologyFeature> features = new LinkedList<NeurologyFeature>();
-            for (BaseObject baseObject : baseObjects) {
-                if (baseObject == null || baseObject.getFieldList().size() == 0) {
-                    continue;
+            int isNormal = metaObject.getIntValue("is_normal");
+            if (isNormal == 1) {
+                return new SimpleValuePatientData<>(getName(), new NeurologySection(metaObject, documentAccessBridge));
+
+            } else if (isNormal == 0) {
+                if (featureObjects == null || featureObjects.isEmpty()) {
+                    this.logger.debug("No neurology feature data found, returning");
+                    return null;
                 }
 
-                features.add(new NeurologyFeature(baseObject, documentAccessBridge));
-            }
-            if (features.isEmpty()) {
-                return null;
-            } else {
-                return new IndexedPatientData<NeurologyFeature>(getName(), features);
+                NeurologySection section = new NeurologySection(metaObject, featureObjects, documentAccessBridge);
+                return new SimpleValuePatientData<>(getName(), section);
             }
         } catch (Exception e) {
             this.logger.error("Could not find requested document or some unforeseen "
@@ -102,50 +106,28 @@ public class NeurologyFeaturesController implements PatientDataController<Neurol
         if (selectedFieldNames != null && !selectedFieldNames.contains(CONTROLLER_NAME)) {
             return;
         }
-
-        PatientData<NeurologyFeature> data = patient.getData(getName());
+        PatientData<NeurologySection> data = patient.getData(getName());
         if (data == null) {
             return;
         }
-        Iterator<NeurologyFeature> iterator = data.iterator();
-        if (!iterator.hasNext()) {
-            return;
-        }
 
-        // put() is placed here because we want to create the property iff at least one field is set/enabled
-        // (by this point we know there is some data since iterator.hasNext() == true)
-        json.put(CONTROLLER_NAME, new JSONArray());
-        JSONArray container = json.getJSONArray(CONTROLLER_NAME);
-
-        while (iterator.hasNext()) {
-            NeurologyFeature feature = iterator.next();
-
-            container.put(feature.getJsonObj());
-        }
+        NeurologySection section = data.getValue();
+        json.put(CONTROLLER_NAME, section.getJsonObj());
     }
 
     @Override
-    public PatientData<NeurologyFeature> readJSON(JSONObject json)
+    public PatientData<NeurologySection> readJSON(JSONObject json)
     {
         if (json == null || !json.has(CONTROLLER_NAME)) {
             return null;
         }
 
         try {
-            JSONArray featuresJson = json.getJSONArray(CONTROLLER_NAME);
-            List<NeurologyFeature> features = new LinkedList<NeurologyFeature>();
-            for (int i = 0; i < featuresJson.length(); ++i) {
-                JSONObject featureJson = featuresJson.getJSONObject(i);
-                NeurologyFeature feature = new NeurologyFeature(new org.json.JSONObject(featureJson));
+            JSONObject sectionJson = json.getJSONObject(CONTROLLER_NAME);
+            NeurologySection section = new NeurologySection(sectionJson);
 
-                features.add(feature);
-            }
+            return new SimpleValuePatientData<>(getName(), section);
 
-            if (features.isEmpty()) {
-                return null;
-            } else {
-                return new IndexedPatientData<NeurologyFeature>(getName(), features);
-            }
         } catch (Exception e) {
             this.logger.error("Could not load neurology features from JSON", e.getMessage());
         }
@@ -156,8 +138,8 @@ public class NeurologyFeaturesController implements PatientDataController<Neurol
     public void save(Patient patient)
     {
         try {
-            PatientData<NeurologyFeature> features = patient.getData(this.getName());
-            if (features == null || !features.isIndexed()) {
+            PatientData<NeurologySection> data = patient.getData(this.getName());
+            if (data == null || data.getValue() == null) {
                 return;
             }
 
@@ -167,22 +149,29 @@ public class NeurologyFeaturesController implements PatientDataController<Neurol
             }
 
             XWikiContext context = this.xcontextProvider.get();
-            doc.removeXObjects(NEUROLOGY_CLASS_REFERENCE);
-            Iterator<NeurologyFeature> iterator = features.iterator();
+            doc.removeXObjects(NEUROLOGY_META_CLASS_REFERENCE);
+            doc.removeXObjects(NEUROLOGY_FEATURE_CLASS_REFERENCE);
+
+            NeurologySection section = data.getValue();
+
+            BaseObject metaObject = doc.newXObject(NEUROLOGY_META_CLASS_REFERENCE, context);
+            section.populateMetaObj(metaObject, context);
+
+            Iterator<NeurologyFeature> iterator = section.getFeatures().iterator();
             while (iterator.hasNext()) {
                 try {
                     NeurologyFeature feature = iterator.next();
-                    BaseObject xwikiObject = doc.newXObject(NEUROLOGY_CLASS_REFERENCE, context);
+                    BaseObject featureObject = doc.newXObject(NEUROLOGY_FEATURE_CLASS_REFERENCE, context);
 
-                    feature.populateBaseObj(xwikiObject, context);
+                    feature.populateBaseObj(featureObject, context);
                 } catch (Exception e) {
                     this.logger.error("Failed to save a specific feature: [{}]", e.getMessage());
                 }
             }
 
-            context.getWiki().saveDocument(doc, "Updated neurology features from JSON", true, context);
+            context.getWiki().saveDocument(doc, "Updated neurology data", true, context);
         } catch (Exception e) {
-            this.logger.error("Failed to neurology features: [{}]", e.getMessage());
+            this.logger.error("Failed to save neurology data: [{}]", e.getMessage());
         }
     }
 }
