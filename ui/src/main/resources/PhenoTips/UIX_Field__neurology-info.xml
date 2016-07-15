@@ -105,7 +105,7 @@ $xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
 #__hasDataToDisplay('section_notes' $showSectionNotes)
 #__hasDataToDisplay('end_notes' $showEndNotes)
 #if ($showIsNormal || $showSectionNotes || $showEndNotes)
-  (% class="controlled-group complete-hide" %)(((
+  (% class="controlled-group complete-hide confirm confirm-yes" %)(((
    (% class="fieldset is_normal controller exclude" %)(((
     (% class="neurology-meta"%)(((
     #if ($xcontext.action == 'edit')
