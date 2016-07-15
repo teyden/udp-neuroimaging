@@ -1,24 +1,30 @@
 package com.gene42.neurology.internal;
 
-import com.xpn.xwiki.XWikiContext;
-import com.xpn.xwiki.objects.BaseObject;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.xwiki.bridge.DocumentAccessBridge;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.xpn.xwiki.XWikiContext;
+import com.xpn.xwiki.objects.BaseObject;
+
 public class NeurologySection
 {
     public static final String JSON_VALUE_UNAFFECTED = "unaffected";
+
     public static final String JSON_VALUE_AFFECTED = "affected";
 
     public static final String JSON_KEY_CLINICAL_STATUS = "clinicalStatus";
 
     public static final String JSON_KEY_IS_NORMAL = "is_normal";
+
     public static final String JSON_KEY_SECTION_NOTES = "section_notes";
+
     public static final String JSON_KEY_END_NOTES = "end_notes";
+
     public static final String JSON_KEY_FEATURES = "features";
 
     private String clinical_status;
@@ -32,38 +38,26 @@ public class NeurologySection
     private List<NeurologyFeature> features = new LinkedList<>();
 
     /**
-     * Constructor that adds only the XObject for neurology meta data and not the XObjects for neurology
-     * features. Use cases: the is_normal property is checked meaning the patient's neurological condition
-     * is unaffected therefore no other data in the neurology section is recorded.
+     * Constructor that adds only the XObject for neurology meta data and not the XObjects for neurology features.
+     *
+     * Use cases: the is_normal property is checked meaning the patient's neurological condition is unaffected therefore
+     * no table or end_notes data in the neurology section is recorded.
      */
     public NeurologySection(BaseObject metaObject, DocumentAccessBridge bridge)
     {
         is_normal = metaObject.getStringValue(JSON_KEY_IS_NORMAL);
         clinical_status = checkboxValueToJsonValue(metaObject.getStringValue(JSON_KEY_IS_NORMAL));
         section_notes = metaObject.getStringValue(JSON_KEY_SECTION_NOTES);
-
         end_notes = "";
         features = new LinkedList<>();
     }
 
-    public NeurologySection(JSONObject json)
-    {
-        is_normal = json.getString(JSON_KEY_IS_NORMAL);
-        clinical_status = checkboxValueToJsonValue(json.getString(JSON_KEY_IS_NORMAL));
-        section_notes = json.optString(JSON_KEY_SECTION_NOTES);
-        end_notes = json.optString(JSON_KEY_END_NOTES);
-
-        JSONArray featuresJson = json.optJSONArray(JSON_KEY_FEATURES);
-
-        if (featuresJson != null) {
-            for (int i = 0; i < featuresJson.length(); i++) {
-                JSONObject featureJson = featuresJson.getJSONObject(i);
-                NeurologyFeature feature = new NeurologyFeature(featureJson);
-                features.add(feature);
-            }
-        }
-    }
-
+    /**
+     * Constructor that adds only the XObject for neurology meta data and not the XObjects for neurology features.
+     *
+     * Use cases: the is_normal property is checked meaning the patient's neurological condition is unaffected therefore
+     * no table or end_notes data in the neurology section is recorded.
+     */
     public NeurologySection(BaseObject metaObject, List<BaseObject> featureObjects, DocumentAccessBridge bridge)
     {
         is_normal = metaObject.getStringValue(JSON_KEY_IS_NORMAL);
@@ -80,6 +74,32 @@ public class NeurologySection
         }
     }
 
+    /**
+     * Constructor that copies the data from a json object.
+     */
+    public NeurologySection(JSONObject json)
+    {
+        is_normal = jsonValueToCheckboxValue(json.optString(JSON_KEY_CLINICAL_STATUS));
+        clinical_status = getClinicalStatusJsonValue(json.optString(JSON_KEY_CLINICAL_STATUS));
+        section_notes = json.optString(JSON_KEY_SECTION_NOTES);
+        end_notes = json.optString(JSON_KEY_END_NOTES);
+
+        JSONArray featuresJson = json.optJSONArray(JSON_KEY_FEATURES);
+
+        if (featuresJson != null) {
+            for (int i = 0; i < featuresJson.length(); i++) {
+                JSONObject featureJson = featuresJson.getJSONObject(i);
+                NeurologyFeature feature = new NeurologyFeature(featureJson);
+                features.add(feature);
+            }
+        }
+    }
+
+    /**
+     * Creates a JSON object for the class.
+     *
+     * @return The JSON object.
+     */
     public JSONObject getJsonObj()
     {
         JSONObject section = new JSONObject();
@@ -96,6 +116,12 @@ public class NeurologySection
         return section;
     }
 
+    /**
+     * Sets XObject property values for the {@code PhenoTips.NeurologyMetaClass}.
+     *
+     * @param obj The object to be updated.
+     * @param context The current XWiki context.
+     */
     public void populateMetaObj(BaseObject obj, XWikiContext context)
     {
         obj.set(JSON_KEY_IS_NORMAL, is_normal, context);
@@ -103,14 +129,15 @@ public class NeurologySection
         obj.set(JSON_KEY_END_NOTES, end_notes, context);
     }
 
-
-    public List<NeurologyFeature> getFeatures() { return features; }
-
-    public String getSectionNotes() { return section_notes; }
-
-    public String getEndNotes() { return end_notes; }
-
-    public String getClinicalStatus() { return clinical_status; }
+    /**
+     * Gets neurology features stored in the current class object.
+     *
+     * @return List of NeurologyFeature objects.
+     */
+    public List<NeurologyFeature> getFeatures()
+    {
+        return features;
+    }
 
     private String checkboxValueToJsonValue(String val)
     {
@@ -119,5 +146,32 @@ public class NeurologySection
         }
 
         return "1".equals(val) ? JSON_VALUE_UNAFFECTED : JSON_VALUE_AFFECTED;
+    }
+
+    private String jsonValueToCheckboxValue(String val)
+    {
+        if (val == null) {
+            return null;
+        }
+
+        return val.equals(JSON_VALUE_UNAFFECTED) ? "0" : val.equals(JSON_VALUE_AFFECTED) ? "1" : "N/A";
+    }
+
+    private String getIsNormalJsonValue(String val)
+    {
+        if (val == null) {
+            return null;
+        }
+
+        return val.equals("0") || val.equals("1") ? val : "N/A";
+    }
+
+    private String getClinicalStatusJsonValue(String val)
+    {
+        if (val == null) {
+            return null;
+        }
+
+        return val.equals(JSON_VALUE_UNAFFECTED) || val.equals(JSON_VALUE_AFFECTED) ? val : "N/A";
     }
 }

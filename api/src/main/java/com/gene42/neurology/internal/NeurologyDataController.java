@@ -1,7 +1,10 @@
 package com.gene42.neurology.internal;
 
 import org.phenotips.Constants;
-import org.phenotips.data.*;
+import org.phenotips.data.Patient;
+import org.phenotips.data.PatientData;
+import org.phenotips.data.PatientDataController;
+import org.phenotips.data.SimpleValuePatientData;
 
 import org.xwiki.bridge.DocumentAccessBridge;
 import org.xwiki.component.annotation.Component;
@@ -10,7 +13,6 @@ import org.xwiki.model.reference.EntityReference;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,7 +20,6 @@ import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 
@@ -26,34 +27,50 @@ import com.xpn.xwiki.XWikiContext;
 import com.xpn.xwiki.doc.XWikiDocument;
 import com.xpn.xwiki.objects.BaseObject;
 
+/**
+ * Handles neurology information.
+ *
+ * @version $Id$
+ */
 @Component(roles = { PatientDataController.class })
 @Named("neurology")
 @Singleton
 public class NeurologyDataController implements PatientDataController<NeurologySection>
 {
-    /** The XClass used for storing neurology meta data. */
+    /**
+     * The XClass used for storing neurology meta data.
+     */
     public static final EntityReference NEUROLOGY_META_CLASS_REFERENCE = new EntityReference("NeurologyMetaClass",
-            EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
+        EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
 
-    /** The XClass used for storing neurology feature data. */
+    /**
+     * The XClass used for storing neurology feature data.
+     */
     public static final EntityReference NEUROLOGY_FEATURE_CLASS_REFERENCE = new EntityReference("NeurologyFeatureClass",
-            EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
+        EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
 
     private static final String NEUROLOGY_STRING = "neurology";
 
     private static final String CONTROLLER_NAME = NEUROLOGY_STRING;
 
-    /** Provides access to the underlying data storage. */
+    /**
+     * Provides access to the underlying data storage.
+     */
     @Inject
     protected DocumentAccessBridge documentAccessBridge;
 
     @Inject
     private Logger logger;
 
-    /** Provides access to the current execution context. */
+    /**
+     * Provides access to the current execution context.
+     */
     @Inject
     private Provider<XWikiContext> xcontextProvider;
 
+    /**
+     * Returns name of controller.
+     */
     @Inject
     public String getName()
     {
@@ -74,10 +91,9 @@ public class NeurologyDataController implements PatientDataController<NeurologyS
                 return null;
             }
 
-            int isNormal = metaObject.getIntValue("is_normal");
+            int isNormal = metaObject.getIntValue(NeurologySection.JSON_KEY_IS_NORMAL);
             if (isNormal == 1) {
                 return new SimpleValuePatientData<>(getName(), new NeurologySection(metaObject, documentAccessBridge));
-
             } else if (isNormal == 0) {
                 if (featureObjects == null || featureObjects.isEmpty()) {
                     this.logger.debug("No neurology feature data found, returning");
@@ -89,7 +105,7 @@ public class NeurologyDataController implements PatientDataController<NeurologyS
             }
         } catch (Exception e) {
             this.logger.error("Could not find requested document or some unforeseen "
-                    + "error has occurred during controller loading ", e.getMessage());
+                + "error has occurred during controller loading ", e.getMessage());
         }
         return null;
     }
@@ -121,15 +137,13 @@ public class NeurologyDataController implements PatientDataController<NeurologyS
         if (json == null || !json.has(CONTROLLER_NAME)) {
             return null;
         }
-
         try {
             JSONObject sectionJson = json.getJSONObject(CONTROLLER_NAME);
             NeurologySection section = new NeurologySection(sectionJson);
 
             return new SimpleValuePatientData<>(getName(), section);
-
         } catch (Exception e) {
-            this.logger.error("Could not load neurology features from JSON", e.getMessage());
+            this.logger.error("Could not load neurology features from JSON: [{}]", e.getMessage());
         }
         return null;
     }
