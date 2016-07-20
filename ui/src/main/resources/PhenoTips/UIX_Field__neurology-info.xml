@@ -104,60 +104,62 @@ $xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
 #__hasBooleanDataToDisplay('is_normal' $showIsNormal)
 #__hasDataToDisplay('section_notes' $showSectionNotes)
 #__hasDataToDisplay('end_notes' $showEndNotes)
-(% class="controlled-group complete-hide confirm confirm-yes" %)(((
-  (% class="fieldset is_normal controller exclude" %)(((
-    (% class="neurology-meta"%)(((
+#if ($services.neurology.getFeatureSetJson($doc) != '[]' || $showIsNormal || $showSectionNotes || $showEndNotes)
+  (% class="controlled-group complete-hide confirm confirm-yes" %)(((
+    (% class="fieldset is_normal controller exclude" %)(((
+      (% class="neurology-meta"%)(((
+      #if ($xcontext.action == 'edit')
+        (% class="clinical-status" %)(((
+        $doc.display('is_normal') #__label('is_normal' '' "$class.get('is_normal').translatedPrettyName")
+        )))
+      #else
+        (% class="clinical-status" %)(((
+        #if ($showIsNormal)$class.get('is_normal').prettyName#end
+        )))
+      #end
+      #if ($xcontext.action == 'edit' || ($doc.display('section_notes') != ''))
+        #__label('section_notes' 'section group-title' '')
+        #__display('section_notes')
+      #end
+      )))
+    )))
+    (% class="controlled" %)(((
     #if ($xcontext.action == 'edit')
-      (% class="clinical-status" %)(((
-      $doc.display('is_normal') #__label('is_normal' '' "$class.get('is_normal').translatedPrettyName")
-      )))
-    #else
-      (% class="clinical-status" %)(((
-      #if ($showIsNormal)$class.get('is_normal').prettyName#end
-      )))
-    #end
-    #if ($xcontext.action == 'edit' || ($doc.display('section_notes') != ''))
-      #__label('section_notes' 'section group-title' '')
-      #__display('section_notes')
-    #end
-    )))
-  )))
-  (% class="controlled" %)(((
-  #if ($xcontext.action == 'edit')
-    $xwiki.jsx.use('PhenoTips.NeurologyTableCode')##
-    $xwiki.linkx.use($services.webjars.url('org.webjars.npm:pikaday', 'css/pikaday.css'), {'type': 'text/css', 'rel': 'stylesheet'})##
+      $xwiki.jsx.use('PhenoTips.NeurologyTableCode')##
+      $xwiki.linkx.use($services.webjars.url('org.webjars.npm:pikaday', 'css/pikaday.css'), {'type': 'text/css', 'rel': 'stylesheet'})##
 
-    {{html clean=false}}
-    &lt;input type="hidden" name="neurology_table_state" id="neurology_table_state"&gt;
-    &lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
-    {{/html}}
-  #end
-  #if ($xcontext.action == 'edit')
-    (% class="neurology-meta" %)(((
-    #__label('end_notes' 'section group-title' '')
-    #__display('end_notes')
-    )))
-  #end
-  #if (!$showIsNormal)
-    (% class="neurology-features" %)(((
-    {{html clean=false}}
-    #if ($xcontext.action == 'view')
-      #set($useSymbols = true)
-    #else
-      #set($useSymbols = false)
+      {{html clean=false}}
+      &lt;input type="hidden" name="neurology_table_state" id="neurology_table_state"&gt;
+      &lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
+      {{/html}}
     #end
-    $!services.neurology.getFeatureSetViewHtml($doc, $useSymbols)
-    {{/html}}
-    )))
-    #if ($xcontext.action == 'view' &amp;&amp; ($doc.display('end_notes') != ''))
+    #if ($xcontext.action == 'edit')
       (% class="neurology-meta" %)(((
       #__label('end_notes' 'section group-title' '')
       #__display('end_notes')
       )))
     #end
-  #end
-  )))## controlled (neurology table + end notes)
-)))## controlled-group (neurology clinical status + section notes)
+    #if (!$showIsNormal)
+      (% class="neurology-features" %)(((
+      {{html clean=false}}
+      #if ($xcontext.action == 'view')
+        #set($useSymbols = true)
+      #else
+        #set($useSymbols = false)
+      #end
+      $!services.neurology.getFeatureSetViewHtml($doc, $useSymbols)
+      {{/html}}
+      )))
+      #if ($xcontext.action == 'view' &amp;&amp; ($doc.display('end_notes') != ''))
+        (% class="neurology-meta" %)(((
+        #__label('end_notes' 'section group-title' '')
+        #__display('end_notes')
+        )))
+      #end
+    #end
+    )))## controlled (neurology table + end notes)
+  )))## controlled-group (neurology clinical status + section notes)
+#end
 ##
 #set ($class = $origClass)
 #set ($discard = $doc.use($origObj))
