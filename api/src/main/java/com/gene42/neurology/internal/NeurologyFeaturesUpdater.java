@@ -65,6 +65,12 @@ public class NeurologyFeaturesUpdater extends AbstractEventListener
         XWikiContext context = (XWikiContext) this.execution.getContext().getProperty("xwikicontext");
         XWikiDocument doc = (XWikiDocument) source;
 
+        BaseObject metaObject = doc.getXObject(NeurologyDataController.META_CLASS_REFERENCE);
+        if (metaObject.getIntValue(NeurologySection.JSON_KEY_IS_NORMAL) == 1) {
+            doc.removeXObjects(NeurologyDataController.FEATURE_CLASS_REFERENCE);
+            return;
+        }
+
         String tableState = ((ServletRequest) this.container.getRequest()).getHttpServletRequest()
                 .getParameter("neurology_table_state");
         if (tableState == null) {
@@ -80,7 +86,6 @@ public class NeurologyFeaturesUpdater extends AbstractEventListener
             this.logger.warn("Failed to parse neurology table JSON: [{}]", e.getMessage());
             return;
         }
-
 
         List<NeurologyFeature> features = new LinkedList<>();
         for (int i = 0; i < feauturesJson.length(); i++) {
