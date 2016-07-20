@@ -13,6 +13,7 @@ import org.xwiki.model.reference.EntityReference;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -86,18 +87,12 @@ public class NeurologyDataController implements PatientDataController<NeurologyS
             BaseObject metaObject = doc.getXObject(NEUROLOGY_META_CLASS_REFERENCE);
             List<BaseObject> featureObjects = doc.getXObjects(NEUROLOGY_FEATURE_CLASS_REFERENCE);
 
-            if (metaObject == null) {
-                this.logger.debug("No neurology data found, returning");
-                return null;
-            }
-
             int isNormal = metaObject.getIntValue(NeurologySection.JSON_KEY_IS_NORMAL);
             if (isNormal == 1) {
                 return new SimpleValuePatientData<>(getName(), new NeurologySection(metaObject, documentAccessBridge));
             } else if (isNormal == 0) {
-                if (featureObjects == null || featureObjects.isEmpty()) {
-                    this.logger.debug("No neurology feature data found, returning");
-                    return null;
+                if (featureObjects == null) {
+                    featureObjects = new LinkedList<>();
                 }
 
                 NeurologySection section = new NeurologySection(metaObject, featureObjects, documentAccessBridge);

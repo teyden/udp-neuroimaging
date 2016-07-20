@@ -83,7 +83,6 @@ public class NeurologySection
         clinicalStatus = checkboxValueToJsonValue(metaObject.getStringValue(JSON_KEY_IS_NORMAL));
         sectionNotes = metaObject.getStringValue(JSON_KEY_SECTION_NOTES);
         endNotes = "";
-        features = new LinkedList<>();
     }
 
     /**
