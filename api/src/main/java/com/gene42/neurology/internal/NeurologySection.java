@@ -123,13 +123,15 @@ public class NeurologySection
         sectionNotes = json.optString(JSON_KEY_SECTION_NOTES);
         endNotes = json.optString(JSON_KEY_END_NOTES);
 
-        JSONArray featuresJson = json.optJSONArray(JSON_KEY_FEATURES);
+        JSONArray featuresArray = json.optJSONArray(JSON_KEY_FEATURES);
 
-        if (featuresJson != null) {
-            for (int i = 0; i < featuresJson.length(); i++) {
-                JSONObject featureJson = featuresJson.getJSONObject(i);
-                NeurologyFeature feature = new NeurologyFeature(featureJson);
-                features.add(feature);
+        if (featuresArray != null) {
+            for (int i = 0; i < featuresArray.length(); i++) {
+                JSONObject featureJson = featuresArray.optJSONObject(i);
+                if (!isNeurologyFeature(featureJson)) {
+                    continue;
+                }
+                features.add(new NeurologyFeature(featureJson));
             }
         }
     }
@@ -176,6 +178,17 @@ public class NeurologySection
     public List<NeurologyFeature> getFeatures()
     {
         return features;
+    }
+
+    private boolean isNeurologyFeature(JSONObject json)
+    {
+        try {
+            json.getBoolean(NeurologyFeature.JSON_KEY_IS_OBSERVED);
+            json.getString(NeurologyFeature.JSON_KEY_ID);
+        } catch (Exception ex) {
+            return false;
+        }
+        return true;
     }
 
     private String checkboxValueToJsonValue(String val)
