@@ -66,7 +66,7 @@ public class NeurologyFeaturesUpdater extends AbstractEventListener
         XWikiDocument doc = (XWikiDocument) source;
 
         BaseObject metaObject = doc.getXObject(NeurologyDataController.NEUROLOGY_META_CLASS_REFERENCE);
-        if (metaObject.getIntValue(NeurologySection.JSON_KEY_IS_NORMAL) == 1) {
+        if (metaObject != null && metaObject.getIntValue(NeurologySection.JSON_KEY_IS_NORMAL) == 1) {
             doc.removeXObjects(NeurologyDataController.NEUROLOGY_FEATURE_CLASS_REFERENCE);
             return;
         }
