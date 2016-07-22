@@ -133,12 +133,6 @@ $xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
       &lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
       {{/html}}
     #end
-    #if ($xcontext.action == 'edit')
-      (% class="neurology-meta" %)(((
-      #__label('end_notes' 'section group-title' '')
-      #__display('end_notes')
-      )))
-    #end
     #if (!$showIsNormal)
       (% class="neurology-features" %)(((
       {{html clean=false}}
@@ -150,12 +144,12 @@ $xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
       $!services.neurology.getFeatureSetViewHtml($doc, $useSymbols)
       {{/html}}
       )))
-      #if ($xcontext.action == 'view' &amp;&amp; ($doc.display('end_notes') != ''))
-        (% class="neurology-meta" %)(((
-        #__label('end_notes' 'section group-title' '')
-        #__display('end_notes')
-        )))
-      #end
+    #end
+    #if ($xcontext.action == 'edit' || (!$showIsNormal &amp;&amp; $xcontext.action == 'view' &amp;&amp; ($doc.display('end_notes') != '')))
+      (% class="neurology-meta" %)(((
+      #__label('end_notes' 'section group-title' '')
+      #__display('end_notes')
+      )))
     #end
     )))## controlled (neurology table + end notes)
   )))## controlled-group (neurology clinical status + section notes)
