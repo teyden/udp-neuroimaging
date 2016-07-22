@@ -114,26 +114,27 @@ public class NeurologyDataController implements PatientDataController<NeurologyS
     @Override
     public void writeJSON(Patient patient, JSONObject json, Collection<String> selectedFieldNames)
     {
-        if (selectedFieldNames != null && !selectedFieldNames.contains(CONTROLLER_NAME)) {
+        if (selectedFieldNames != null && !selectedFieldNames.contains(getName())) {
             return;
         }
+
         PatientData<NeurologySection> data = patient.getData(getName());
         if (data == null) {
             return;
         }
 
         NeurologySection section = data.getValue();
-        json.put(CONTROLLER_NAME, section.getJsonObj());
+        json.put(getName(), section.getJsonObj());
     }
 
     @Override
     public PatientData<NeurologySection> readJSON(JSONObject json)
     {
-        if (json == null || !json.has(CONTROLLER_NAME)) {
+        if (json == null || !json.has(getName())) {
             return null;
         }
         try {
-            JSONObject sectionJson = json.getJSONObject(CONTROLLER_NAME);
+            JSONObject sectionJson = json.getJSONObject(getName());
             NeurologySection section = new NeurologySection(sectionJson);
 
             return new SimpleValuePatientData<>(getName(), section);
@@ -147,7 +148,7 @@ public class NeurologyDataController implements PatientDataController<NeurologyS
     public void save(Patient patient)
     {
         try {
-            PatientData<NeurologySection> data = patient.getData(this.getName());
+            PatientData<NeurologySection> data = patient.getData(getName());
             if (data == null || data.getValue() == null) {
                 return;
             }

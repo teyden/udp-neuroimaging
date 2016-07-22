@@ -35,10 +35,6 @@ import com.xpn.xwiki.objects.BaseObject;
 @Singleton
 public class NeurologyFeaturesUpdater extends AbstractEventListener
 {
-    /** The name of the class where the mapping between phenotypes and categories is stored. */
-    private static final EntityReference NEUROLOGY_CLASS_REFERENCE = new EntityReference("NeurologyFeatureClass",
-            EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
-
     @Inject
     private Execution execution;
 
@@ -94,12 +90,13 @@ public class NeurologyFeaturesUpdater extends AbstractEventListener
             features.add(feature);
         }
 
-        doc.removeXObjects(NEUROLOGY_CLASS_REFERENCE);
+        doc.removeXObjects(NeurologyDataController.NEUROLOGY_FEATURE_CLASS_REFERENCE);
         Iterator<NeurologyFeature> iterator = features.iterator();
         while (iterator.hasNext()) {
             try {
                 NeurologyFeature feature = iterator.next();
-                BaseObject xwikiObject = doc.newXObject(NEUROLOGY_CLASS_REFERENCE, context);
+                BaseObject xwikiObject = doc.newXObject(NeurologyDataController.NEUROLOGY_FEATURE_CLASS_REFERENCE,
+                        context);
 
                 feature.populateBaseObj(xwikiObject, context);
             } catch (Exception e) {
