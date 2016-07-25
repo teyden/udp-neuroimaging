@@ -30,7 +30,7 @@
     <nameField/>
     <validationScript/>
     <end_notes>
-      <contenttype>FullyRenderedText</contenttype>
+      <contenttype>PureText</contenttype>
       <customDisplay/>
       <disabled>0</disabled>
       <editor>---</editor>
@@ -60,7 +60,7 @@
       <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
     </is_normal>
     <section_notes>
-      <contenttype>FullyRenderedText</contenttype>
+      <contenttype>PureText</contenttype>
       <customDisplay/>
       <disabled>0</disabled>
       <editor>---</editor>
