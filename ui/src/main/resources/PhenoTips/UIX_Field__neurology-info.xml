@@ -10,29 +10,29 @@
 
 <xwikidoc version="1.1">
   <web>PhenoTips</web>
-  <name>UIX_Field__neurology-table</name>
+  <name>UIX_Field__neurology-info</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
   <creator>xwiki:XWiki.Admin</creator>
-  <creationDate>1459869151000</creationDate>
+  <creationDate>1468428033000</creationDate>
   <parent>PhenoTips.PatientSheet</parent>
   <author>xwiki:XWiki.Admin</author>
   <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
-  <date>1459977424000</date>
-  <contentUpdateDate>1459869160000</contentUpdateDate>
+  <date>1468529150000</date>
+  <contentUpdateDate>1468428592000</contentUpdateDate>
   <version>1.1</version>
-  <title>Neurology Table</title>
+  <title>$services.localization.render('phenotips.UIXField.neurology-info')</title>
   <comment/>
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
   <content/>
   <object>
-    <name>PhenoTips.UIX_Field__neurology-table</name>
+    <name>PhenoTips.UIX_Field__neurology-info</name>
     <number>0</number>
     <className>XWiki.UIExtensionClass</className>
-    <guid>e0dab0ad-aee0-4f04-ab92-2375fec04b4a</guid>
+    <guid>383b4819-7716-4ae5-9a40-b58d329f9568</guid>
     <class>
       <name>XWiki.UIExtensionClass</name>
       <customClass/>
@@ -98,40 +98,89 @@
       </scope>
     </class>
     <property>
-      <content>{{velocity}}
-$xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
-#if ($xcontext.action == 'edit')
-  $xwiki.jsx.use('PhenoTips.NeurologyTableCode')##
-  $xwiki.linkx.use($services.webjars.url('org.webjars.npm:pikaday', 'css/pikaday.css'), {'type': 'text/css', 'rel': 'stylesheet'})##
+      <content>{{include reference="PhenoTips.PatientSheetMacros" /}}
 
-  {{html clean=false}}
-  &lt;input type="hidden" name="neurology_table_state" id="neurology_table_state"&gt;
-  &lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
-  {{/html}}
-#else
-  {{html clean=false}}
-  #if ($xcontext.action == 'view')
-    #set($useSymbols = true)
-  #else
-    #set($useSymbols = false)
-  #end
-  $!services.neurology.getFeatureSetViewHtml($doc, $useSymbols)
-  {{/html}}
+{{velocity}}
+#set ($origObj = $obj)
+#set ($obj = $doc.getObject('PhenoTips.NeurologyMetaClass', true))
+#set ($origObjClass = $doc.getActiveClass())
+#set ($discard = $doc.use($obj))
+#set ($origClass = $class)
+#set ($class = $xwiki.getClass('PhenoTips.NeurologyMetaClass'))
+$xwiki.ssx.use('PhenoTips.NeurologyTableCode')##
+##
+#__hasBooleanDataToDisplay('is_normal' $showIsNormal)
+#__hasDataToDisplay('section_notes' $showSectionNotes)
+#__hasDataToDisplay('end_notes' $showEndNotes)
+#if ($services.neurology.getFeatureSetJson($doc) != '[]' || $showIsNormal || $showSectionNotes || $showEndNotes)
+  (% class="controlled-group complete-hide confirm confirm-yes" %)(((
+    (% class="fieldset is_normal controller exclude" %)(((
+      (% class="neurology-meta"%)(((
+      #if ($xcontext.action == 'edit')
+        (% class="clinical-status" %)(((
+        $doc.display('is_normal') #__label('is_normal' '' "$class.get('is_normal').translatedPrettyName")
+        )))
+      #else
+        (% class="clinical-status" %)(((
+        #if ($showIsNormal)$class.get('is_normal').prettyName#end
+        )))
+      #end
+      #if ($xcontext.action == 'edit' || ($doc.display('section_notes') != ''))
+        #__label('section_notes' 'section group-title' '')
+        #__display('section_notes')
+      #end
+      )))
+    )))
+    (% class="controlled" %)(((
+    #if ($xcontext.action == 'edit')
+      $xwiki.jsx.use('PhenoTips.NeurologyTableCode')##
+      $xwiki.linkx.use($services.webjars.url('org.webjars.npm:pikaday', 'css/pikaday.css'), {'type': 'text/css', 'rel': 'stylesheet'})##
+
+      {{html clean=false}}
+      &lt;input type="hidden" name="neurology_table_state" id="neurology_table_state"&gt;
+      &lt;div id="neurology-table-container" data-init="$escapetool.xml($services.neurology.getFeatureSetJson($doc))"&gt;&lt;/div&gt;
+      {{/html}}
+    #end
+    #if (!$showIsNormal)
+      (% class="neurology-features" %)(((
+      {{html clean=false}}
+      #if ($xcontext.action == 'view')
+        #set($useSymbols = true)
+      #else
+        #set($useSymbols = false)
+      #end
+      $!services.neurology.getFeatureSetViewHtml($doc, $useSymbols)
+      {{/html}}
+      )))
+    #end
+    #if ($xcontext.action == 'edit' || (!$showIsNormal &amp;&amp; $xcontext.action == 'view' &amp;&amp; ($doc.display('end_notes') != '')))
+      (% class="neurology-meta" %)(((
+      #__label('end_notes' 'section group-title' '')
+      #__display('end_notes')
+      )))
+    #end
+    )))## controlled (neurology table + end notes)
+  )))## controlled-group (neurology clinical status + section notes)
 #end
+##
+#set ($class = $origClass)
+#set ($discard = $doc.use($origObj))
+#set ($obj = $origObj)
 {{/velocity}}</content>
     </property>
     <property>
       <extensionPointId>org.phenotips.patientSheet.section.neurology</extensionPointId>
     </property>
     <property>
-      <name>org.phenotips.patientSheet.field.neurology-table</name>
+      <name>org.phenotips.patientSheet.field.neurology-info</name>
     </property>
     <property>
-      <parameters>title=Neurology Table
+      <parameters>title=Neurology Information
 enabled=true
-required=
 order=1
-fields=</parameters>
+required=
+fields=is_normal,section_notes,end_notes
+pt_class=PhenoTips.NeurologyMetaClass</parameters>
     </property>
     <property>
       <scope>wiki</scope>

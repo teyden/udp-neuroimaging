@@ -35,10 +35,6 @@ import com.xpn.xwiki.objects.BaseObject;
 @Singleton
 public class NeurologyFeaturesUpdater extends AbstractEventListener
 {
-    /** The name of the class where the mapping between phenotypes and categories is stored. */
-    private static final EntityReference NEUROLOGY_CLASS_REFERENCE = new EntityReference("NeurologyFeatureClass",
-            EntityType.DOCUMENT, Constants.CODE_SPACE_REFERENCE);
-
     @Inject
     private Execution execution;
 
@@ -65,6 +61,12 @@ public class NeurologyFeaturesUpdater extends AbstractEventListener
         XWikiContext context = (XWikiContext) this.execution.getContext().getProperty("xwikicontext");
         XWikiDocument doc = (XWikiDocument) source;
 
+        BaseObject metaObject = doc.getXObject(NeurologyDataController.NEUROLOGY_META_CLASS_REFERENCE);
+        if (metaObject != null && metaObject.getIntValue(NeurologySection.JSON_KEY_IS_NORMAL) == 1) {
+            doc.removeXObjects(NeurologyDataController.NEUROLOGY_FEATURE_CLASS_REFERENCE);
+            return;
+        }
+
         String tableState = ((ServletRequest) this.container.getRequest()).getHttpServletRequest()
                 .getParameter("neurology_table_state");
         if (tableState == null) {
@@ -81,7 +83,6 @@ public class NeurologyFeaturesUpdater extends AbstractEventListener
             return;
         }
 
-
         List<NeurologyFeature> features = new LinkedList<>();
         for (int i = 0; i < feauturesJson.length(); i++) {
             JSONObject featureJson = feauturesJson.getJSONObject(i);
@@ -89,12 +90,13 @@ public class NeurologyFeaturesUpdater extends AbstractEventListener
             features.add(feature);
         }
 
-        doc.removeXObjects(NEUROLOGY_CLASS_REFERENCE);
+        doc.removeXObjects(NeurologyDataController.NEUROLOGY_FEATURE_CLASS_REFERENCE);
         Iterator<NeurologyFeature> iterator = features.iterator();
         while (iterator.hasNext()) {
             try {
                 NeurologyFeature feature = iterator.next();
-                BaseObject xwikiObject = doc.newXObject(NEUROLOGY_CLASS_REFERENCE, context);
+                BaseObject xwikiObject = doc.newXObject(NeurologyDataController.NEUROLOGY_FEATURE_CLASS_REFERENCE,
+                        context);
 
                 feature.populateBaseObj(xwikiObject, context);
             } catch (Exception e) {
