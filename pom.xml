@@ -112,8 +112,8 @@
     <!-- There is no Java code, speedup the build by skipping Clirr and Checkstyle checks -->
     <checkstyle.skip>true</checkstyle.skip>
     <clirr.skip>true</clirr.skip>
-    <!-- This is a commercial Gene42 project, skip licensing header check -->
-    <license.skip>true</license.skip>
+    <!-- Temporary override until we update the upstream version as well -->
+    <buildtools.version>1.7</buildtools.version>
   </properties>
 
   <modules>
@@ -149,6 +149,21 @@
               <version>1.3</version>
             </tagletArtifact>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <configuration>
+            <header>commercial-license.txt</header>
+          </configuration>
+          <!-- Add a dependency since this is where the maven-license-plugin plugin will find the license.txt file -->
+          <dependencies>
+            <dependency>
+              <groupId>org.phenotips</groupId>
+              <artifactId>phenotips-license-verification-resources</artifactId>
+              <version>${buildtools.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>
