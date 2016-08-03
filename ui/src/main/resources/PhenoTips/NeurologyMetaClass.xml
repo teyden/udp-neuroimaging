@@ -41,7 +41,7 @@
       <contenttype>PureText</contenttype>
       <customDisplay/>
       <disabled>0</disabled>
-      <editor>---</editor>
+      <editor>PureText</editor>
       <name>end_notes</name>
       <number>3</number>
       <picker>0</picker>
@@ -71,7 +71,7 @@
       <contenttype>PureText</contenttype>
       <customDisplay/>
       <disabled>0</disabled>
-      <editor>---</editor>
+      <editor>PureText</editor>
       <name>section_notes</name>
       <number>2</number>
       <picker>0</picker>
