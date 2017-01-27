@@ -113,7 +113,7 @@
     <checkstyle.skip>true</checkstyle.skip>
     <clirr.skip>true</clirr.skip>
     <!-- Temporary override until we update the upstream version as well -->
-    <buildtools.version>1.7</buildtools.version>
+    <buildtools.version>1.6</buildtools.version>
   </properties>
 
   <modules>
