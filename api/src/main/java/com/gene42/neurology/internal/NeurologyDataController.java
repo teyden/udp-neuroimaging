@@ -14,6 +14,7 @@ import org.phenotips.data.PatientDataController;
 import org.phenotips.data.SimpleValuePatientData;
 
 import org.xwiki.bridge.DocumentAccessBridge;
+import org.xwiki.bridge.DocumentModelBridge;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.model.EntityType;
 import org.xwiki.model.reference.EntityReference;
@@ -152,7 +153,7 @@ public class NeurologyDataController implements PatientDataController<NeurologyS
     }
 
     @Override
-    public void save(Patient patient)
+    public void save(Patient patient, DocumentModelBridge documentModelBridge)
     {
         try {
             PatientData<NeurologySection> data = patient.getData(getName());
